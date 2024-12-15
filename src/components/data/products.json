@@ -1,0 +1,42 @@
+{
+    "product":[
+ {  
+    "id":1,
+    "src":"../../assets/1.jpg",
+    "desc":"green shirt and skin pent",
+    "price":"90$"
+} ,
+{  
+    "id":2,
+    "src":"../../assets/2.jpg",
+    "desc":"brown coat and black shirt",
+    "price":"110$"
+},
+ {  
+    "id":3,
+    "src":"../../assets/3.jpg",
+    "desc":"black coat and white shirt",
+    "price":"100$"
+},
+ {  
+    "id":4,
+    "src":"",
+    "desc":"",
+    "price":""
+},
+ {  
+    "id":5,
+    "src":"",
+    "desc":"",
+    "price":""
+} ,
+{  
+    "id":6,
+    "src":"",
+    "desc":"",
+    "price":""
+} 
+
+
+]
+}
