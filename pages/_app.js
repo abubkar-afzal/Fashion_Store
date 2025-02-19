@@ -8,7 +8,8 @@ export default function App({ Component, pageProps }) {
   <>
   <div className="">
     <Header/>
-    <Component {...pageProps} />;
+    <div className="xsm:mt-[0.5rem] sm:mt-[1rem] "></div>
+    <Component {...pageProps} />
     <Footer />
     </div>
     

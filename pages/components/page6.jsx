@@ -4,7 +4,7 @@ import Image from "next/image";
 
 const Page6 = ()=>{
     return(<>
-             <div className="xsh:h-[932px] overflow-hidden xsm:text-left xsm:bg-[---c1] xsm:content-center xsm:items-center sh:h-[600px]">
+             <div className=" overflow-hidden xsm:text-left xsm:bg-[---c1] xsm:content-center xsm:items-center ">
         	    <div className="sm:grid sm:grid-cols-2">
                     <div className="sm:pl-[2rem] sm:pt-[3rem]">
                 <h1 className="xsm:text-[4rem] xsm:font-bold xsm:m-3 xsm:text-[---c4]">Deal Of The Day</h1>

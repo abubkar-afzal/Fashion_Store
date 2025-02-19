@@ -36,7 +36,7 @@ const Page4 = ()=>{
 
     return(
         <>
-        <div className="xsh:h-[932px] overflow-hidden xsm:text-left xsm:bg-[---c4] xsm:p-5 xsm:pt-[2rem]  sh:h-[500px]">
+        <div className="overflow-hidden xsm:text-left xsm:bg-[---c4] xsm:p-5 xsm:pt-[2rem] ">
             <div className="sm:grid sm:grid-cols-2 ">
                 <div className=" sm:bg-[---c4]">
             <h1 className="xsm:text-[3rem] sm:text-[4rem] xsm:text-white xsm:pb-4">Best Seller Product</h1>

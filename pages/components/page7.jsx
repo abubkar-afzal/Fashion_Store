@@ -39,7 +39,7 @@ const Page7 = () => {
 
   return (
     <>
-      <div className="xsh:h-[932px]  overflow-hidden xsm:text-center xsm:bg-white  xsm:items-center sh:h-[700px]">
+      <div className=" overflow-hidden xsm:text-center xsm:bg-white  xsm:items-center m-[2rem]">
         <h1 className="xsm:text-[3rem] xsm:font-bold xsm:m-4">
           What People Say About Us
         </h1>

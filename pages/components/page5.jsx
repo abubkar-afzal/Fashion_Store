@@ -23,16 +23,17 @@ const Page5 = ()=>{
 
         <>
         
-         <div className="xsh:h-[932px] overflow-hidden xsm:text-center xsm:bg-white sh:h-[600px]">
-            <h1 className="xsm:text-[2rem] xsm:font-bold sm:text-[3rem] sm:mt-[2rem]">Our Product</h1>
-            <ul className="xsm:flex xsm:space-x-4 xsm:font-bold xsm:m-4 pl-[8%] sm:place-content-center sm:text-[1.5rem] sm:space-x-[30px] sm:mr-[8rem]">
-            <li>Men</li>
-            <li>Women</li>
-            <li>Kids</li>
-            <li>Family Collection</li></ul>
-            <div className="xsm:grid xsm:grid-cols-2 xsm:overflow-scroll xsm:h-[800px] xsm:pl-6 sm:grid sm:grid-cols-4 sm:overflow-scroll sm:w-[60rem] sm:h-[25rem]"> 
+         <div className=" overflow-hidden xsm:text-center xsm:bg-white mx-[1rem] my-[2rem] ">
+            <h1 className="xsm:text-[2rem] xsm:font-bold sm:text-[3rem] ">Our Product</h1>
+            <ul className="xsm:flex xsm:space-x-4 xsm:font-bold xsm:m-4 justify-between sm:text-[1.5rem] sm:space-x-[30px] ">
+             <li className="cursor-pointer ">Men</li>
+             <li className="cursor-pointer ">Women</li>
+             <li className="cursor-pointer ">Kids</li>
+             <li className="cursor-pointer ">Family</li></ul>
+             <hr className="h-[2px]"/>
+            <div className="xsm:grid xsm:grid-cols-2  xsm:overflow-scroll xsm:h-[800px] sm:grid sm:grid-cols-4 sm:overflow-scroll gap-[1rem] hideBar sm:h-[25rem] justify-items-center "> 
                 
-            <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9.1rem] xsm:m-2 xsm:border-black">
+            <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] xsm:m-2 xsm:border-black">
                 <Image src={Image1} alt="" className="xsm:w-[9rem] xsm:h-[9rem]" />
                 <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 xsm:w-[8.8rem]">
                 <div className="flex pl-[30%]">
@@ -46,7 +47,7 @@ const Page5 = ()=>{
                 <p>price: 90$</p>
                 </div>
             </div>
-            <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9.1rem] xsm:m-2 xsm:border-black">
+            <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] xsm:m-2 xsm:border-black">
                 <Image src={Image2} alt="" className="xsm:w-[9rem] xsm:h-[9rem]" />
                 <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 xsm:w-[8.8rem]">
                 <div className="flex pl-[30%]">
@@ -59,7 +60,7 @@ const Page5 = ()=>{
                 <p>Green shirt and skin pent</p>
                 <p>price: 90$</p>
                 </div>
-            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9.1rem] xsm:m-2 xsm:border-black">
+            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] xsm:m-2 xsm:border-black">
                 <Image src={Image3} alt="" className="xsm:w-[9rem] xsm:h-[9rem]" />
                 <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 xsm:w-[8.8rem]">
                 <div className="flex pl-[30%]">
@@ -72,7 +73,7 @@ const Page5 = ()=>{
                 <p>Green shirt and skin pent</p>
                 <p>price: 90$</p>
                 </div>
-            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9.1rem] xsm:m-2 xsm:border-black">
+            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] xsm:m-2 xsm:border-black">
                 <Image src={Image4} alt="" className="xsm:w-[9rem] xsm:h-[9rem]" />
                 <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 xsm:w-[8.8rem]">
                 <div className="flex pl-[30%]">
@@ -85,7 +86,7 @@ const Page5 = ()=>{
                 <p>Green shirt and skin pent</p>
                 <p>price: 90$</p>
                 </div>
-            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9.1rem] xsm:m-2 xsm:border-black">
+            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] xsm:m-2 xsm:border-black">
                 <Image src={Image5} alt="" className="xsm:w-[9rem] xsm:h-[9rem]" />
                 <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 xsm:w-[8.8rem]">
                 <div className="flex pl-[30%]">
@@ -98,7 +99,7 @@ const Page5 = ()=>{
                 <p>Green shirt and skin pent</p>
                 <p>price: 90$</p>
                 </div>
-            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9.1rem] xsm:m-2 xsm:border-black">
+            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] xsm:m-2 xsm:border-black">
                 <Image src={Image6} alt="" className="xsm:w-[9rem] xsm:h-[9rem]" />
                 <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 xsm:w-[8.8rem]">
                 <div className="flex pl-[30%]">
@@ -111,7 +112,7 @@ const Page5 = ()=>{
                 <p>Green shirt and skin pent</p>
                 <p>price: 90$</p>
                 </div>
-            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9.1rem] xsm:m-2 xsm:border-black">
+            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] xsm:m-2 xsm:border-black">
                 <Image src={Image7} alt="" className="xsm:w-[9rem] xsm:h-[9rem]" />
                 <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 xsm:w-[8.8rem]">
                 <div className="flex pl-[30%]">
@@ -124,7 +125,7 @@ const Page5 = ()=>{
                 <p>Green shirt and skin pent</p>
                 <p>price: 90$</p>
                 </div>
-            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9.1rem] xsm:m-2 xsm:border-black">
+            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] xsm:m-2 xsm:border-black">
                 <Image src={Image8} alt="" className="xsm:w-[9rem] xsm:h-[9rem]" />
                 <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 xsm:w-[8.8rem]">
                 <div className="flex pl-[30%]">
@@ -137,7 +138,7 @@ const Page5 = ()=>{
                 <p>Green shirt and skin pent</p>
                 <p>price: 90$</p>
                 </div>
-            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9.1rem] xsm:m-2 xsm:border-black">
+            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] xsm:m-2 xsm:border-black">
                 <Image src={Image9} alt="" className="xsm:w-[9rem] xsm:h-[9rem]" />
                 <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 xsm:w-[8.8rem]">
                 <div className="flex pl-[30%]">
@@ -150,7 +151,7 @@ const Page5 = ()=>{
                 <p>Green shirt and skin pent</p>
                 <p>price: 90$</p>
                 </div>
-            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9.1rem] xsm:m-2 xsm:border-black">
+            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] xsm:m-2 xsm:border-black">
                 <Image src={Image10} alt="" className="xsm:w-[9rem] xsm:h-[9rem]" />
                 <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 xsm:w-[8.8rem]">
                 <div className="flex pl-[30%]">
@@ -163,7 +164,7 @@ const Page5 = ()=>{
                 <p>Green shirt and skin pent</p>
                 <p>price: 90$</p>
                 </div>
-            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9.1rem] xsm:m-2 xsm:border-black">
+            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] xsm:m-2 xsm:border-black">
                 <Image src={Image11} alt="" className="xsm:w-[9rem] xsm:h-[9rem]" />
                 <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 xsm:w-[8.8rem]">
                 <div className="flex pl-[30%]">
@@ -176,7 +177,7 @@ const Page5 = ()=>{
                 <p>Green shirt and skin pent</p>
                 <p>price: 90$</p>
                 </div>
-            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9.1rem] xsm:m-2 xsm:border-black">
+            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] xsm:m-2 xsm:border-black">
                 <Image src={Image12} alt="" className="xsm:w-[9rem] xsm:h-[9rem]" />
                 <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 xsm:w-[8.8rem]">
                 <div className="flex pl-[30%]">
@@ -189,7 +190,7 @@ const Page5 = ()=>{
                 <p>Green shirt and skin pent</p>
                 <p>price: 90$</p>
                 </div>
-            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9.1rem] xsm:m-2 xsm:border-black">
+            </div> <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] xsm:m-2 xsm:border-black">
                 <Image src={Image13} alt="" className="xsm:w-[9rem] xsm:h-[9rem]" />
                 <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 xsm:w-[8.8rem]">
                 <div className="flex pl-[30%]">

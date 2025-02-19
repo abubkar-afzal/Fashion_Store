@@ -20,7 +20,8 @@ const Footer = () => {
           <Image src={footerpic5} alt="" className="xsm:w-[6.5rem] xsm:h-[6.5rem] sm:w-[10rem] sm:h-[10rem]" />
 
         </div>
-        <div className="xsm:bg-white xsm:w-[13rem] xsm:m-auto xsm:absolute xsm:mt-[-1rem] xsm:left-[5.7rem] sm:w-[22rem] sm:h-[3rem] sm:place-content-center sm:left-[18rem]  "><p className="text-[15px]"> We can make custom design's as our customer need. </p></div>
+
+        <div className=" mx-auto w-full place-items-center xsm:absolute  xsm:mt-[-1rem] "><p className="text-[15px] xsm:bg-white xsm:w-[13rem]"> We can make custom design's as our customer need. </p></div>
         <div className="bg-[---c4] w-[100%] h-[10rem]">
             <div className="text-white flex space-x-4 my-5 pt-5 place-content-center">
             <a href=""><p>Men</p></a>
