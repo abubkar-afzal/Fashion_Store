@@ -1,14 +1,16 @@
 import React,{ useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
-import { FiShoppingBag } from "react-icons/fi";
+import { FaCartShopping } from "react-icons/fa6";
 import Link from "next/link";
+import { Fade } from "react-awesome-reveal";
 const Header =()=>{
     const [cancel,setCancel] = useState(true);
     const showCancel=()=>{
         setCancel(!cancel);
     }
     return(<>
+   
         <div className="xsm:overflow-x-hidden sticky z-10 xsm:mt-3 xsm:flex xsm:justify-between
          sm:place-items-baseline sm:items-center sm:mt-[2rem] sm:mx-[1rem]">
          {//sm
@@ -36,18 +38,18 @@ const Header =()=>{
             </Link>
             </div>
             <div className="sm:flex sm:space-x-3 sm:relative ">
-            <Link href={`/components/checkout`}><div className="xsm:hidden sm:block sm:text-[30px]    cursor-pointer sm:hover:text-[---c2] ">
-                <FiShoppingBag />
-            </div></Link>
+           <div className="xsm:hidden sm:block   mt-1 mr-2  cursor-pointer sm:hover:text-[---c2] ">
+           <Link href={`/components/checkout`}> <FaCartShopping className="sm:text-[25px]"/></Link>
+            </div>
             <div className="">
-            <Link href={`/components/login`}><button className="xsm:hidden sm:block sm:border-[2px] sm:border-black sm:w-[5rem]  sm:hover:bg-[---c2] hover:border-none hover:text-white h-[2rem]">LOGIN</button></Link>
+            <Link href={`/components/login`}><button className="xsm:hidden sm:block sm:border-[2px] sm:border-black sm:w-[5rem]  sm:hover:bg-[---c2] hover:border-none hover:text-white h-[2rem] rounded-[10px]">LOGIN</button></Link>
             </div>
             </div>
         {//xsm
 
            }
            <div className="flex sm:hidden items-baseline">
-           <FiShoppingBag className=" cursor-pointer xsm:text-[20px] xsm:col-start-5 xsm:ml-[3rem]" />
+           <Link href={`/components/checkout`}><FaCartShopping className=" cursor-pointer xsm:text-[20px] xsm:col-start-5 xsm:ml-[3rem]" /></Link>
             
             <div className="xsm:pl-9 xsm:mr-4 mt-[5px] ">
                 <div className="">
@@ -75,7 +77,7 @@ const Header =()=>{
             </div></div>
             </div>
             <div className="xsm:h-[8vh] sm:h-[13vh] w-[100vw] absolute top-0 bg-[---c1] shadow-xl"></div>
-            
+              
     </>)
 }
 export default Header;
