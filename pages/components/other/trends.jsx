@@ -16,10 +16,10 @@ const Trends = ({ allProducts }) => {
           {allProducts.map((item) => {
             return (
               <div
-                key={item.product_id}
+                key={item._id}
                 className=" xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] sm:w-[15rem] xsm:m-2 "
               >
-                <Link href={`${item.product_id}`}>
+                <Link href={`${item._id}`}>
                   <Image
                     src={item.product_img}
                     width={1200}

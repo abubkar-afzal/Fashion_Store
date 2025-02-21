@@ -41,7 +41,7 @@ const Page4 = ()=>{
                 <div className=" sm:bg-[---c4]">
             <h1 className="xsm:text-[3rem] sm:text-[4rem] xsm:text-white xsm:pb-4">Best Seller Product</h1>
             <p className="xsm:text-1rem] xsm:text-white xsm:p-2">These are our best products those we have sell. The market is not aware from these products those we have. You can also got best and new product as you need. We deal with all kinds of products as any one need in any season. </p>
-            <button className="xsm:cursor-pointer xsm:hover:bg-[---c5] xsm:active:bg-[---c6]  xsm:text-[1.5rem] xsm:text-white xsm:w-[9rem] xsm:rounded-sm xsm:mt-2 xsm:h-[3rem] xsm:border-[1.5px] xsm:shadow-sm text-center xsm:shadow-white xsm:border-white">See More</button>
+            
             </div>
             <div className="sm:overflow-hidden">
             <div className={images}>

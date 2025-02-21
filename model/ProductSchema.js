@@ -14,6 +14,9 @@ const productSchema = Schema ({
     product_quantity: {type : Number, index : true, required : true, default : 0},
     product_trend: {type : String, index : true, required : true, default : "no"},
     product_rating: {type : Number, index : true, required : true, default : 0},
+    product_display_page_place: {type : String, index : true, required : true,  default : "all"},
+    product_display_page_title: {type : String, index : true, required : true,  default : ""},
+    product_display_page_desc: {type : String, index : true, required : true,  default : ""},
 
 })
 

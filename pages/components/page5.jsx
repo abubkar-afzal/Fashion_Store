@@ -26,10 +26,10 @@ const Page5 = ()=>{
          <div className=" overflow-hidden xsm:text-center xsm:bg-white mx-[1rem] my-[2rem] ">
             <h1 className="xsm:text-[2rem] xsm:font-bold sm:text-[3rem] ">Our Product</h1>
             <div className="xsm:flex xsm:font-bold xsm:my-4 justify-between shadow-lg pb-[1rem] sm:text-[1.5rem] px-[2rem]">
-             <p className="cursor-pointer ">Men</p>
-             <p className="cursor-pointer ">Women</p>
-             <p className="cursor-pointer ">Kids</p>
-             <p className="cursor-pointer ">Family</p></div>
+             <p className="cursor-pointer underline-hover">Men</p>
+             <p className="cursor-pointer underline-hover">Women</p>
+             <p className="cursor-pointer underline-hover">Kids</p>
+             <p className="cursor-pointer underline-hover">Family</p></div>
             <div className="xsm:grid xsm:grid-cols-2  xsm:overflow-scroll xsm:h-[800px] sm:grid sm:grid-cols-4 sm:overflow-scroll gap-[1rem] hideBar sm:h-[25rem] justify-items-center "> 
                 
             <div className="Images xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] xsm:m-2 xsm:border-black">

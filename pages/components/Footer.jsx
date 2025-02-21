@@ -26,23 +26,23 @@ const Footer = () => {
         <div className="bg-[---c4] ">
             <div className="text-white flex xsm:flex-col sm:flex-row space-x-4 my-5 pt-5 place-content-center">
             <Link href={`/components/other/men`}>
-                <div className="">MEN</div>
+                <div className="underline-hover-white">MEN</div>
             </Link>
             
             <Link href={`/components/other/women`}>
-                <div className="">WOMEN</div>
+                <div className="underline-hover-white">WOMEN</div>
             </Link>
             
             <Link href={`/components/other/kids`}>
-                <div className="">KIDS</div>
+                <div className="underline-hover-white">KIDS</div>
             </Link>
             
             <Link href={`/components/other/family`}>
-                <div className="">FAMILY</div>
+                <div className="underline-hover-white">FAMILY</div>
             </Link>
             
             <Link href={`/components/other/trends`}>
-                <div className="">TRENDS</div>
+                <div className="underline-hover-white">TRENDS</div>
             </Link>
             </div>
             <div className="text-white text-[10px] sm:text-[12px] w-[20rem] px-[1rem] pb-[2rem] m-auto"><p>This Page Is Created By Hafiz Abubkar Afzal Only For Personal Project Not For Production</p></div>

@@ -15,8 +15,8 @@ const Men = ({allProducts}) => {
         {
           allProducts.map((item)=>{
             return(
-        <div key={item.product_id} className=" xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] sm:w-[15rem] xsm:m-2 ">
-          <Link href={`${item.product_id}`}>
+        <div key={item._id} className=" xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] sm:w-[15rem] xsm:m-2 ">
+          <Link href={`${item._id}`}>
         <Image  src={item.product_img} width={1200} height={1200} alt="product" className="xsm:w-[9rem] xsm:h-[9rem] sm:w-[15rem] sm:h-[15rem]" />
         <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 justify-items-center">
 

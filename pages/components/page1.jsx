@@ -9,8 +9,9 @@ import Page5 from "./page5";
 import Page6 from "./page6";
 import Page7 from "./page7";
 import Image from "next/image";
+import Link from "next/link";
 
-const Page1 = () => {
+const Page1 = ({allNewCollection,bestFashion}) => {
   return (
     <>
       <div className="  top-0 bottom-0 overflow-y-scroll hideBar ">
@@ -25,9 +26,9 @@ const Page1 = () => {
                 there you can find all the men, women, child collection as you
                 need.
               </h3>
-              <button className="xsm:bg-black xsm:active:bg-white xsm:active:text-black  xsm:text-white xsm:w-[10rem] xsm:h-12 xsm:rounded-lg xsm:my-2">
+              <Link href={`/components/other/trends`}><button className="xsm:bg-black xsm:hover:bg-white xsm:hover:text-black  xsm:text-white duration-[2s] xsm:w-[10rem] xsm:h-12 xsm:rounded-lg xsm:my-2">
                 SHOPE NOW
-              </button>
+              </button></Link>
             </div>
             <div className="   xsm:relative xsm:justify-items-end my-4  sm:w-[26rem] sm:h-[40rem] sm:relative sm:right-[4rem]  ml-auto">
               <Image
@@ -41,8 +42,8 @@ const Page1 = () => {
             <div></div>
           </div>
         </div>
-        <Page2 />
-        <Page3 />
+        <Page2 allNewCollection={allNewCollection}/>
+        <Page3 bestFashion={bestFashion}/>
         <Page4 />
         <Page5 />
         <Page6 />

@@ -8,17 +8,60 @@
   ---c2 : hsl(19, 83%, 73%);
   ---c3 : hsla(19, 39%, 77%, 0.9);
   ---c4 : rgb(41, 31, 21);
+  ---b4 : rgba(0, 0, 0, 0.384);
   ---c5 : rgb(78, 51, 26);
   ---c6 : rgb(98, 51, 26);
+  ---c7 :rgb(251, 17, 17);
+  ---c8 :rgb(29, 251, 17);
+  ---c9 :rgb(251, 103, 17);
   
 }
 
 .hideBar {
-  -ms-overflow-style: none;  /* Internet Explorer 10+ */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;  
+  scrollbar-width: none; 
 
-  /* For WebKit browsers like Chrome and Safari */
+  
   &::-webkit-scrollbar {
     display: none;
   }
+}
+.underline-hover {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-hover::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  transition: width 0.5s ease-in-out;
+}
+
+.underline-hover:hover::after {
+  width: 100%;
+}
+
+.underline-hover-white {
+  position: relative;
+  display: inline-block;
+}
+
+.underline-hover-white::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: rgb(255, 255, 255);
+  transition: width 0.5s ease-in-out;
+}
+
+.underline-hover-white:hover::after {
+  width: 100%;
 }
