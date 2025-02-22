@@ -4,7 +4,6 @@ import { FaCartShopping } from "react-icons/fa6";
 import { FaShoppingBag } from "react-icons/fa";
 
 const Page3 = ({ bestFashion }) => {
-  console.log(bestFashion);
   return (
     <>
       <div className="h-[70vh] overflow-y-scroll hideBar my-[2rem]">

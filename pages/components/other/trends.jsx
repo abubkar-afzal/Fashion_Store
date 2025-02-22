@@ -49,21 +49,18 @@ const Trends = ({ allProducts }) => {
                           <IoIosStar />
                           <IoIosStar />
                           <IoIosStar />
-                          <IoIosStar />
+                          
                         </>
                       ) : item.product_rating == 2 ? (
                         <>
                           <IoIosStar />
                           <IoIosStar />
-                          <IoIosStar />
-                          <IoIosStar />
+                          
                         </>
                       ) : item.product_rating == 1 ? (
                         <>
                           <IoIosStar />
-                          <IoIosStar />
-                          <IoIosStar />
-                          <IoIosStar />
+                          
                         </>
                       ) : null}
                     </div>

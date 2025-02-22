@@ -1,118 +1,110 @@
 import React, { useState } from "react";
-import Image1 from  "../assets/1.jpg"
-import Image2 from  "../assets/2.jpg"
-import Image3 from  "../assets/3.jpg"
-import Image4 from  "../assets/4.jpg"
 import { IoIosStar } from "react-icons/io";
 import Image from "next/image";
-const Page4 = ()=>{
-    const [next,setnext] = useState(1);
-    const slide1 =()=>{
-        setnext(1);
-    }
-    const slide2 =()=>{
-        setnext(2);
-    }
-    const slide3 =()=>{
-        setnext(3);
-    }
-    const slide4 =()=>{
-        setnext(4);
-    }
-    let images; 
-
-    if(next===1){
-       images= "xsm:hover:cursor-pointer xsm:duration-[2s] xsm:flex xsm:space-x-8 xsm:relative xsm:left-[2rem] xsm:w-[1280px]  xsm:mt-8 sm:mt-0"
-    }
-    else if(next===2){
-       images= "xsm:hover:cursor-pointer xsm:duration-[2s] xsm:flex xsm:space-x-8 xsm:relative xsm:left-[-20rem] xsm:w-[1280px]  xsm:mt-8  sm:mt-0 "
-    }
-    else if(next===3){
-       images= "xsm:hover:cursor-pointer xsm:duration-[2s] xsm:flex xsm:space-x-8 xsm:relative xsm:left-[-40rem] xsm:w-[1280px]  xsm:mt-8 sm:mt-0"
-    }
-    else{
-       images= "xsm:hover:cursor-pointer xsm:duration-[2s] xsm:flex xsm:space-x-8 xsm:relative xsm:left-[-60rem] xsm:w-[1280px]  xsm:mt-8  sm:mt-0"
-    }
-
-    return(
-        <>
-        <div className="overflow-hidden xsm:text-left xsm:bg-[---c4] xsm:p-5 xsm:pt-[2rem] ">
-            <div className="sm:grid sm:grid-cols-2 ">
-                <div className=" sm:bg-[---c4]">
-            <h1 className="xsm:text-[3rem] sm:text-[4rem] xsm:text-white xsm:pb-4">Best Seller Product</h1>
-            <p className="xsm:text-1rem] xsm:text-white xsm:p-2">These are our best products those we have sell. The market is not aware from these products those we have. You can also got best and new product as you need. We deal with all kinds of products as any one need in any season. </p>
-            
+import Link from "next/link";
+import { FaShoppingBag } from "react-icons/fa";
+import { FaCartShopping } from "react-icons/fa6";
+const Page4 = ({ bestSeller }) => {
+  
+  return (
+    <>
+      <div className="overflow-hidden xsm:text-left xsm:bg-[---c4] xsm:p-5 xsm:pt-[2rem] ">
+        <div className="sm:grid sm:grid-cols-2 ">
+          <div className=" sm:bg-[---c4] content-center">
+            <h1 className="xsm:text-[3rem] sm:text-[4rem] xsm:text-white xsm:pb-4">
+              Best Seller Product
+            </h1>
+            <p className="xsm:text-1rem] xsm:text-white xsm:p-2">
+              These are our best products those we have sell. The market is not
+              aware from these products those we have. You can also got best and
+              new product as you need. We deal with all kinds of products as any
+              one need in any season.
+            </p>
+          </div>
+          <div className="scroll-container ">
+            <div className="xsm:hover:cursor-pointer xsm:duration-[2s] xsm:flex xsm:space-x-8 xsm:relative xsm:w-[1280px]  xsm:mt-8  sm:mt-0 overflow-x-scroll scroll-content">
+              {bestSeller.map((item) => {
+                return (
+                  <div
+                    key={item._id}
+                    className=" xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] sm:w-[15rem] xsm:m-2 scroll-item"
+                  >
+                    <Link href={`/components/other/${item._id}`} >
+                      <Image
+                        src={item.product_img}
+                        width={1200}
+                        height={1200}
+                        alt="product"
+                        className="xsm:w-[9rem] xsm:h-[9rem] sm:w-[15rem] sm:h-[15rem]"
+                      />
+                      <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 justify-items-center">
+                        <div className="flex xsm:text-[11px] sm:text-[13px]">
+                          {item.product_rating == 5 ? (
+                            <>
+                              <IoIosStar />
+                              <IoIosStar />
+                              <IoIosStar />
+                              <IoIosStar />
+                              <IoIosStar />
+                            </>
+                          ) : item.product_rating == 4 ? (
+                            <>
+                              <IoIosStar />
+                              <IoIosStar />
+                              <IoIosStar />
+                              <IoIosStar />
+                            </>
+                          ) : item.product_rating == 3 ? (
+                            <>
+                              <IoIosStar />
+                              <IoIosStar />
+                              <IoIosStar />
+                             
+                            </>
+                          ) : item.product_rating == 2 ? (
+                            <>
+                              <IoIosStar />
+                              <IoIosStar />
+                             
+                            </>
+                          ) : item.product_rating == 1 ? (
+                            <>
+                              <IoIosStar />
+                            
+                            </>
+                          ) : null}
+                        </div>
+                        <p className="xsm:text-[14px] sm:text-[16px]">
+                          {item.product_title}
+                        </p>
+                        <p className="xsm:text-[11px] sm:text-[13px]">
+                          price: {item.product_price}$
+                        </p>
+                        <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between space-x-[1rem] pt-2">
+                          <div></div>
+                          <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                            Buy Now
+                            <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
+                          </button>
+                          <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                            Add To Cart
+                            <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
+                          </button>
+                        </div>
+                      </div>
+                    </Link>
+                  </div>
+                );
+              })}
+              {bestSeller.length == 0 ? (
+                <div className="bg-[---c1] p-4 ">NO Product Add Product</div>
+              ) : null}
             </div>
-            <div className="sm:overflow-hidden">
-            <div className={images}>
-            
-            <div className="Images" >
-                <Image src={Image1} alt="" className="w-[18rem] h-[18rem]" />
-                <div className="xsm:bg-white xsm:space-y-2 p-2 xsm:w-[18rem]">
-                <div className="flex">
-                <IoIosStar />
-                <IoIosStar />
-                <IoIosStar />
-                <IoIosStar />
-                <IoIosStar />
-                </div>
-                <p>Green shirt and skin pent</p>
-                <p>price: 90$</p>
-                </div>
-            </div>
-            <div className="Images">
-                <Image src={Image2} alt="" className="w-[18rem] h-[18rem]" />
-                <div className="xsm:bg-white xsm:space-y-2 p-2 xsm:w-[18rem]">
-                <div className="flex">
-                <IoIosStar />
-                <IoIosStar />
-                <IoIosStar />
-                <IoIosStar />
-                <IoIosStar />
-                </div>
-                <p>Brown coat and black shirt</p>
-                <p>price: 110$</p>
-                </div>
-            </div>
-            <div className="Images">
-                <Image src={Image3} alt="" className="w-[18rem] h-[18rem]" />
-                <div className="xsm:bg-white xsm:space-y-2 p-2 xsm:w-[18rem]">
-                <div className="flex">
-                <IoIosStar />
-                <IoIosStar />
-                <IoIosStar />
-                <IoIosStar />
-                <IoIosStar />
-                </div>
-                <p>Black coat and white Shirt</p>
-                <p>price: 100$</p>
-                </div>
-            </div>
-            <div className="Images">
-                <Image src={Image4} alt="" className="w-[18rem] h-[18rem]" />
-                <div className="xsm:bg-white xsm:space-y-2 p-2 xsm:w-[18rem]">
-                <div className="flex">
-                <IoIosStar />
-                <IoIosStar />
-                <IoIosStar />
-                <IoIosStar />
-            
-                </div>
-                <p>Brown shirt and Skin pent</p>
-                <p>price: 80$</p>
-                </div>
-            </div>
-
-            </div>
-            <div className="xsm:space-x-3 pt-8 xsm:text-center">
-                <input onClick={slide1} type="radio" name="Image1" id="Image1" className="radio" />
-                <input onClick={slide2} type="radio" name="Image1" id="Image2" className="radio" />
-                <input onClick={slide3} type="radio" name="Image1" id="Image3" className="radio" />
-                <input onClick={slide4} type="radio" name="Image1" id="Image4" className="radio" />
-            </div></div>
-            </div>
+           
+          </div>
         </div>
-        </>
-    )
-}
+      </div>
+    </>
+  );
+};
 export default Page4;

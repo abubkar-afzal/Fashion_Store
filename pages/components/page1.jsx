@@ -11,7 +11,7 @@ import Page7 from "./page7";
 import Image from "next/image";
 import Link from "next/link";
 
-const Page1 = ({allNewCollection,bestFashion}) => {
+const Page1 = ({allNewCollection,bestFashion,bestSeller,men,women,kids,family}) => {
   return (
     <>
       <div className="  top-0 bottom-0 overflow-y-scroll hideBar ">
@@ -44,8 +44,8 @@ const Page1 = ({allNewCollection,bestFashion}) => {
         </div>
         <Page2 allNewCollection={allNewCollection}/>
         <Page3 bestFashion={bestFashion}/>
-        <Page4 />
-        <Page5 />
+        <Page4 bestSeller={bestSeller}/>
+        <Page5 men={men} women={women} kids={kids} family={family}/>
         <Page6 />
         <Page7 />
       </div>

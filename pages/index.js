@@ -3,11 +3,19 @@ import Page1 from "./components/page1";
 import { Fade } from "react-awesome-reveal";
 import { MongoClient } from "mongodb";
 
-export default function Home({ allNewCollection,bestFashion }) {
+export default function Home({ allNewCollection, bestFashion, bestSeller, men, women, kids, family }) {
   return (
     <>
       <Fade duration={2000}>
-        <Page1 allNewCollection={allNewCollection} bestFashion={bestFashion}/>
+        <Page1
+          allNewCollection={allNewCollection}
+          bestFashion={bestFashion}
+          bestSeller={bestSeller}
+          men={men}
+          women={women}
+          kids={kids}
+          family={family}
+        />
       </Fade>
     </>
   );
@@ -28,10 +36,33 @@ export async function getServerSideProps(context) {
   const allNewCollection = await collection
     .find({ product_display_page_place: "new_collection" })
     .toArray();
-    const bestFashion = await collection
+  const bestFashion = await collection
     .find({ product_display_page_place: "best_fashion" })
     .toArray();
+  const bestSeller = await collection
+    .find({ product_display_page_place: "best_seller" })
+    .toArray();
+  const men = await collection
+    .find({ product_category: "men" }).limit(4)
+    .toArray();
+  const women = await collection
+    .find({ product_category: "women" }).limit(4)
+    .toArray();
+  const kids = await collection
+    .find({ product_category: "kids" }).limit(4)
+    .toArray();
+  const family = await collection
+    .find({ product_category: "family" }).limit(4)
+    .toArray();
   return {
-    props: { allNewCollection: JSON.parse(JSON.stringify(allNewCollection)),bestFashion: JSON.parse(JSON.stringify(bestFashion)) },
+    props: {
+      allNewCollection: JSON.parse(JSON.stringify(allNewCollection)),
+      bestFashion: JSON.parse(JSON.stringify(bestFashion)),
+      bestSeller: JSON.parse(JSON.stringify(bestSeller)),
+      men: JSON.parse(JSON.stringify(men)),
+      women: JSON.parse(JSON.stringify(women)),
+      kids: JSON.parse(JSON.stringify(kids)),
+      family: JSON.parse(JSON.stringify(family)),
+    },
   };
 }
