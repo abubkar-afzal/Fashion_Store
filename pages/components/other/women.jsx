@@ -66,8 +66,9 @@ const Women = ({ allProducts }) => {
                     </p>
                     <p className="xsm:text-[11px] sm:text-[13px]">
                       price: {item.product_price}$
-                    </p>
-                    <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between space-x-[1rem] pt-2">
+                    </p> </div>
+                    </Link>
+                    <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between space-x-[1rem]  bg-white p-2">
                       <div></div>
                       <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                         Buy Now
@@ -78,8 +79,7 @@ const Women = ({ allProducts }) => {
                         <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                       </button>
                     </div>
-                  </div>
-                </Link>
+                 
               </div>
             );
           })}

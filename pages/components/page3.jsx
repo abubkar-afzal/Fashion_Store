@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import { FaCartShopping } from "react-icons/fa6";
 import { FaShoppingBag } from "react-icons/fa";
+import Link from "next/link";
 
 const Page3 = ({ bestFashion }) => {
   return (
@@ -22,10 +23,11 @@ const Page3 = ({ bestFashion }) => {
                 </h3>
                 <div className="xsm:hidden sm:flex xsm:space-y-2 xsm:items-center  space-x-[1rem] pt-2 mx-[1rem]">
                   <div></div>
+                  <Link href={`/components/other/${item._id}`} >
                   <button className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---b4]">
                     Buy Now
                     <FaShoppingBag className="xsm:text-[15px] sm:text-[18px] mx-1" />
-                  </button>
+                  </button></Link>
                   <button className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]">
                     Add To Cart
                     <FaCartShopping className="xsm:text-[15px] sm:text-[18px] mx-1" />

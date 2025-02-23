@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import pic1 from "../assets/28552e92154082ef5126cf2e7cc8788d.jpg";
 
@@ -11,7 +11,15 @@ import Page7 from "./page7";
 import Image from "next/image";
 import Link from "next/link";
 
-const Page1 = ({allNewCollection,bestFashion,bestSeller,men,women,kids,family}) => {
+const Page1 = ({allNewCollection,bestFashion,bestSeller,men,women,kids,family, DealOfDay, Intro}) => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % Intro.length);
+    }, 3000); 
+    return () => clearInterval(interval);
+  }, []);
   return (
     <>
       <div className="  top-0 bottom-0 overflow-y-scroll hideBar ">
@@ -31,13 +39,14 @@ const Page1 = ({allNewCollection,bestFashion,bestSeller,men,women,kids,family}) 
               </button></Link>
             </div>
             <div className="   xsm:relative xsm:justify-items-end my-4  sm:w-[26rem] sm:h-[40rem] sm:relative sm:right-[4rem]  ml-auto">
-              <Image
+            {Intro.map((item,index) => (<Image
               width={1020}
               height={1020}
-                src={pic1}
-                alt=" picture"
-                className="rounded-bl-[6rem] xsm:w-[250px] xsm:h-[300px] sm:w-[30rem] sm:h-[40rem]"
-              />
+                src={item.product_img}
+                alt={`Image ${index + 1}`}
+                className={`absolute object-cover transition-opacity duration-1000 ease-in-out ${currentIndex === index ? 'opacity-100' : 'opacity-0'}
+               rounded-bl-[6rem] xsm:w-[250px] xsm:h-[300px] sm:w-[30rem] sm:h-[40rem] `}
+              /> ))}
             </div>
             <div></div>
           </div>
@@ -46,7 +55,7 @@ const Page1 = ({allNewCollection,bestFashion,bestSeller,men,women,kids,family}) 
         <Page3 bestFashion={bestFashion}/>
         <Page4 bestSeller={bestSeller}/>
         <Page5 men={men} women={women} kids={kids} family={family}/>
-        <Page6 />
+        <Page6 DealOfDay={DealOfDay}/>
         <Page7 />
       </div>
     </>

@@ -21,7 +21,7 @@ const Page2 = ({ allNewCollection }) => {
                   key={item._id}
                   className=" xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] sm:w-[15rem] xsm:m-2 "
                 >
-                  <Link href={`${item._id}`}>
+                  <Link href={`/components/other/${item._id}`}>
                     <div className="m-4">
                       <div className="font-black xsm:text-[14px] sm:text-[16px]">
                         {item.product_display_page_title}
@@ -80,7 +80,9 @@ const Page2 = ({ allNewCollection }) => {
                       <p className="xsm:text-[11px] sm:text-[13px]">
                         price: {item.product_price}$
                       </p>
-                      <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between space-x-[1rem] pt-2">
+                </div>
+                </Link>
+                  <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between bg-white pb-2 space-x-[1rem] pt-2">
                         <div></div>
                         <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                           Buy Now
@@ -92,8 +94,6 @@ const Page2 = ({ allNewCollection }) => {
                         </button>
                       </div>
                     </div>
-                  </Link>
-                </div>
               );
             })}
             {allNewCollection.length == 0 ? (

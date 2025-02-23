@@ -28,8 +28,7 @@ const Page4 = ({ bestSeller }) => {
                   <div
                     key={item._id}
                     className=" xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] sm:w-[15rem] xsm:m-2 scroll-item"
-                  >
-                    <Link href={`/components/other/${item._id}`} >
+                  ><Link href={`/components/other/${item._id}`} >
                       <Image
                         src={item.product_img}
                         width={1200}
@@ -79,21 +78,22 @@ const Page4 = ({ bestSeller }) => {
                         </p>
                         <p className="xsm:text-[11px] sm:text-[13px]">
                           price: {item.product_price}$
-                        </p>
-                        <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between space-x-[1rem] pt-2">
+                          </p></div>
+                   </Link>
+                        <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between space-x-[1rem] pt-2 bg-white pb-2">
                           <div></div>
-                          <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                    
+                    <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3  text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                             Buy Now
                             <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                           </button>
-                          <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                   
+                    <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                             Add To Cart
                             <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                           </button>
                         </div>
                       </div>
-                    </Link>
-                  </div>
                 );
               })}
               {bestSeller.length == 0 ? (

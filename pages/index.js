@@ -3,7 +3,7 @@ import Page1 from "./components/page1";
 import { Fade } from "react-awesome-reveal";
 import { MongoClient } from "mongodb";
 
-export default function Home({ allNewCollection, bestFashion, bestSeller, men, women, kids, family }) {
+export default function Home({ allNewCollection, bestFashion, bestSeller, men, women, kids, family,DealOfDay,Intro }) {
   return (
     <>
       <Fade duration={2000}>
@@ -15,6 +15,8 @@ export default function Home({ allNewCollection, bestFashion, bestSeller, men, w
           women={women}
           kids={kids}
           family={family}
+          DealOfDay={DealOfDay}
+          Intro={Intro}
         />
       </Fade>
     </>
@@ -54,6 +56,12 @@ export async function getServerSideProps(context) {
   const family = await collection
     .find({ product_category: "family" }).limit(4)
     .toArray();
+    const DealOfDay = await collection
+    .find({ product_display_page_place: "deal_of_day" }).limit(1)
+    .toArray();
+    const Intro = await collection
+    .find({ product_display_page_place: "intro" })
+    .toArray();
   return {
     props: {
       allNewCollection: JSON.parse(JSON.stringify(allNewCollection)),
@@ -63,6 +71,8 @@ export async function getServerSideProps(context) {
       women: JSON.parse(JSON.stringify(women)),
       kids: JSON.parse(JSON.stringify(kids)),
       family: JSON.parse(JSON.stringify(family)),
+      DealOfDay: JSON.parse(JSON.stringify(DealOfDay)),
+      Intro: JSON.parse(JSON.stringify(Intro)),
     },
   };
 }

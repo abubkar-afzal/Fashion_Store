@@ -80,8 +80,8 @@ const Page5 = ({ men, women, kids, family }) => {
                   key={item._id}
                   className=" xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] sm:w-[15rem] xsm:m-2 scroll-item"
                 >
-                  <Link href={`/components/other/${item._id}`}>
-                    <Image
+                 
+                 <Link href={`/components/other/${item._id}`}><Image
                       src={item.product_img}
                       width={1200}
                       height={1200}
@@ -128,19 +128,19 @@ const Page5 = ({ men, women, kids, family }) => {
                       <p className="xsm:text-[11px] sm:text-[13px]">
                         price: {item.product_price}$
                       </p>
-                      <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between space-x-[1rem] pt-2">
+                      </div>
+                  </Link>
+                  <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                         <div></div>
-                        <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                       <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                           Buy Now
                           <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button>
-                        <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                  <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                           Add To Cart
                           <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button>
-                      </div>
                     </div>
-                  </Link>
                 </div>
               );
             })} <Link href={`/components/other/men`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c4]  sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link> </> : (
@@ -156,7 +156,7 @@ const Page5 = ({ men, women, kids, family }) => {
                     className=" xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] sm:w-[15rem] xsm:m-2 scroll-item"
                   >
                     <Link href={`/components/other/${item._id}`}>
-                      <Image
+                    <Image
                         src={item.product_img}
                         width={1200}
                         height={1200}
@@ -203,19 +203,19 @@ const Page5 = ({ men, women, kids, family }) => {
                         <p className="xsm:text-[11px] sm:text-[13px]">
                           price: {item.product_price}$
                         </p>
-                        <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between space-x-[1rem] pt-2">
+                        </div>
+                        </Link>
+                    <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between bg-white pb-2  space-x-[1rem] pt-2">
                           <div></div>
-                          <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                    <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                             Buy Now
                             <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                           </button>
-                          <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                    <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                             Add To Cart
                             <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                           </button>
                         </div>
-                      </div>
-                    </Link>
                   </div>
                 );
               })} <Link href={`/components/other/women`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c4]  sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button> </Link> </> :
@@ -231,7 +231,7 @@ const Page5 = ({ men, women, kids, family }) => {
                       className=" xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] sm:w-[15rem] xsm:m-2 scroll-item"
                     >
                       <Link href={`/components/other/${item._id}`}>
-                        <Image
+                      <Image
                           src={item.product_img}
                           width={1200}
                           height={1200}
@@ -278,19 +278,19 @@ const Page5 = ({ men, women, kids, family }) => {
                           <p className="xsm:text-[11px] sm:text-[13px]">
                             price: {item.product_price}$
                           </p>
-                          <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between space-x-[1rem] pt-2">
+                          </div>
+                          </Link>
+                      <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                             <div></div>
-                            <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                      <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                               Buy Now
                               <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button>
-                            <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                      <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                               Add To Cart
                               <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button>
                           </div>
-                        </div>
-                      </Link>
 
                     </div>
                     </>
@@ -308,7 +308,7 @@ const Page5 = ({ men, women, kids, family }) => {
                         className=" xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] sm:w-[15rem] xsm:m-2 scroll-item"
                       >
                         <Link href={`/components/other/${item._id}`}>
-                          <Image
+                        <Image
                             src={item.product_img}
                             width={1200}
                             height={1200}
@@ -355,20 +355,20 @@ const Page5 = ({ men, women, kids, family }) => {
                             <p className="xsm:text-[11px] sm:text-[13px]">
                               price: {item.product_price}$
                             </p>
-                            <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between space-x-[1rem] pt-2">
+                            </div>
+                            </Link>
+                        <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                               <div></div>
-                              <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                        <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                                 Buy Now
                                 <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                               </button>
-                              <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                        <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                                 Add To Cart
                                 <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                               </button>
                             </div>
-                          </div>
-                        </Link>
-                        <Link><button cl href={`/components/other/men`}assName={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c2]  sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link>
+                        <Link><button  href={`/components/other/men`}className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c2]  sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link>
                       </div>
                     );
                   })} <Link href={`/components/other/family`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c4]  sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link></> :
