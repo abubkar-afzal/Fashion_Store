@@ -6,6 +6,7 @@
 
   ---c1 : hsl(27, 75%, 85%);
   ---c2 : hsl(19, 83%, 73%);
+  ---h2 : hsla(19, 83%, 73%, 0.591);
   ---c3 : hsla(19, 39%, 77%, 0.9);
   ---c4 : rgb(41, 31, 21);
   ---b4 : rgba(0, 0, 0, 0.384);
@@ -14,6 +15,7 @@
   ---c7 :rgb(251, 17, 17);
   ---c8 :rgb(29, 251, 17);
   ---c9 :rgb(251, 103, 17);
+  ---c10 :rgb(17, 111, 251);
   
 }
 
@@ -72,12 +74,13 @@
 
 .scroll-content {
   display: inline-block;
-  animation: scroll 10s linear infinite;
+  animation: scroll 15s linear infinite;
 }
 
 .scroll-item {
   display: inline-block;
   border: none;
+  
 }
 
 .scroll-container:hover .scroll-content {
@@ -86,11 +89,16 @@
 
 @keyframes scroll {
   0% {
-    transform: translateX(0);
+    transform: translateX(10%);
+    opacity: 0;
+  }
+  20%{
+    opacity: 1;
   }
   100% {
-    transform: translateX(-50%);
+    transform: translateX(-90%);
   }
+  
 }
 
 .underline-with-margin {

@@ -8,8 +8,11 @@ export default {
   theme: {
     screens:{
       xsm : '300px',
+      abssm: "350px",
+      absm: "400px",
       sm : '550px',
       md : '800px',
+     
       lg : '1000px',
       'xsh': { 'raw': '(min-height: 600px)' },
       'sh': { 'raw': '(min-height: 700px)' },

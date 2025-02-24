@@ -21,8 +21,8 @@ const Page4 = ({ bestSeller }) => {
               one need in any season.
             </p>
           </div>
-          <div className="scroll-container ">
-            <div className="xsm:hover:cursor-pointer xsm:duration-[2s] xsm:flex xsm:space-x-8 xsm:relative xsm:w-[1280px]  xsm:mt-8  sm:mt-0 overflow-x-scroll scroll-content">
+          <div className="scroll-container hideBar">
+            <div className="xsm:hover:cursor-pointer xsm:duration-[4s] xsm:flex xsm:space-x-8 xsm:relative xsm:w-[1280px]  xsm:mt-8  sm:mt-0 overflow-x-scroll scroll-content hideBar">
               {bestSeller.map((item) => {
                 return (
                   <div
