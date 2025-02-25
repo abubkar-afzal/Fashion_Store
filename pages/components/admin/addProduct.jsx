@@ -17,11 +17,52 @@ const AddProduct = () => {
     const [displayPlace, setdisplayPlace] = useState("");
     const [displayTitle, setdisplayTitle] = useState("");
     const [displayDesc, setdisplayDesc] = useState("");
+    const addProduct = async () => {
+        let product = {
+            product_id: id,
+            product_title: title,
+            product_img: image,
+            product_desc: desc,
+            product_category: category,
+            product_price: price,
+            product_color: color,
+            product_size: size,
+            product_quantity: qty,
+            product_trend: trend,
+            product_rating: rating,
+            product_display_page_place: displayPlace,
+            product_display_page_title: displayTitle,
+            product_display_page_desc: displayDesc,
+        }
+        let post = await fetch(`/api/addProduct`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8",
+            },
+            body: JSON.stringify(product),
+        });
+        let res = await post.json();
+
+        setid("")
+        settitle("")
+        setdesc("")
+        setprice("")
+        setrating("")
+        setcolor("")
+        setsize("")
+        setqty("")
+        setimage("")
+        setcategory("")
+        settrend("")
+        setdisplayPlace("")
+        setdisplayTitle("")
+        setdisplayDesc("")
+    }
     return (<>
-            <div className="justify-items-center my-[4rem]">
+        <div className="justify-items-center my-[4rem]">
             <Slide direction="left" triggerOnce >
 
-                <div className="font-black xsm:text-[18px] sm:text-[22px]">Add Product</div>
+                <div className="font-black xsm:text-[18px] sm:text-[22px] text-center px-[1rem]">Add Product Increase Production ~~!!</div>
                 <div className="shadow-lg sm:space-y-[2rem] sm:space-x-[1rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---c1]">
                     <div className="xsm:hidden sm:block"></div>
                     <div>
@@ -170,7 +211,7 @@ const AddProduct = () => {
                         />
                     </div> <div>
                         <p className="font-black xsm:text-[18px] sm:text-[22px]">
-                        Display Page Place:
+                            Display Page Place:
                         </p>
                         <input
                             onChange={(e) => {
@@ -183,7 +224,7 @@ const AddProduct = () => {
                         />
                     </div> <div>
                         <p className="font-black xsm:text-[18px] sm:text-[22px]">
-                        Display Page Title:
+                            Display Page Title:
                         </p>
                         <input
                             onChange={(e) => {
@@ -196,7 +237,7 @@ const AddProduct = () => {
                         />
                     </div> <div>
                         <p className="font-black xsm:text-[18px] sm:text-[22px]">
-                        Display Page Description:
+                            Display Page Description:
                         </p>
                         <input
                             onChange={(e) => {
@@ -210,12 +251,12 @@ const AddProduct = () => {
                     </div>
 
                     <div className="flex justify-center space-x-[1rem] ">
-                        <Link href={`/components/admin/choice`}><button className="font-black xsm:text-[12px] sm:text-[16px] bg-[---c2] px-[2rem] py-[10px] text-white rounded-[2rem]  hover:bg-[---h2]">
+                       <button onClick={addProduct} className="font-black xsm:text-[12px] sm:text-[16px] bg-[---c2] px-[2rem] py-[10px] text-white rounded-[2rem]  hover:bg-[---h2]">
                             Add
-                        </button></Link>
+                        </button>
                     </div>
                 </div>
-                </Slide> </div>
+            </Slide> </div>
     </>)
 }
 

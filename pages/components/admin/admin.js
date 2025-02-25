@@ -9,7 +9,7 @@ const Admin = ()=>{
     return(<> 
    
         <div className="justify-items-center my-[4rem]">
-        <Slide direction="right" > <div className="font-black xsm:text-[18px] sm:text-[22px]">Admin</div>
+        <Slide direction="right" > <div className="font-black xsm:text-[18px] sm:text-[22px]">Welcome Admin ~~!! </div>
           <div className="shadow-lg sm:space-y-[2rem] sm:space-x-[2rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---c1]">
             <div className="xsm:hidden sm:block"></div>
             <div>

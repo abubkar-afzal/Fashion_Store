@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Slide } from "react-awesome-reveal";
 
 const UpdateProduct =()=>{
@@ -17,11 +17,89 @@ const UpdateProduct =()=>{
     const [displayPlace, setdisplayPlace] = useState("");
     const [displayTitle, setdisplayTitle] = useState("");
     const [displayDesc, setdisplayDesc] = useState("");
-    return (<>
+    useEffect(()=>{
+        findeOneProduct();
+    },[id])
+    const findeOneProduct = async () => {
+         let productOne = {
+            product_id: parseInt(id)
+        }
+        let post = await fetch(`/api/getOneProduct`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8",
+            },
+            body: JSON.stringify(productOne),
+        });
+        if (!post.ok) {
+            throw new Error('Network response was not ok');
+          }
+        let res = await post.json();
+        if(res.data){
+        setTimeout(() => {
+                settitle(res.data.product_title)
+                setdesc(res.data.product_desc)
+                setprice(res.data.product_price)
+                setrating(res.data.product_rating)
+                setcolor(res.data.product_color)
+                setsize(res.data.product_size)
+                setqty(res.data.product_quantity)
+                setimage(res.data.product_img)
+                setcategory(res.data.product_category)
+                settrend(res.data.product_trend)
+                setdisplayPlace(res.data.product_display_page_place)
+                setdisplayTitle(res.data.product_display_page_title)
+                setdisplayDesc(res.data.product_display_page_desc)
+           
+        }, 1000);
+    }
+    } 
+    const updateProduct = async () => {
+        let product = {
+            product_id: id,
+            product_title: title,
+            product_img: image,
+            product_desc: desc,
+            product_category: category,
+            product_price: price,
+            product_color: color,
+            product_size: size,
+            product_quantity: qty,
+            product_trend: trend,
+            product_rating: rating,
+            product_display_page_place: displayPlace,
+            product_display_page_title: displayTitle,
+            product_display_page_desc: displayDesc
+        }
+        let post = await fetch(`/api/updateProduct`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json; charset=UTF-8",
+            },
+            body: JSON.stringify(product),
+        });
+        let res = await post.json();
+        if(res.data){setid("")
+            settitle("")
+            setdesc("")
+            setprice("")
+            setrating("")
+            setcolor("")
+            setsize("")
+            setqty("")
+            setimage("")
+            setcategory("")
+            settrend("")
+            setdisplayPlace("")
+            setdisplayTitle("")
+            setdisplayDesc("")
+       }
+         }
+return (<>
             <div className="justify-items-center my-[4rem]">
             <Slide direction="left" triggerOnce >
 
-                <div className="font-black xsm:text-[18px] sm:text-[22px]">Update Product</div>
+                <div className="font-black xsm:text-[18px] sm:text-[22px] text-center px-[1rem]">Update Product Update Production ~~!!</div>
                 <div className="shadow-lg sm:space-y-[2rem] sm:space-x-[1rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---c1]">
                     <div className="xsm:hidden sm:block"></div>
                     <div>
@@ -210,9 +288,9 @@ const UpdateProduct =()=>{
                     </div>
 
                     <div className="flex justify-center space-x-[1rem] ">
-                        <Link href={`/components/admin/choice`}><button className="font-black xsm:text-[12px] sm:text-[16px] bg-[---c2] px-[2rem] py-[10px] text-white rounded-[2rem]  hover:bg-[---h2]">
+                        <button onClick={updateProduct} className="font-black xsm:text-[12px] sm:text-[16px] bg-[---c2] px-[2rem] py-[10px] text-white rounded-[2rem]  hover:bg-[---h2]">
                             Update
-                        </button></Link>
+                        </button>
                     </div>
                 </div>
                 </Slide> </div></>)

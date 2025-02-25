@@ -3,8 +3,8 @@
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
   "/components/admin/aboutProducts": "pages/components/admin/aboutProducts.js",
-  "/components/admin/admin": "pages/components/admin/admin.js",
+  "/components/admin/updateProduct": "pages/components/admin/updateProduct.js",
   "/components/admin/deleteProduct": "pages/components/admin/deleteProduct.js",
-  "/components/admin/choice": "pages/components/admin/choice.js",
-  "/components/admin/updateProduct": "pages/components/admin/updateProduct.js"
+  "/": "pages/index.js",
+  "/components/admin/admin": "pages/components/admin/admin.js"
 }
