@@ -2,9 +2,5 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/components/admin/aboutProducts": "pages/components/admin/aboutProducts.js",
-  "/components/admin/updateProduct": "pages/components/admin/updateProduct.js",
-  "/components/admin/deleteProduct": "pages/components/admin/deleteProduct.js",
-  "/": "pages/index.js",
-  "/components/admin/admin": "pages/components/admin/admin.js"
+  "/components/other/men": "pages/components/other/men.js"
 }

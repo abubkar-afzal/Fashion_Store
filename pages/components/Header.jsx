@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
 import { FaCartShopping } from "react-icons/fa6";
@@ -7,23 +7,49 @@ import { BsCartDashFill } from "react-icons/bs";
 import { BsCartCheckFill } from "react-icons/bs";
 import { FaSquareMinus } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
+import { useDispatch, useSelector } from "react-redux";
+import { cleanCart, removeFromCart } from "./redux/action";
 
 const Header = () => {
+  const cartData = useSelector((state) => state.reducer);
+  console.log(cartData)
   const [cancel, setCancel] = useState(true);
   const [cart, setCart] = useState(false);
+  const [cartItem, setCartItem] = useState(false)
+  const [update, setUpdate] = useState(false)
+  useEffect(() => {
+    let result = cartData.filter((element)=>{
+      return element._id === cartData._id
+    });
+    if(result.length){
+      setUpdate(true);
+    }else{
+      setUpdate(false);
+    }
+}, [cartData])  
+  const dispatch = useDispatch();
+  const handleRemoveFromCart = (item)=>{
+    dispatch(removeFromCart(item._id))
+  }
+  const handleCleanCart = (item)=>{
+    dispatch(cleanCart(cartData))
+  }
+  useEffect(() => {
+    setCartItem(true)
+  }, [cartData])
   const showCancel = () => {
     setCancel(!cancel);
   };
-  const showCart = ()=>{
+  const showCart = () => {
     setCart(!cart)
   }
   return (
     <><Link href={`/components/admin/admin`}><div className="bg-[---c7] w-[30px] h-[30px] absolute z-20 cursor-not-allowed top-[-10px] rounded-[2rem] left-[-20px] "></div>
-      </Link><div
-        className="xsm:overflow-x-hidden sticky z-10 xsm:mt-3 xsm:flex xsm:text-[18px] sm:text-[20px] xsm:justify-between
+    </Link><div
+      className="xsm:overflow-x-hidden sticky z-10 xsm:mt-3 xsm:flex xsm:text-[18px] sm:text-[20px] xsm:justify-between
          sm:place-items-baseline sm:items-center sm:mt-[2rem] sm:mx-[1rem]"
-      >
-        
+    >
+
         {
           //sm
         }
@@ -66,25 +92,33 @@ const Header = () => {
           </div>
         </div>
         {
-          //xsm
+          //cart
         }
-        <div className={`fixed xsm:w-[80vw] sm:w-[30vw] bg-[---c3]   top-0 min-h-screen ${cart ? "right-0 text-white":"right-[-30rem] text-black"} duration-[2s] `}>
+        <div className={`fixed xsm:w-[80vw] sm:w-[30vw] bg-[---c3]   top-0 min-h-screen ${cart ? "right-0 text-white" : "right-[-30rem] text-black"} duration-[2s]  `}>
           <div>
             <RxCross2 onClick={showCart} className="xsm:text-[30px] mt-[1rem] ml-[1rem] cursor-pointer sm:text-[35px] " />
           </div>
           <div className="xsm:text-[25px] sm:text-[30px] font-black text-center my-[2rem] flex items-center place-content-center outline-dotted">
-            Cart <FaCartShopping className="mx-2 "/>
-            
+            Cart <FaCartShopping className="mx-2 " />
+
           </div>
-            
-          <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center bg-[---c2] p-2">
-            <div className=" font-semibold w-1/2 text-wrap">black shirt</div>
-            <button className="flex xsm:text-[14px] sm:text-[12px]  items-center font-black bg-[---c7] px-[1rem] py-[10px]  rounded-[2rem]">
-              Remove <FaSquareMinus className="mx-2" />
-            </button>
+          <div className="overflow-y-scroll h-[60vh] mb-[2rem]">
+          {
+            update ? cartData.map((item) => {
+              
+              return (<div key={item._id} className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center bg-[---c2] p-2">
+                <div className=" font-semibold w-1/2 text-wrap">{item.product_title}</div>
+                <button onClick={()=>handleRemoveFromCart(item)} className="flex xsm:text-[14px] sm:text-[12px]  items-center font-black bg-[---c7] px-[1rem] py-[10px]  rounded-[2rem]">
+                  Remove <FaSquareMinus className="mx-2" />
+                </button>
+              </div>)
+            }): <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center bg-[---c2] p-2">
+            <div className=" font-semibold w-1/2 text-wrap"> Please Add Any Item In Cart First ~~!!</div>
           </div>
+          }
+</div>
           <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center place-content-center">
-            <button className="flex xsm:text-[14px] sm:text-[12px]  items-center font-black bg-[---c9] px-[1rem] py-[10px] rounded-[2rem]">
+            <button onClick={handleCleanCart} className="flex xsm:text-[14px] sm:text-[12px]  items-center font-black bg-[---c9] px-[1rem] py-[10px] rounded-[2rem]">
               Clear Cart <BsCartDashFill className="mx-1" />
             </button>
             <button className="flex xsm:text-[14px] sm:text-[12px]  items-center font-black bg-[---c8] px-[1rem] py-[10px]  rounded-[2rem]">
