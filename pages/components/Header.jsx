@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { RxCross1 } from "react-icons/rx";
 import { FaCartShopping } from "react-icons/fa6";
@@ -9,24 +9,29 @@ import { FaSquareMinus } from "react-icons/fa6";
 import { RxCross2 } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanCart, removeFromCart } from "./redux/action";
+import { Fade } from "react-awesome-reveal";
 
-const Header = () => {
+const Header = ({cart, cancel, showCancel, showCart}) => {
   const cartData = useSelector((state) => state.reducer);
   console.log(cartData)
-  const [cancel, setCancel] = useState(true);
-  const [cart, setCart] = useState(false);
-  const [cartItem, setCartItem] = useState(false)
-  const [update, setUpdate] = useState(false)
+  const previousArrayLengthRef = useRef(cartData.length);
+
   useEffect(() => {
-    let result = cartData.filter((element)=>{
-      return element._id === cartData._id
-    });
-    if(result.length){
+    if (cartData.length === previousArrayLengthRef.current + 1) {
+      showCart()
+    } 
+    previousArrayLengthRef.current = cartData.length;
+  }, [cartData]);
+  const [update, setUpdate] = useState(false)
+
+  useEffect(() => {
+    if(cartData.length !== 0){
       setUpdate(true);
     }else{
       setUpdate(false);
     }
 }, [cartData])  
+
   const dispatch = useDispatch();
   const handleRemoveFromCart = (item)=>{
     dispatch(removeFromCart(item._id))
@@ -34,17 +39,12 @@ const Header = () => {
   const handleCleanCart = (item)=>{
     dispatch(cleanCart(cartData))
   }
-  useEffect(() => {
-    setCartItem(true)
-  }, [cartData])
-  const showCancel = () => {
-    setCancel(!cancel);
-  };
-  const showCart = () => {
-    setCart(!cart)
-  }
+ 
+ 
   return (
-    <><Link href={`/components/admin/admin`}><div className="bg-[---c7] w-[30px] h-[30px] absolute z-20 cursor-not-allowed top-[-10px] rounded-[2rem] left-[-20px] "></div>
+    <>
+    <div className="">
+    <Link href={`/components/admin/admin`}><div className="bg-[---c7] w-[30px] h-[30px] absolute z-20 cursor-not-allowed top-[-10px] rounded-[2rem] xsm:left-[-20px] sm:left-[-15px] "></div>
     </Link><div
       className="xsm:overflow-x-hidden sticky z-10 xsm:mt-3 xsm:flex xsm:text-[18px] sm:text-[20px] xsm:justify-between
          sm:place-items-baseline sm:items-center sm:mt-[2rem] sm:mx-[1rem]"
@@ -94,7 +94,8 @@ const Header = () => {
         {
           //cart
         }
-        <div className={`fixed xsm:w-[80vw] sm:w-[30vw] bg-[---c3]   top-0 min-h-screen ${cart ? "right-0 text-white" : "right-[-30rem] text-black"} duration-[2s]  `}>
+        <div className={`fixed xsm:w-[80vw] sm:w-[30vw] bg-[---c3]   top-0 min-h-screen 
+          ${cart ? "right-0 text-white" : "right-[-30rem] text-black"} duration-[2s]  `}>
           <div>
             <RxCross2 onClick={showCart} className="xsm:text-[30px] mt-[1rem] ml-[1rem] cursor-pointer sm:text-[35px] " />
           </div>
@@ -104,17 +105,17 @@ const Header = () => {
           </div>
           <div className="overflow-y-scroll h-[60vh] mb-[2rem]">
           {
-            update ? cartData.map((item) => {
+            update  ? cartData.map((item) => {
               
-              return (<div key={item._id} className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center bg-[---c2] p-2">
+              return (<Fade duration={2000}><div key={item._id} className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center bg-[---c2] p-2">
                 <div className=" font-semibold w-1/2 text-wrap">{item.product_title}</div>
                 <button onClick={()=>handleRemoveFromCart(item)} className="flex xsm:text-[14px] sm:text-[12px]  items-center font-black bg-[---c7] px-[1rem] py-[10px]  rounded-[2rem]">
                   Remove <FaSquareMinus className="mx-2" />
                 </button>
-              </div>)
-            }): <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center bg-[---c2] p-2">
+              </div></Fade>)
+            }):<Fade duration={2000}> <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center bg-[---c2] p-2 mt-[20vh]">
             <div className=" font-semibold w-1/2 text-wrap"> Please Add Any Item In Cart First ~~!!</div>
-          </div>
+          </div></Fade>
           }
 </div>
           <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center place-content-center">
@@ -145,35 +146,35 @@ const Header = () => {
             <ul
               className={
                 cancel
-                  ? "xsm:fixed xsm:duration-[2s] xsm:font-bold  xsm:right-[-10rem] xsm:ml-[-4.5rem] xsm:text-right xsm:bg-[---c2] mt-2 xsm:p-2"
-                  : "xsm:right-[0.2rem] xsm:duration-[2s] xsm:font-bold xsm:fixed mt-2 xsm:ml-[-4.5rem] xsm:text-right xsm:bg-[---c2] xsm:p-2"
+                  ? "xsm:fixed xsm:duration-[2s] xsm:font-bold  xsm:right-[-10rem] xsm:ml-[-4.5rem] xsm:text-right xsm:bg-[---c2] mt-2  xsm:py-[1.5rem] xsm:text-[18px]"
+                  : "xsm:right-[0.2rem] xsm:duration-[2s] xsm:font-bold xsm:fixed mt-2 xsm:ml-[-4.5rem] xsm:text-right xsm:bg-[---c2] xsm:py-[1.5rem] xsm:text-[18px]"
               }
             >
               <Link href={`/components/other/men`}>
-                <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer">MEN</li>
+                <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">MEN</li>
               </Link>
               <Link href={`/components/other/women`}>
-                <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer">
+                <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">
                   WOMEN
                 </li>
               </Link>
               <Link href={`/components/other/kids`}>
-                <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer">
+                <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">
                   KIDS
                 </li>
               </Link>
               <Link href={`/components/other/family`}>
-                <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer">
+                <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">
                   FAMILY
                 </li>
               </Link>
               <Link href={`/components/other/trends`}>
-                <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer">
+                <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">
                   TRENDS
                 </li>
               </Link>
               <Link href={`/components/login`}>
-                <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer">
+                <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">
                   <button className="">LOGIN</button>
                 </li>
               </Link>
@@ -181,8 +182,8 @@ const Header = () => {
           </div>
         </div>
       </div>
-      <div className="xsm:h-[8vh] sm:h-[13vh] w-[100vw] absolute top-0 bg-[---c1] shadow-xl"></div>
-    </>
+      <div className=" w-[100vw]  top-0 bg-[---c1] shadow-xl"></div>
+      </div></>
   );
 };
 export default Header;

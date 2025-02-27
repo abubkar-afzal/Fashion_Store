@@ -4,8 +4,14 @@ import Link from "next/link";
 import { IoIosStar } from "react-icons/io";
 import { FaShoppingBag } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
+import { useDispatch } from "react-redux";
+import { addToCart } from "./redux/action";
 
-const Page2 = ({ allNewCollection }) => {
+const Page2 = ({ allNewCollection,showCart }) => {
+  const dispatch = useDispatch();
+  const handleAddToCart = (item)=>{
+    dispatch(addToCart(item))
+  }
   return (
     <>
       <div className=" bg-white overflow-y-hidden m-4 text-center justify-items-center ">
@@ -88,7 +94,7 @@ const Page2 = ({ allNewCollection }) => {
                           Buy Now
                           <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button>
-                        <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                        <button onClick={() => { handleAddToCart(item)} } className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                           Add To Cart
                           <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button>

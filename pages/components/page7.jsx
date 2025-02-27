@@ -6,8 +6,14 @@ import Image4 from "../assets/7.jpg";
 
 import { IoIosStar } from "react-icons/io";
 import Image from "next/image";
+import { useDispatch } from "react-redux";
+import { addToCart } from "./redux/action";
 
-const Page7 = () => {
+const Page7 = ({showCart}) => {
+  const dispatch = useDispatch();
+  const handleAddToCart = (item)=>{
+    dispatch(addToCart(item))
+  }
   const [next, setnext] = useState(1);
   const slide1 = () => {
     setnext(1);

@@ -4,8 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaShoppingBag } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
-const Page4 = ({ bestSeller }) => {
-  
+import { useDispatch } from "react-redux";
+import { addToCart } from "./redux/action";
+const Page4 = ({ bestSeller,showCart }) => {
+  const dispatch = useDispatch();
+  const handleAddToCart = (item)=>{
+    dispatch(addToCart(item))
+  }
   return (
     <>
       <div className="overflow-hidden xsm:text-left xsm:bg-[---c4] xsm:p-5 xsm:pt-[2rem] ">
@@ -88,7 +93,7 @@ const Page4 = ({ bestSeller }) => {
                             <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                           </button>
                    
-                    <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                    <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                             Add To Cart
                             <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                           </button>
