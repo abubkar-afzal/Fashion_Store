@@ -8,7 +8,8 @@ const userSchema = Schema ({
     user_password: {type : String, index : true, required : true, default : ""},
     user_phone: {type : Number, index : true, required : true, default : ""},
     user_address: {type : String, index : true, required : true, default : ""},
-    user_post_code: {type : Number, index : true, required : true, default : 0},
+    user_post_code: {type : Number, index : true, required : true, default : 0}, 
+    user_photo: {type : Number, index : true, required : true, default : 0},
 })
 
 

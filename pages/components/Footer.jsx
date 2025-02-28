@@ -6,9 +6,54 @@ import footerpic4 from "../assets/5.jpg"
 import footerpic5 from "../assets/7.jpg"
 import Image from "next/image";
 import Link from "next/link";
+import { useRouter } from "next/router";
 
 const Footer = () => {
-
+ const router = useRouter();
+ let currentUrl =router.asPath;
+ let men;
+ let women;
+ let kids;
+ let family;
+let trends;
+ if (currentUrl === "/components/other/men") {
+  men = true;
+  women = false;
+  kids = false;
+  family = false;
+  trends = false;  
+ }else if (currentUrl === "/components/other/women") {
+  men = false;
+  women = true;
+  kids = false;
+  family = false;
+  trends = false;  
+ }else if (currentUrl === "/components/other/kids") {
+  men = false;
+  women = false;
+  kids = true;
+  family = false;
+  trends = false;  
+ }else if (currentUrl === "/components/other/family") {
+  men = false;
+  women = false;
+  kids = false;
+  family = true;
+  trends = false;  
+ }else if (currentUrl === "/components/other/trends") {
+  men = false;
+  women = false;
+  kids = false;
+  family = false;
+  trends = true;  
+ }else{
+  men = false;
+  women = false;
+  kids = false;
+  family = false;
+  trends = false;  
+  
+ }
   return (
     <>
       <div className="   xsm:text-center xsm:bg-white  xsm:items-center">
@@ -26,23 +71,27 @@ const Footer = () => {
         <div className="bg-[---c4] ">
             <div className="text-white flex xsm:flex-col sm:flex-row space-x-4 my-5 pt-5 place-content-center">
             <Link href={`/components/other/men`}>
-                <div className="underline-hover-white">MEN</div>
+                <div className={` ${men ? "underline-with-margin" :"underline-hover-white"}
+ 
+ `}>MEN</div>
             </Link>
             
             <Link href={`/components/other/women`}>
-                <div className="underline-hover-white">WOMEN</div>
+                <div className={`${women ? "underline-with-margin" :"underline-hover-white"}`}>WOMEN</div>
             </Link>
             
             <Link href={`/components/other/kids`}>
-                <div className="underline-hover-white">KIDS</div>
+                <div className={` ${kids ? "underline-with-margin" :"underline-hover-white"}
+`}>KIDS</div>
             </Link>
             
             <Link href={`/components/other/family`}>
-                <div className="underline-hover-white">FAMILY</div>
+                <div className={` ${family ? "underline-with-margin" :"underline-hover-white"}
+`}>FAMILY</div>
             </Link>
             
             <Link href={`/components/other/trends`}>
-                <div className="underline-hover-white">TRENDS</div>
+                <div className={`${trends ? "underline-with-margin" :"underline-hover-white"}`}>TRENDS</div>
             </Link>
             </div>
             <div className="text-white text-[10px] sm:text-[12px] w-[20rem] px-[1rem] pb-[2rem] m-auto"><p>This Page Is Created By Hafiz Abubkar Afzal Only For Personal Project Not For Production</p></div>

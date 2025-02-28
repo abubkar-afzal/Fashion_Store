@@ -29,7 +29,7 @@ const Page1 = ({
   }, []);
   return (
     <>
-      <div className="  top-0 bottom-0 overflow-y-scroll hideBar ">
+      <div className="  top-0 bottom-0 overflow-y-scroll hideBar sm:mt-[-2rem] ">
         <div className="  xsm:p-2 xsm:bg-[---c1] xsm:grid sm:px-[2rem] xsm:h-[1000px] abssm:h-[860px] absm:h-[820px]  sm:h-auto  ">
           <div className=" xsm:mt-[2rem] xsm:relative xsm:text-[1rem] xsm:px-3 sm:grid sm:grid-cols-2  sm:content-center sm:mb-[2rem]  ">
             <div className="sm:w-[70%] content-center ">

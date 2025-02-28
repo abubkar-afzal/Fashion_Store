@@ -10,10 +10,55 @@ import { RxCross2 } from "react-icons/rx";
 import { useDispatch, useSelector } from "react-redux";
 import { cleanCart, removeFromCart } from "./redux/action";
 import { Fade } from "react-awesome-reveal";
-
-const Header = ({cart, cancel, showCancel, showCart}) => {
+import { useRouter } from "next/router";
+const Header = ({cart, cancel, showCancel, showCart, authtoken}) => {
+  const router = useRouter();
+ let currentUrl =router.asPath;
+ let men;
+ let women;
+ let kids;
+ let family;
+let trends;
+console.log(currentUrl)
+ if (currentUrl === "/components/other/men") {
+  men = true;
+  women = false;
+  kids = false;
+  family = false;
+  trends = false;  
+ }else if (currentUrl === "/components/other/women") {
+  men = false;
+  women = true;
+  kids = false;
+  family = false;
+  trends = false;  
+ }else if (currentUrl === "/components/other/kids") {
+  men = false;
+  women = false;
+  kids = true;
+  family = false;
+  trends = false;  
+ }else if (currentUrl === "/components/other/family") {
+  men = false;
+  women = false;
+  kids = false;
+  family = true;
+  trends = false;  
+ }else if (currentUrl === "/components/other/trends") {
+  men = false;
+  women = false;
+  kids = false;
+  family = false;
+  trends = true;  
+ }else{
+  men = false;
+  women = false;
+  kids = false;
+  family = false;
+  trends = false;  
+  
+ }
   const cartData = useSelector((state) => state.reducer);
-  console.log(cartData)
   const previousArrayLengthRef = useRef(cartData.length);
 
   useEffect(() => {
@@ -46,7 +91,7 @@ const Header = ({cart, cancel, showCancel, showCart}) => {
     <div className="">
     <Link href={`/components/admin/admin`}><div className="bg-[---c7] w-[30px] h-[30px] absolute z-20 cursor-not-allowed top-[-10px] rounded-[2rem] xsm:left-[-20px] sm:left-[-15px] "></div>
     </Link><div
-      className="xsm:overflow-x-hidden sticky z-10 xsm:mt-3 xsm:flex xsm:text-[18px] sm:text-[20px] xsm:justify-between
+      className="xsm:overflow-x-hidden sticky z-10 xsm:mt-3 xsm:flex xsm:text-[18px] sm:text-[20px] xsm:justify-between sm:pr-[1rem]
          sm:place-items-baseline sm:items-center sm:mt-[2rem] sm:mx-[1rem]"
     >
 
@@ -60,23 +105,23 @@ const Header = ({cart, cancel, showCancel, showCart}) => {
         </Link>
         <div className="xsm:hidden  sm:flex xsm:text-[18px] sm:text-[20px] sm:space-x-4  sm:relative  font-semibold">
           <Link href={`/components/other/men`}>
-            <div className="sm:text-[18px] underline-hover">MEN</div>
+            <div className={`sm:text-[18px]  ${men ? "underline-with-margin" :"underline-hover"}`}>MEN</div>
           </Link>
 
           <Link href={`/components/other/women`}>
-            <div className="sm:text-[18px] underline-hover">WOMEN</div>
+            <div className={`sm:text-[18px]  ${women ? "underline-with-margin" :"underline-hover"}`}>WOMEN</div>
           </Link>
 
           <Link href={`/components/other/kids`}>
-            <div className="sm:text-[18px] underline-hover">KIDS</div>
+            <div className={`sm:text-[18px]  ${kids ? "underline-with-margin" :"underline-hover"}`}>KIDS</div>
           </Link>
 
           <Link href={`/components/other/family`}>
-            <div className="sm:text-[18px] underline-hover">FAMILY</div>
+            <div className={`sm:text-[18px]  ${family ? "underline-with-margin" :"underline-hover"}`}>FAMILY</div>
           </Link>
 
           <Link href={`/components/other/trends`}>
-            <div className="sm:text-[18px] underline-hover">TRENDS</div>
+            <div className={`sm:text-[18px]  ${trends ? "underline-with-margin" :"underline-hover"}`}>TRENDS</div>
           </Link>
         </div>
         <div className="sm:flex xsm:text-[18px] sm:text-[20px] sm:space-x-3 sm:relative ">
@@ -84,11 +129,17 @@ const Header = ({cart, cancel, showCancel, showCart}) => {
             <FaCartShopping onClick={showCart} className="sm:text-[25px]" />
           </div>
           <div className="">
-            <Link href={`/components/login`}>
+            {
+              authtoken ? <Link href={`/components/account`}>
+              <button className="xsm:hidden sm:block sm:border-[2px] sm:border-black sm:w-[7rem]  sm:hover:bg-[---c2] hover:border-none hover:text-white h-[2rem] rounded-[10px]">
+                ACCOUNT
+              </button>
+            </Link>:<Link href={`/components/login`}>
               <button className="xsm:hidden sm:block sm:border-[2px] sm:border-black sm:w-[5rem]  sm:hover:bg-[---c2] hover:border-none hover:text-white h-[2rem] rounded-[10px]">
                 LOGIN
               </button>
             </Link>
+            }
           </div>
         </div>
         {
@@ -173,11 +224,17 @@ const Header = ({cart, cancel, showCancel, showCart}) => {
                   TRENDS
                 </li>
               </Link>
-              <Link href={`/components/login`}>
+              {
+                authtoken ? <Link href={`/components/account`}>
+                <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">
+                  <button className="">ACCOUNT</button>
+                </li>
+              </Link>:<Link href={`/components/login`}>
                 <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">
                   <button className="">LOGIN</button>
                 </li>
               </Link>
+              }
             </ul>
           </div>
         </div>
