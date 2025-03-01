@@ -10,6 +10,7 @@ import IMAGE4 from "../assets/img4.png";
 import IMAGE5 from "../assets/img5.png";
 import IMAGE6 from "../assets/img6.png";
 import { MdEdit } from "react-icons/md";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 
 
 const Login = () => {
@@ -18,14 +19,19 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
-  const [hpassword, setHpassword] = useState("");
+  const [hpassword, sethpassword] = useState("");
   const [address, setAddress] = useState("");
   const [postCode, setPostCode] = useState("");
   const [Photo, setPhoto] = useState(6);
   const [dPhoto, setdPhoto] = useState(IMAGE6);
   const [signupdisplay, setsignupdisplay] = useState(false);
   const [album, setalbum] = useState(false);
-
+  let hidePass;
+  if (hpassword) {
+    hidePass = "password";
+  } else {
+    hidePass = "text";
+  }
   useEffect(() => {
     if (Photo == 1) {
       setdPhoto(null);
@@ -121,6 +127,9 @@ const Login = () => {
   }
   const showphotos = () => {
     setalbum(!album);
+  };
+  const hideP = () => {
+    sethpassword(!hpassword);
   };
   return (
     <>
@@ -288,15 +297,30 @@ const Login = () => {
                     <p className="font-black xsm:text-[18px] sm:text-[22px]">
                       Password:
                     </p>
+                    <div
+                  
+                  className="flex items-center place-content-center  mb-[1rem"
+                >
                     <input
                       onChange={(e) => {
                         setPassword(e.target.value)
                       }}
                       value={password}
-                      type="password"
+                      type={hidePass}
                       className="w-auto h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                       placeholder="Enter Your Password"
                     />
+                     {hpassword ? (
+                                        <FaEyeSlash
+                                          onClick={hideP}
+                                          className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer"
+                                        />
+                                      ) : (
+                                        <FaEye
+                                          onClick={hideP}
+                                          className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer"
+                                        />
+                                      )}</div>
                   </div>
                   <div>
                     <p className="font-black xsm:text-[18px] sm:text-[22px]">
@@ -374,15 +398,30 @@ const Login = () => {
                     <p className="font-black xsm:text-[18px] sm:text-[22px]">
                       Password:
                     </p>
+                    <div
+                  
+                  className="flex items-center place-content-center  mb-[1rem"
+                >
                     <input
                       onChange={(e) => {
                         setPassword(e.target.value)
                       }}
                       value={password}
-                      type="password"
+                      type={hidePass}
                       className="w-auto h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                       placeholder="Enter Your Password"
                     />
+                     {hpassword ? (
+                                        <FaEyeSlash
+                                          onClick={hideP}
+                                          className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer"
+                                        />
+                                      ) : (
+                                        <FaEye
+                                          onClick={hideP}
+                                          className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer"
+                                        />
+                                      )}</div>
                   </div>
                   <div className="w-full">
                     <Link href={`/components/forgot`}> <p className="text-[---c10] hover:underline font-thin xsm:text-[13px] sm:text-[16px]  text-end  cursor-pointer xsm:mx-4 sm:mx-[2rem]">forgot password ?</p></Link>

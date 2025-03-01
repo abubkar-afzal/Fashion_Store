@@ -19,7 +19,6 @@ const Header = ({cart, cancel, showCancel, showCart, authtoken}) => {
  let kids;
  let family;
 let trends;
-console.log(currentUrl)
  if (currentUrl === "/components/other/men") {
   men = true;
   women = false;
@@ -154,7 +153,7 @@ console.log(currentUrl)
             Cart <FaCartShopping className="mx-2 " />
 
           </div>
-          <div className="overflow-y-scroll h-[60vh] mb-[2rem]">
+          <div className="overflow-y-scroll h-[60vh] mb-[2rem] hideBar">
           {
             update  ? cartData.map((item) => {
               

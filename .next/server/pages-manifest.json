@@ -2,8 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/components/login": "pages/components/login.js",
-  "/": "pages/index.js",
-  "/components/account": "pages/components/account.js",
-  "/api/loginUser": "pages/api/loginUser.js"
+  "/components/admin/aboutProducts": "pages/components/admin/aboutProducts.js",
+  "/components/admin/deleteProduct": "pages/components/admin/deleteProduct.js",
+  "/components/admin/admin": "pages/components/admin/admin.js",
+  "/": "pages/index.js"
 }
