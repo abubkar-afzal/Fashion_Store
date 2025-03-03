@@ -1,6 +1,6 @@
 import userSchema from "@/model/UserSchema";
 import { MongoClient } from "mongodb";
-var jwt = require("jsonwebtoken");
+const jwt = require("jsonwebtoken");
 
 
 export default async function handler(req, res) {
@@ -23,17 +23,17 @@ export default async function handler(req, res) {
       const collection = database.collection("users");
 
       let newUser = await collection.insertOne(user);
-
+      let jwtToken = await collection.findOne({"user_email":user.user_email});
       var token = jwt.sign(
         {
-          _id: newUser._id,
-          email: newUser.user_email,
-          name: newUser.user_name,
-          password: newUser.user_password,
-          phone: newUser.user_phone,
-          address: newUser.user_address,
-          postCode: newUser.user_post_code,
-          photo: newUser.user_photo,
+          _id: jwtToken._id,
+          email: jwtToken.user_email,
+          name: jwtToken.user_name,
+          password: jwtToken.user_password,
+          phone: jwtToken.user_phone,
+          address: jwtToken.user_address,
+          postCode: jwtToken.user_post_code,
+          photo: jwtToken.user_photo,
         },
         process.env.JWTSECRET,
         { expiresIn: "30d" }

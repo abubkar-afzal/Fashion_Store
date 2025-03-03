@@ -22,7 +22,6 @@ export default async function handler(req, res) {
             
             const token = req.body.token;
             const data = jwt.verify(token, process.env.JWTSECRET)
-            
             let login = await collection.findOne({"user_email":data.email});
             
             if(login){

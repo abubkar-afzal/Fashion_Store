@@ -2,8 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/components/admin/aboutProducts": "pages/components/admin/aboutProducts.js",
-  "/components/admin/deleteProduct": "pages/components/admin/deleteProduct.js",
-  "/components/admin/admin": "pages/components/admin/admin.js",
-  "/": "pages/index.js"
+  "/": "pages/index.js",
+  "/components/feedback": "pages/components/feedback.js",
+  "/components/checkout": "pages/components/checkout.js"
 }

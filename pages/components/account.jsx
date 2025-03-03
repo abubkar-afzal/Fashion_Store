@@ -56,15 +56,20 @@ const Account = () => {
         body: JSON.stringify({ token: localStorage.getItem("Fashion_Store") }),
       });
       let res = await d.json();
-      setEmail(res.login.user_email);
-      setname(res.login.user_name);
-      setpassword(res.login.user_password);
-      setphone(res.login.user_phone);
-      setpostCode(res.login.user_post_code);
-      setaddress(res.login.user_address);
-      setphoto(res.login.user_photo);
-      responseofuser = res;
-      setLoader(false);
+      if(res.success == true){
+
+        setEmail(res.login.user_email);
+        setname(res.login.user_name);
+        setpassword(res.login.user_password);
+        setphone(res.login.user_phone);
+        setpostCode(res.login.user_post_code);
+        setaddress(res.login.user_address);
+        setphoto(res.login.user_photo);
+        responseofuser = res;
+        setLoader(false);
+      }else{
+        console.log("error came")
+      }
     };
     if (localStorage.getItem("Fashion_Store")) {
       fetchuser();
@@ -368,7 +373,7 @@ const Account = () => {
                     value={name}
                     id="question"
                     name="question"
-                    placeholder="Please Enter your Answer"
+                    placeholder="Please Enter your Data"
                     className="h-[2rem] bg-white rounded-[2rem] xsm:w-[50vw]  sm:w-[30vw] mt-2 p-2 px-4  sm:text-[16px]  disabled:outline-none outline my-2 "
                   />
                   <BiSolidEditAlt
@@ -400,7 +405,7 @@ const Account = () => {
                     value={password}
                     id="question"
                     name="question"
-                    placeholder="Please Enter your Answer"
+                    placeholder="Please Enter your Data"
                     className="h-[2rem] bg-white rounded-[2rem] xsm:w-[40vw]  sm:w-[25vw] mt-2 p-2 px-4  sm:text-[16px]  disabled:outline-none outline my-2"
                   />
                   {hpassword ? (
@@ -441,7 +446,7 @@ const Account = () => {
                     value={phone}
                     id="question"
                     name="question"
-                    placeholder="Please Enter your Answer"
+                    placeholder="Please Enter your Data"
                     className="h-[2rem] bg-white rounded-[2rem] xsm:w-[50vw]  sm:w-[30vw] mt-2 p-2 px-4  sm:text-[16px]  disabled:outline-none outline my-2"
                   />
                   <BiSolidEditAlt
@@ -471,7 +476,7 @@ const Account = () => {
                     value={address}
                     id="question"
                     name="question"
-                    placeholder="Please Enter your Answer"
+                    placeholder="Please Enter your Data"
                     className="h-[2rem] bg-white rounded-[2rem] xsm:w-[50vw]  sm:w-[30vw] mt-2 p-2 px-4  sm:text-[16px]  disabled:outline-none outline my-2"
                   />
                   <BiSolidEditAlt
@@ -501,7 +506,7 @@ const Account = () => {
                     value={postcode}
                     id="question"
                     name="question"
-                    placeholder="Please Enter your Answer"
+                    placeholder="Please Enter your Data"
                     className="h-[2rem] bg-white  rounded-[2rem] mt-2 p-2 px-4 xsm:w-[50vw]  sm:w-[30vw] sm:text-[16px]  disabled:outline-none outline my-2"
                   />
                   <BiSolidEditAlt

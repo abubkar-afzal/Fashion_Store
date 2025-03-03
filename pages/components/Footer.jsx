@@ -16,37 +16,56 @@ const Footer = () => {
  let kids;
  let family;
 let trends;
+let feedback;
  if (currentUrl === "/components/other/men") {
   men = true;
   women = false;
   kids = false;
   family = false;
   trends = false;  
+  feedback = false;
  }else if (currentUrl === "/components/other/women") {
   men = false;
   women = true;
   kids = false;
   family = false;
   trends = false;  
+  feedback = false;
+
  }else if (currentUrl === "/components/other/kids") {
   men = false;
   women = false;
   kids = true;
   family = false;
   trends = false;  
+  feedback = false;
+
  }else if (currentUrl === "/components/other/family") {
   men = false;
   women = false;
   kids = false;
   family = true;
   trends = false;  
+  feedback = false;
+
  }else if (currentUrl === "/components/other/trends") {
   men = false;
   women = false;
   kids = false;
   family = false;
   trends = true;  
- }else{
+  feedback = false;
+
+ }else if (currentUrl === "/components/feedback") {
+  men = false;
+  women = false;
+  kids = false;
+  family = false;
+  trends = false;  
+  feedback = true;
+
+ }
+ else{
   men = false;
   women = false;
   kids = false;
@@ -92,6 +111,9 @@ let trends;
             
             <Link href={`/components/other/trends`}>
                 <div className={`${trends ? "underline-with-margin" :"underline-hover-white"}`}>TRENDS</div>
+            </Link>
+            <Link href={`/components/feedback`}>
+                <div className={`${feedback ? "underline-with-margin" :"underline-hover-white"}`}>FEEDBACK</div>
             </Link>
             </div>
             <div className="text-white text-[10px] sm:text-[12px] w-[20rem] px-[1rem] pb-[2rem] m-auto"><p>This Page Is Created By Hafiz Abubkar Afzal Only For Personal Project Not For Production</p></div>

@@ -172,9 +172,10 @@ let trends;
             <button onClick={handleCleanCart} className="flex xsm:text-[14px] sm:text-[12px]  items-center font-black bg-[---c9] px-[1rem] py-[10px] rounded-[2rem]">
               Clear Cart <BsCartDashFill className="mx-1" />
             </button>
+            <Link href={`/components/checkout`}>
             <button className="flex xsm:text-[14px] sm:text-[12px]  items-center font-black bg-[---c8] px-[1rem] py-[10px]  rounded-[2rem]">
               Check out <BsCartCheckFill className="mx-1" />
-            </button>
+            </button></Link>
           </div>
         </div>
 

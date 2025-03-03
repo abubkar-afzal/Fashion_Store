@@ -1,6 +1,7 @@
 import "@/styles/globals.css";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
+import LoadingBar from "react-top-loading-bar";
 
 import { Provider } from "react-redux";
 import { store, persistor } from "./components/redux/store.js";
@@ -8,7 +9,12 @@ import { PersistGate } from "redux-persist/integration/react";
 import { useEffect, useState } from "react";
 import Head from "next/head.js";
 import { useRouter } from "next/router.js";
+import { BarLoader } from "react-spinners";
+import { Fade } from "react-awesome-reveal";
 export default function App({ Component, pageProps }) {
+  const [progress, setProgress] = useState(0);
+  const [loader, setLoader] = useState(true);
+
   const router = useRouter();
   const [cancel, setCancel] = useState(true);
   const [cart, setCart] = useState(false);
@@ -20,10 +26,25 @@ export default function App({ Component, pageProps }) {
     setCart(!cart)
   }
   useEffect(() => {
+    router.events.on("routeChangeStart", () => {
+      setProgress(40);
+    });
+    router.events.on("routeChangeComplete", () => {
+      setProgress(100);
+    });
+    router.events.on("routeChangeStart", () => {
+      setLoader(true);
+    });
+
+    router.events.on("routeChangeComplete", () => {
+      setLoader(false);
+    });
+
     if(localStorage.getItem("Fashion_Store")){
       setauthtoken(true)
     }
-  }, [router.query])
+    setLoader(false);
+  }, [router.events, router.query])
   return (
     <>
       <Head>
@@ -44,14 +65,33 @@ export default function App({ Component, pageProps }) {
        
         <title> Fashion Store</title>
       </Head>
+      <LoadingBar
+        color="rgb(78, 51, 26)"
+        progress={progress}
+        onLoaderFinished={() => setProgress(0)}
+      />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <div className="fixed z-20 top-0 bg-[---c3] xsm:pb-[0.5rem] sm:pb-[1rem] shadow-md">
             <Header  cart={cart} cancel={cancel} showCancel={showCancel} showCart={showCart} authtoken={authtoken}/></div>
             <div className="xsm:mt-[1.5rem] sm:mt-[7rem] "></div>
-
+            {loader ? (
+        <Fade>
+          <div className=" mx-auto mt-[45vh] mb-[50vh] justify-items-center">
+          <BarLoader 
+          height={4}
+          width={100}
+          color={"rgb(243, 165, 129)"}
+          speedMultiplier={1} />
+            <br />
+            <br />
+            <p className="font-bold sm:text-[18px] mm:text-[18px] lm:text-[20px] t:text-[22px] l:text-[27px] ll:text-[32px] k:text-[37px]">
+              Please Wait !!
+            </p>
+          </div>
+        </Fade>) :
             <Component {...pageProps} showCart={showCart}/>
-
+            }
             <Footer />
           
         </PersistGate>
