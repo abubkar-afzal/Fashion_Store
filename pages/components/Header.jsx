@@ -59,7 +59,6 @@ let trends;
  }
   const cartData = useSelector((state) => state.reducer);
   const previousArrayLengthRef = useRef(cartData.length);
-
   useEffect(() => {
     if (cartData.length === previousArrayLengthRef.current + 1) {
       showCart()
@@ -155,7 +154,7 @@ let trends;
           </div>
           <div className="overflow-y-scroll h-[60vh] mb-[2rem] hideBar">
           {
-            update  ? cartData.map((item) => {
+            update  ? (cartData && cartData.map((item) => {
               
               return (<Fade duration={2000}><div key={item._id} className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center bg-[---c2] p-2">
                 <div className=" font-semibold w-1/2 text-wrap">{item.product_title}</div>
@@ -163,7 +162,7 @@ let trends;
                   Remove <FaSquareMinus className="mx-2" />
                 </button>
               </div></Fade>)
-            }):<Fade duration={2000}> <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center bg-[---c2] p-2 mt-[20vh]">
+            })):<Fade duration={2000}> <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center bg-[---c2] p-2 mt-[20vh]">
             <div className=" font-semibold w-1/2 text-wrap"> Please Add Any Item In Cart First ~~!!</div>
           </div></Fade>
           }

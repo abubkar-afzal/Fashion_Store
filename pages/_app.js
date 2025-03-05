@@ -44,6 +44,7 @@ export default function App({ Component, pageProps }) {
       setauthtoken(true)
     }
     setLoader(false);
+    setCart(false)
   }, [router.events, router.query])
   return (
     <>

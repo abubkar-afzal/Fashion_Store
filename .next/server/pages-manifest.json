@@ -2,7 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/components/feedback": "pages/components/feedback.js",
-  "/components/checkout": "pages/components/checkout.js"
+  "/components/checkout": "pages/components/checkout.js",
+  "/components/orders": "pages/components/orders.js",
+  "/api/reduceQuantity": "pages/api/reduceQuantity.js",
+  "/components/other/kids": "pages/components/other/kids.js"
 }

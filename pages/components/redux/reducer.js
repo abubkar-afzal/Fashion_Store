@@ -11,13 +11,19 @@ export const reducer = (state = initialState, action) => {
             return [...state, action.data];
 
         case REMOVE_FROM_CART:
-
             return state.filter(item => item._id !== action.data);
-        case CLEAN_CART:
-            return [
 
-            ]
+        case CLEAN_CART:
+            return [];
+
+        case 'UPDATE_CART_QUANTITY':
+            return state.map(item =>
+                item._id === action.payload.itemId
+                    ? { ...item, product_quantity: action.payload.newQuantity }
+                    : item
+            );
+
         default:
-            return state
+            return state;
     }
 }

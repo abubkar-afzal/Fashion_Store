@@ -83,7 +83,7 @@ const Trends = ({ allProducts,showCart }) => {
                         Buy Now
                         <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                       </button>
-                      <button onClick={() => { handleAddToCart(item); showCart(); }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                      <button onClick={() => { handleAddToCart(item); showCart }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                         Add To Cart
                         <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                       </button>
