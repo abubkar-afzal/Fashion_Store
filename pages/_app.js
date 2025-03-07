@@ -26,6 +26,7 @@ export default function App({ Component, pageProps }) {
     setCart(!cart)
   }
   useEffect(() => {
+    
     router.events.on("routeChangeStart", () => {
       setProgress(40);
     });
@@ -34,6 +35,12 @@ export default function App({ Component, pageProps }) {
     });
     router.events.on("routeChangeStart", () => {
       setLoader(true);
+      
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      
     });
 
     router.events.on("routeChangeComplete", () => {

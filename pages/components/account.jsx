@@ -13,6 +13,7 @@ import IMAGE5 from "../assets/img5.png";
 import IMAGE6 from "../assets/img6.png";
 import { MdEdit } from "react-icons/md";
 import { Fade, Slide } from "react-awesome-reveal";
+import Link from "next/link";
 
 const Account = () => {
   const [loader, setLoader] = useState(false);
@@ -517,10 +518,18 @@ const Account = () => {
               </div>
             </div>
             <div >
+              <Link href={`/components/orders`}><button
+                
+                className="bg-[---c8] hover:bg-[---h8] xsm:text-[10px] sm:text-[14px] p-4 m-2 w-auto px-[1rem] rounded-[2rem] font-bold shadow-lg text-white"
+              >
+                Orders Page
+              </button></Link>
+            </div>
+            <div >
               <button
                 
                 onClick={SaveChanges}
-                className="bg-[---c2] hover:bg-[---h2] xsm:text-[10px] sm:text-[14px] p-4 m-2 w-auto px-[1rem] rounded-[2rem] font-bold shadow-lg text-[---c4]"
+                className="bg-[---c2] hover:bg-[---h2] xsm:text-[10px] sm:text-[14px] p-4 m-2 w-auto px-[1rem] rounded-[2rem] font-bold shadow-lg text-white"
               >
                 Save Changes
               </button>
@@ -530,7 +539,7 @@ const Account = () => {
               <button
                 
                 onClick={DisableChanges}
-                className="bg-[---c9] hover:bg-[---h9] xsm:text-[10px] sm:text-[14px] p-4 m-2 w-auto px-[1rem] rounded-[2rem] font-bold shadow-lg text-[---c4]"
+                className="bg-[---c9] hover:bg-[---h9] xsm:text-[10px] sm:text-[14px] p-4 m-2 w-auto px-[1rem] rounded-[2rem] font-bold shadow-lg text-white"
               >
                 Disable Changes
               </button>
@@ -539,7 +548,7 @@ const Account = () => {
               <button
                 
                 onClick={logOut}
-                className="bg-[---c7] hover:bg-[---h7] xsm:text-[10px] sm:text-[14px] p-4 m-2 w-auto px-[1rem] rounded-[2rem] font-bold shadow-lg text-[---c4]"
+                className="bg-[---c7] hover:bg-[---h7] xsm:text-[10px] sm:text-[14px] p-4 m-2 w-auto px-[1rem] rounded-[2rem] font-bold shadow-lg text-white"
               >
                 Log out
               </button>
