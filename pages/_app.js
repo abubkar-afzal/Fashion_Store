@@ -11,10 +11,11 @@ import Head from "next/head.js";
 import { useRouter } from "next/router.js";
 import { BarLoader } from "react-spinners";
 import { Fade } from "react-awesome-reveal";
+const jwt = require("jsonwebtoken");
 export default function App({ Component, pageProps }) {
   const [progress, setProgress] = useState(0);
   const [loader, setLoader] = useState(true);
-
+  const [tokenData, setTokenData] = useState("");
   const router = useRouter();
   const [cancel, setCancel] = useState(true);
   const [cart, setCart] = useState(false);
@@ -46,13 +47,16 @@ export default function App({ Component, pageProps }) {
     router.events.on("routeChangeComplete", () => {
       setLoader(false);
     });
-
-    if(localStorage.getItem("Fashion_Store")){
+    let token =localStorage.getItem("Fashion_Store") 
+    if(token){
+      // const dataoftoken = jwt.verify(token, process.env.JWTSECRET);
+      // setTokenData(dataoftoken);
       setauthtoken(true)
     }
     setLoader(false);
     setCart(false)
   }, [router.events, router.query])
+  console.log(tokenData)
   return (
     <>
       <Head>

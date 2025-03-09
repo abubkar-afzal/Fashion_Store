@@ -11,7 +11,6 @@ export default async function handler(req, res) {
     //Data
     let product = new ProductSchema(req.body);
     product.save()
-    console.log(typeof(product.product_id))
 
     try {
       await client.connect();

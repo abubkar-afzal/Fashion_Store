@@ -20,6 +20,8 @@ const Page3 = ({ bestFashion,showCart }) => {
               key={item._id}
               className=" xsm:bg-white xsm:text-center sm:grid sm:grid-cols-2  m-[1rem] my-[2rem] "
             >
+              {
+                    item.product_quantity == 0 ?  null :<>
               <div className="sm:col-start-2 sm:col-end-2">
                 <h1 className="xsm:text-[3rem] xsm:font-bold xsm:text-left xsm:m-2">
                   {item.product_display_page_title}
@@ -34,7 +36,7 @@ const Page3 = ({ bestFashion,showCart }) => {
                     Buy Now
                     <FaShoppingBag className="xsm:text-[15px] sm:text-[18px] mx-1" />
                   </button></Link>
-                  <button className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]">
+                  <button onClick={()=>{handleAddToCart(item), showCart}} className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]">
                     Add To Cart
                     <FaCartShopping className="xsm:text-[15px] sm:text-[18px] mx-1" />
                   </button>
@@ -60,7 +62,7 @@ const Page3 = ({ bestFashion,showCart }) => {
                     <FaCartShopping className="xsm:text-[15px] sm:text-[18px] mx-1" />
                   </button>
                 </div>
-              </div>
+              </div></>}
             </div>
           );
         })}
