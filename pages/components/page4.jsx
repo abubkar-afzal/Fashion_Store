@@ -33,7 +33,81 @@ const Page4 = ({ bestSeller,showCart }) => {
                   <div
                     key={item._id}
                     className=" xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] sm:w-[15rem] xsm:m-2 scroll-item"
-                  ><Link href={`/components/other/${item._id}`} >
+                  >
+                    {
+                    item.product_quantity == 0 ?  <> 
+                    <div className="relative">
+                      <div className="font-black xsm:text-[14px] sm:text-[16px] bg-[---c1] absolute w-full  top-52 text-center">Out Of Stock !! </div>
+                    </div>
+                    <div className="opacity-20 cursor-default">
+                   
+                      <Image
+                        src={item.product_img}
+                        width={1200}
+                        height={1200}
+                        alt="product"
+                        className="xsm:w-[9rem] xsm:h-[9rem] sm:w-[15rem] sm:h-[15rem]"
+                      />
+                      <div className="xsm:text-[10px] xsm:bg-white xsm:text-center xsm:items-center xsm:space-y-2 p-2 justify-items-center">
+                        <div className="flex xsm:text-[11px] sm:text-[13px]">
+                          {item.product_rating == 5 ? (
+                            <>
+                              <IoIosStar />
+                              <IoIosStar />
+                              <IoIosStar />
+                              <IoIosStar />
+                              <IoIosStar />
+                            </>
+                          ) : item.product_rating == 4 ? (
+                            <>
+                              <IoIosStar />
+                              <IoIosStar />
+                              <IoIosStar />
+                              <IoIosStar />
+                            </>
+                          ) : item.product_rating == 3 ? (
+                            <>
+                              <IoIosStar />
+                              <IoIosStar />
+                              <IoIosStar />
+                             
+                            </>
+                          ) : item.product_rating == 2 ? (
+                            <>
+                              <IoIosStar />
+                              <IoIosStar />
+                             
+                            </>
+                          ) : item.product_rating == 1 ? (
+                            <>
+                              <IoIosStar />
+                            
+                            </>
+                          ) : null}
+                        </div>
+                        <p className="xsm:text-[14px] sm:text-[16px]">
+                          {item.product_title}
+                        </p>
+                        <p className="xsm:text-[11px] sm:text-[13px]">
+                          price: {item.product_price}$
+                          </p></div>
+                   
+                        <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between space-x-[1rem] pt-2 bg-white pb-2">
+                          <div></div>
+                    
+                    <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3  text-white rounded-[2rem] flex  items-center ">
+                            Buy Now
+                            <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
+                          </button>
+                   
+                    <button  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center ">
+                            Add To Cart
+                            <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
+                          </button>
+                        </div>
+                    </div>
+                    </>:<>                    
+                    <Link href={`/components/other/${item._id}`} >
                       <Image
                         src={item.product_img}
                         width={1200}
@@ -98,7 +172,9 @@ const Page4 = ({ bestSeller,showCart }) => {
                             <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                           </button>
                         </div>
-                      </div>
+                      </>
+                    }
+                  </div>
                 );
               })}
               {bestSeller.length == 0 ? (

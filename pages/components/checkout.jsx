@@ -6,6 +6,7 @@ import { cleanCart, removeFromCart, updateCartQuantity } from "./redux/action";
 import { BsCartCheckFill, BsCartDashFill } from "react-icons/bs";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import Popup from "reactjs-popup";
 var jwt = require("jsonwebtoken")
 
 const Checkout = () => {
@@ -123,14 +124,17 @@ const Checkout = () => {
       if (res) {
         if (res.token) {
           localStorage.setItem("Fashion_Store_Orders", res.token);
+          placedordeindatabase()
+          handleCleanCart()
+          router.push(`/components/orders`)
           
         } else {
-          alert("Order Not Placed Successfully");
+          openModal("The Quantity Of Your Items Are Not Avaliable In Our Stock ~~!!");
         }
       }
 
     }else{
-      alert("Please Add Some Items In Cart First")
+      openModal("Please Add Some Items In Cart First")
     }
   }
 const placedordeindatabase = async () => {
@@ -170,16 +174,29 @@ const placedordeindatabase = async () => {
     let res = await addData.json();
     if (res) {
       if (res.orderAdded) {
-        alert("Order Placed Successfully");
+        openModal("Order Placed Successfully");
       } else {
-        alert("Order Not Placed Successfully something went wrong");
+        openModal("Order Not Placed Successfully something went wrong");
       }
     }
   };
-  console.log(cartData)
+   const [open, setOpen] = useState(false);
+    const [message, setmessage] = useState("");
+    const openModal = (msg) =>{ setOpen(true)
+      setmessage(msg);
+    };
+    const closeModal = () => setOpen(false);
   return (
     <Fade duration={2000}>
+
       <div className="xsm:mt-[5rem] mb-[2rem]">
+         <div className={``}> <Popup open={open} closeOnDocumentClick onClose={closeModal} contentStyle={{ background: 'rgba(255, 255, 255, 0)', border: 'none', width:500,  }}  >
+                  <div className="items-center text-center rounded-[2rem] bg-[---c1] xsm:mx-[2rem] sm:mx-[1px] ">
+                    <h2 className=" text-black font-black p-4 rounded-[2rem] sm:text-[20px] xsm:text-[16px] m-4 ">{message}</h2>
+                    <button onClick={closeModal} className="bg-[---c7] text-white font-black p-4 rounded-[2rem] sm:text-[20px] xsm:text-[14px] m-4">Close Modal</button>
+                  </div>
+                </Popup></div>  
+        <>
         <div className="justify-items-center text-center">
           <h1 className="xsm:text-[20px] sm:text-[24px] font-black">!!~~CheckOut~~!!</h1>
 
@@ -275,6 +292,7 @@ const placedordeindatabase = async () => {
                 <div className="xsm:w-[30%] sm:w-[30%]">
                   <p className="xsm:text-[14px] sm:text-[18px] font-black">Quantity</p>
                 </div>
+                
               </div>
 
               {update ? (
@@ -302,7 +320,9 @@ const placedordeindatabase = async () => {
                               onClick={() => handleDecreaseQuantity(item)}
                             />
                           </div>
-                        </div>}
+                          
+                        </div>
+                        }
                   </Fade>
                 ))
               ) : (
@@ -318,12 +338,13 @@ const placedordeindatabase = async () => {
           <div className="justify-items-center mt-[2rem] text-white ml-[-2rem]">
             <div className="flex space-x-[2rem]">
               
-                <button onClick={()=>{placedordeindatabase(),checkoutFun()}} className="flex xsm:text-[10px] sm:text-[14px]  items-center font-black bg-[---c8] px-[1rem] py-[10px]  rounded-[2rem]">
+                <button onClick={()=>{checkoutFun()}} className="flex xsm:text-[10px] sm:text-[14px]  items-center font-black bg-[---c8] px-[1rem] py-[10px]  rounded-[2rem]">
                   Check out <BsCartCheckFill className="mx-1" />
                 </button> <button onClick={handleCleanCart} className="flex xsm:text-[10px] sm:text-[14px]  items-center font-black bg-[---c9] px-[1rem] py-[10px] rounded-[2rem]">
                 Clear Cart <BsCartDashFill className="mx-1" />
               </button></div>
-          </div></div>
+          </div>
+          </div></>
       </div>
     </Fade>
   );
