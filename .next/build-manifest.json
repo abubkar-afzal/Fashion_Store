@@ -28,15 +28,25 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/components/feedback": [
+    "/components/admin/[slug]": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/components/feedback.js"
+      "static/chunks/pages/components/admin/[slug].js"
     ],
-    "/components/orders": [
+    "/components/admin/admin": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/components/orders.js"
+      "static/chunks/pages/components/admin/admin.js"
+    ],
+    "/components/admin/allOrders": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/components/admin/allOrders.js"
+    ],
+    "/components/admin/choice": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/components/admin/choice.js"
     ]
   },
   "ampFirstPages": []

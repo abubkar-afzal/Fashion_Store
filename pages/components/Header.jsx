@@ -75,6 +75,11 @@ let trends;
     }
 }, [cartData])  
 
+  useEffect(() => {
+    if(!localStorage.getItem("Fashion_Store")){
+      handleCleanCart();
+    }
+}, [router.query])  
   const dispatch = useDispatch();
   const handleRemoveFromCart = (item)=>{
     dispatch(removeFromCart(item._id))

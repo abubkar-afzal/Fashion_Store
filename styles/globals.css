@@ -32,8 +32,9 @@ input[type="number"]::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
-
-
+input{
+  background-color: white;
+}
 .hideBar {
   -ms-overflow-style: none;  
   scrollbar-width: none; 

@@ -1,4 +1,4 @@
-import { MongoClient } from "mongodb";
+import { MongoClient, ObjectId } from "mongodb";
 
     
 export default async function handler(req, res) {
@@ -9,8 +9,8 @@ export default async function handler(req, res) {
       });
       //Data
         let order = req.body;
-        
-        console.log(req.body)
+        const orderId = new ObjectId(order);
+        console.log(orderId)
       try { 
         await client.connect();
   
@@ -20,7 +20,7 @@ export default async function handler(req, res) {
         // Choose a name for your collection
         const collection = database.collection("orders");
   
-        await collection.findOneAndDelete(order);
+        await collection.findOneAndDelete({_id:orderId});
   
         res.status(201).json({success:true});
       } catch (error) {

@@ -177,6 +177,25 @@ const Login = () => {
     setmessage(msg);
   };
   const closeModal = () => setOpen(false);
+  const handleChange = (e) => {
+    const formattedPhoneNumber = formatPhoneNumber(e.target.value);
+    setPhone(formattedPhoneNumber);
+  };
+
+  const formatPhoneNumber = (value) => {
+    // Remove all non-digit characters
+    const cleaned = ('' + value).replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{1,3})(\d{0,3})(\d{0,4})$/);
+
+    if (match) {
+      const intlCode = (match[1] ? '+' + match[1] : '');
+      const part1 = (match[2] ? ' ' + match[2] : '');
+      const part2 = (match[3] ? '-' + match[3] : '');
+      return [intlCode, part1, part2].join('');
+    }
+
+    return value;
+  };
   return (
     <>
       <div className="my-[4rem] ">
@@ -380,13 +399,15 @@ const Login = () => {
                     Phone:
                   </p>
                   <input
-                    onChange={(e) => {
-                      setPhone(e.target.value)
-                    }}
-                    value={phone}
-                    type="phone"
+                    
+        type="text"
+        id="phone"
+        name="phone"
+        value={phone}
+        onChange={handleChange}
+        placeholder="+123 456-7890"
                     className="w-auto h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
-                    placeholder="Enter Your Phone Number"
+                    
                   />
                 </div>
                 <div>

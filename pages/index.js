@@ -3,7 +3,7 @@ import Page1 from "./components/page1";
 import { Fade } from "react-awesome-reveal";
 import { MongoClient } from "mongodb";
 
-export default function Home({ allNewCollection, bestFashion, bestSeller, men, women, kids, family,DealOfDay,Intro }) {
+export default function Home({ allNewCollection, bestFashion, bestSeller, men, women, kids, family,DealOfDay,Intro,allFeedbacks }) {
   return (
     <>
       <Fade duration={2000}>
@@ -17,6 +17,7 @@ export default function Home({ allNewCollection, bestFashion, bestSeller, men, w
           family={family}
           DealOfDay={DealOfDay}
           Intro={Intro}
+          allFeedbacks={allFeedbacks}
         />
       </Fade>
     </>
@@ -35,6 +36,8 @@ export async function getServerSideProps(context) {
 
   // Choose a name for your collection
   const collection = database.collection("products");
+  const feedbacks = database.collection("feedbacks");
+  const allFeedbacks = await feedbacks.find({}).toArray();
   const allNewCollection = await collection
     .find({ product_display_page_place: "new_collection" })
     .toArray();
@@ -62,6 +65,7 @@ export async function getServerSideProps(context) {
     const Intro = await collection
     .find({ product_display_page_place: "intro" })
     .toArray();
+    
   return {
     props: {
       allNewCollection: JSON.parse(JSON.stringify(allNewCollection)),
@@ -73,6 +77,7 @@ export async function getServerSideProps(context) {
       family: JSON.parse(JSON.stringify(family)),
       DealOfDay: JSON.parse(JSON.stringify(DealOfDay)),
       Intro: JSON.parse(JSON.stringify(Intro)),
+      allFeedbacks: JSON.parse(JSON.stringify(allFeedbacks)),
     },
   };
 }

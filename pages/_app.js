@@ -3,7 +3,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import LoadingBar from "react-top-loading-bar";
 
-import { Provider } from "react-redux";
+import { Provider, useDispatch } from "react-redux";
 import { store, persistor } from "./components/redux/store.js";
 import { PersistGate } from "redux-persist/integration/react";
 import { useEffect, useState } from "react";
@@ -13,6 +13,7 @@ import { BarLoader } from "react-spinners";
 import { Fade } from "react-awesome-reveal";
 const jwt = require("jsonwebtoken");
 export default function App({ Component, pageProps }) {
+ 
   const [progress, setProgress] = useState(0);
   const [loader, setLoader] = useState(true);
   const [tokenData, setTokenData] = useState("");
@@ -49,8 +50,7 @@ export default function App({ Component, pageProps }) {
     });
     let token =localStorage.getItem("Fashion_Store") 
     if(token){
-      // const dataoftoken = jwt.verify(token, process.env.JWTSECRET);
-      // setTokenData(dataoftoken);
+      
       setauthtoken(true)
     }
     setLoader(false);

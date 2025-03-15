@@ -18,6 +18,7 @@ const Page1 = ({
   family,
   DealOfDay,
   Intro,
+  allFeedbacks,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -68,7 +69,7 @@ const Page1 = ({
         <Page4 bestSeller={bestSeller} />
         <Page5 men={men} women={women} kids={kids} family={family} />
         <Page6 DealOfDay={DealOfDay} />
-        <Page7 />
+        <Page7 allFeedbacks={allFeedbacks}/>
       </div>
     </>
   );

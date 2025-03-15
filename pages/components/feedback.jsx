@@ -1,9 +1,46 @@
+import { useRouter } from "next/router";
 import React, { useState } from "react";
 
 const Feedback = () => {
       const [name, setName] = useState("");
       const [email, setEmail] = useState("");
       const [feedback, setFeedback] = useState("");
+      const router = useRouter();
+      const addFeedback = async () => {
+        if(name.length >= 4 && email.length >=4 && feedback.length >= 4 && email.includes("@gmail.com")){
+          
+       
+        
+        let feed = {
+          user_name: name,
+          user_email: email,
+         user_feedback: feedback
+        }
+        let post = await fetch(`/api/addFeedback`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify(feed),
+        });
+        let res = await post.json();
+        if (res.success == true) {
+         
+          setName("")
+          setEmail("")
+         setFeedback("")
+          router.push(`/`)
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        }
+        else {
+          
+          console.log("please enter correct things")
+          
+        }}}
+      
     return (<>
         <div className="justify-items-center xsm:mt-[4rem] sm:mt-[1px]">
           <div className="xsm:text-[14px] sm:text-[18px] font-semibold mt-[2rem]" >Please Give Your FeedBack !!</div>
@@ -48,13 +85,13 @@ const Feedback = () => {
                         setFeedback(e.target.value)
                       }}
                       value={feedback}
-                    className="w-full h-[5rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
+                    className="w-full h-[5rem] border-[1px] border-black rounded-[8px]  p-4 m-2"
                     placeholder="Enter Your Feedback"
                     />
               </div>
               <div className="sm:row-start-3 sm:col-start-1 sm:row-end-3 sm:col-end-3 xsm:row-start-4 xsm:col-start-1 xsm:row-end-4 xsm:col-end-1 sm:col-span-3 text-center">
               <button
-                
+                onClick={addFeedback}
                 className="bg-[---c2] hover:bg-[---h2] xsm:text-[16px] sm:text-[20px] p-2 m-2 w-auto px-[2rem] rounded-[2rem] font-bold shadow-lg text-white"
               >
                 Submit
