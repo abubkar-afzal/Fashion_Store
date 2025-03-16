@@ -5,6 +5,8 @@ import React, { useEffect, useState } from "react";
 import { FaSquareMinus } from "react-icons/fa6";
 
 const AllOrders = ()=>{
+  const router = useRouter();
+
   const deleteOrder = async (id) => {
     let d = await fetch(`/api/deleteOrder`, {
       method: "POST",
@@ -15,12 +17,12 @@ const AllOrders = ()=>{
     });
     let res = await d.json();
     if (res.success == true) {
+      router.push("/components/admin/allOrders");
       console.log("deleted");
     } else {
       console.log("error came");
     }
   }
-     const router = useRouter();
       const [allorders, setOrders] = useState([]);
       useEffect(() => {
         
@@ -88,7 +90,7 @@ const AllOrders = ()=>{
                                               />
                                             </div></Link>
                                              <div className=" place-items-end">
-                                               <button onClick={()=>{deleteOrder(item._id)}} className="flex xsm:text-[14px] sm:text-[12px]  items-center font-black bg-[---c8] px-[1rem] py-[10px] text-white  rounded-[2rem] hover:bg-[---h8]">
+                                               <button onClick={()=>{deleteOrder(atom._id)}} className="flex xsm:text-[14px] sm:text-[12px]  items-center font-black bg-[---c8] px-[1rem] py-[10px] text-white  rounded-[2rem] hover:bg-[---h8]">
                                                                 Placed<FaSquareMinus className="mx-2" />
                                                               </button>
                                             </div>
@@ -102,8 +104,8 @@ const AllOrders = ()=>{
                             })
                           ) : (
                             <>
-                              <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center p-2 mt-[10vh] ">
-                                <div className="font-semibold w-1/2 text-wrap">
+                              <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center p-2 mt-[10vh] bg-[---c1] ">
+                                <div className="font-semibold w-full  text-wrap">
                                   
                                   No Order Had Found Yet Right Now !!
                                 </div>

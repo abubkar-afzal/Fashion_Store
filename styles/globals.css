@@ -131,3 +131,8 @@ input{
   left: 0;
   bottom: -1px; /* Adjust the margin below the text */
 }
+
+.blurred-background {
+  filter: blur(5px); /* Adjust 5px to control the blur intensity */
+  transition: filter 0.3s ease; /* Smooth transition for the blur */
+}

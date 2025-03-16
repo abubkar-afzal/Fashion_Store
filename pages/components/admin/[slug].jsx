@@ -1,4 +1,3 @@
-import { de } from "intl-tel-input/i18n";
 import { MongoClient, ObjectId } from "mongodb";
 import Image from "next/image";
 import Link from "next/link";

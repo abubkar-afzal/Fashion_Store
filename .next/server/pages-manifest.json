@@ -2,13 +2,8 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/components/admin/allOrders": "pages/components/admin/allOrders.js",
+  "/components/admin/aboutProducts": "pages/components/admin/aboutProducts.js",
   "/api/getFooter": "pages/api/getFooter.js",
-  "/": "pages/index.js",
-  "/components/admin/admin": "pages/components/admin/admin.js",
-  "/api/loginAdmin": "pages/api/loginAdmin.js",
-  "/components/admin/choice": "pages/components/admin/choice.js",
-  "/api/getOrdersForAdmin": "pages/api/getOrdersForAdmin.js",
-  "/api/deleteOrder": "pages/api/deleteOrder.js",
-  "/components/admin/[slug]": "pages/components/admin/[slug].js"
+  "/components/admin/allOrders": "pages/components/admin/allOrders.js",
+  "/": "pages/index.js"
 }

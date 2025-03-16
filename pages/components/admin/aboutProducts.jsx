@@ -15,6 +15,8 @@ const AboutProducts = ()=>{
                 Update Products
               </button></Link><Link href={`/components/admin/deleteProduct`}><button  className="font-black xsm:text-[12px] sm:text-[16px] bg-[---c2] px-[2rem] py-[10px] text-white rounded-[2rem]  hover:bg-[---h2]">
                 Delete Products
+              </button></Link><Link href={`/components/admin/allProduct`}><button  className="font-black xsm:text-[12px] sm:text-[16px] bg-[---c2] px-[2rem] py-[10px] text-white rounded-[2rem]  hover:bg-[---h2]">
+                All Products
               </button></Link>
             </div></div></Fade>
     </>)

@@ -82,7 +82,7 @@ let feedback;
   const req = await fetch("/api/getFooter");
   const res = await req.json();
   setPictures(res.data);
-  console.log(res.data);
+ 
 }
   return (
     <>

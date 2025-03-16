@@ -20,7 +20,7 @@ export default async function handler(req, res) {
         // Choose a name for your collection
         const collection = database.collection("products");
   
-        const data = await collection.find().toArray();
+        const data = await collection.find({}).toArray();
   
         res.status(201).json({data});
       } catch (error) {

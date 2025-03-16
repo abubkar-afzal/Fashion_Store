@@ -63,7 +63,7 @@ export async function getServerSideProps(context) {
     .find({ product_display_page_place: "deal_of_day" }).limit(1)
     .toArray();
     const Intro = await collection
-    .find({ product_display_page_place: "intro" })
+    .find({})
     .toArray();
     
   return {

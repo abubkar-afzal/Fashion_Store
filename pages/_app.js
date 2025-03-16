@@ -36,12 +36,12 @@ export default function App({ Component, pageProps }) {
       setProgress(100);
     });
     router.events.on("routeChangeStart", () => {
-      setLoader(true);
       
         window.scrollTo({
           top: 0,
           behavior: 'smooth'
         });
+        setLoader(true);
       
     });
 
