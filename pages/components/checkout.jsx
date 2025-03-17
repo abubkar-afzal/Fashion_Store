@@ -201,7 +201,7 @@ const placedordeindatabase = async () => {
           <h1 className="xsm:text-[20px] sm:text-[24px] font-black">!!~~CheckOut~~!!</h1>
 
           <div>
-            <div className="xsm:text-[14px] sm:text-[18px] font-semibold mt-[2rem]" >Please Check Your details of order !!</div>
+            <div className="xsm:text-[14px] sm:text-[18px] font-semibold mt-[2rem]" >Please Check Your Details Of Order Placed !!</div>
             <div className="grid  sm:grid-cols-2 mx-[2rem] xsm:my-[1rem] sm:my-[2rem] sm:w-[75vw]  gap-x-[1rem] gap-y-[1rem] ">
               
               <div className="flex items-center sm:row-start-1 sm:col-start-1 sm:row-end-1 sm:col-end-1 xsm:row-start-1 xsm:col-start-1 xsm:row-end-1 xsm:col-end-1">
@@ -277,7 +277,7 @@ const placedordeindatabase = async () => {
                 </div>
           </div>
 
-          <p className="xsm:text-[14px] sm:text-[18px] font-semibold">Please Check That What You Need To Buy !!</p>
+          <p className="xsm:text-[14px] sm:text-[18px] font-semibold">Please Check That What You Need To Buy. Beacause Checkout Is Not A Cup Of Tea !!</p>
         </div>
         <div className="xsm:mt-[1rem] sm:mt-[2rem] ml-[1rem]">
           <div className="flex justify-center xsm:ml-[1rem] sm:ml-[4rem]">
@@ -290,7 +290,7 @@ const placedordeindatabase = async () => {
                   <p className="xsm:text-[14px] sm:text-[18px] font-black">Price</p>
                 </div>
                 <div className="xsm:w-[30%] sm:w-[30%]">
-                  <p className="xsm:text-[14px] sm:text-[18px] font-black">Quantity</p>
+                  <div className="xsm:text-[14px] sm:text-[18px] font-black">Quantity <div className="xsm:text-[10px] sm:text-[14px] font-thin text-[---c9] ">(There Default Came <br /> Total Avaliable Qunatity)</div></div>
                 </div>
                 
               </div>
@@ -301,12 +301,12 @@ const placedordeindatabase = async () => {
                     {
                       item.product_quantity == 0 ? dispatch(removeFromCart(item._id)) :
                         <div className="flex justify-between xsm:mt-[1rem] sm:mt-[2rem] ">
-                          <div className="xsm:w-[30%] sm:w-[30%]">
+                          <Link href={`/components/other/${item._id}`} className="xsm:w-[30%] sm:w-[30%]"><div >
                             <p className="xsm:text-[14px] sm:text-[18px] font-semibold">{item.product_title}</p>
-                          </div>
-                          <div className="xsm:w-[30%] sm:w-[30%]">
+                          </div></Link>
+                          <Link href={`/components/other/${item._id}`} className="xsm:w-[30%] sm:w-[30%]"><div >
                             <p className="xsm:text-[14px] sm:text-[18px] font-semibold">${item.product_price} </p>
-                          </div>
+                          </div></Link>
 
 
                           <div className="xsm:w-[30%] sm:w-[30%] flex items-center">

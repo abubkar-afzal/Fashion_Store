@@ -1,14 +1,18 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useDispatch } from "react-redux";
-import { addToCart } from "./redux/action";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, cleanCart } from "./redux/action";
 
 const Page6 = ({DealOfDay,showCart})=>{
     const dispatch = useDispatch();
   const handleAddToCart = (item)=>{
     dispatch(addToCart(item))
   }
+  const cartData = useSelector((state) => state.reducer);
+  const handleCleanCart = (item)=>{
+      dispatch(cleanCart(cartData))
+    }
     return(<>
              <div className=" overflow-hidden xsm:text-left xsm:bg-[---c1] xsm:content-center xsm:items-center  ">
                 {DealOfDay.map((item)=>{

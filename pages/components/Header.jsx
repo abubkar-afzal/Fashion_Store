@@ -162,7 +162,7 @@ let trends;
             update  ? (cartData && cartData.map((item) => {
               
               return (<Fade duration={2000}><div key={item._id} className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center bg-[---c2] p-2">
-                <div className=" font-semibold w-1/2 text-wrap">{item.product_title}</div>
+                 <Link href={`/components/other/${item._id}`}><div className=" font-semibold">{item.product_title}</div></Link>
                 <button onClick={()=>handleRemoveFromCart(item)} className="flex xsm:text-[14px] sm:text-[12px]  items-center font-black bg-[---c7] px-[1rem] py-[10px]  rounded-[2rem]">
                   Remove <FaSquareMinus className="mx-2" />
                 </button>

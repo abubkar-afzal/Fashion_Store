@@ -4,13 +4,17 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaShoppingBag } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
-import { useDispatch } from "react-redux";
-import { addToCart } from "./redux/action";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, cleanCart } from "./redux/action";
 const Page4 = ({ bestSeller,showCart }) => {
   const dispatch = useDispatch();
   const handleAddToCart = (item)=>{
     dispatch(addToCart(item))
   }
+  const cartData = useSelector((state) => state.reducer);
+  const handleCleanCart = (item)=>{
+      dispatch(cleanCart(cartData))
+    }
   return (
     <>
       <div className="overflow-hidden xsm:text-left xsm:bg-[---c4] xsm:p-5 xsm:pt-[2rem] ">
@@ -37,7 +41,7 @@ const Page4 = ({ bestSeller,showCart }) => {
                     {
                     item.product_quantity == 0 ?  <> 
                     <div className="relative">
-                      <div className="font-black xsm:text-[14px] sm:text-[16px] bg-[---c1] absolute w-full  top-52 text-center">Out Of Stock !! </div>
+                      <div className="font-black xsm:text-[14px] sm:text-[16px] bg-[---c1] absolute w-full  sm:top-52 xsm:top-40 text-center">Out Of Stock !! </div>
                     </div>
                     <div className="opacity-20 cursor-default">
                    
@@ -162,10 +166,10 @@ const Page4 = ({ bestSeller,showCart }) => {
                         <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between space-x-[1rem] pt-2 bg-white pb-2">
                           <div></div>
                     
-                    <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3  text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                          <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item)} } className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3  text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                             Buy Now
                             <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
-                          </button>
+                          </button></Link>
                    
                     <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                             Add To Cart

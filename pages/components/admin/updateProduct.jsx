@@ -67,8 +67,23 @@ const UpdateProduct =()=>{
         setIsplaceOpen(false);
       };
     useEffect(()=>{
+      
         findeOneProduct();
     },[id])
+    const checkId = async ()=>{
+      let req = await fetch(`/api/checkUniqueIdOfProduct`,{
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json; charset=UTF-8",
+        },
+        body: JSON.stringify(id),
+      }
+        );
+        let res = await req.json();
+        if(res.success == false){
+          openModal("This ID Don't Exists..!!")
+        }
+    }
     const findeOneProduct = async () => {
          let productOne = {
             product_id: parseInt(id)
@@ -80,9 +95,6 @@ const UpdateProduct =()=>{
             },
             body: JSON.stringify(productOne),
         });
-        if (!post.ok) {
-            throw new Error('Network response was not ok');
-          }
         let res = await post.json();
         if(res.data){
         setTimeout(() => {
@@ -101,6 +113,24 @@ const UpdateProduct =()=>{
                 setdisplayDesc(res.data.product_display_page_desc)
            
         }, 1000);
+    }else{
+      if(id != 0){
+
+      
+      settitle("")
+                setdesc("")
+                setprice("")
+                setrating("")
+                setcolor("")
+                setsize("")
+                setqty("")
+                setimage("")
+                setcategory("")
+                settrend("")
+                setdisplayPlace("")
+                setdisplayTitle("")
+                setdisplayDesc("")
+                checkId();}
     }
     } 
     const updateProduct = async () => {

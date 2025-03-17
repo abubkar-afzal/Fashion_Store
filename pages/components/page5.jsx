@@ -6,14 +6,18 @@ import Image from "next/image";
 import Link from "next/link";
 import { FaShoppingBag } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
-import { useDispatch } from "react-redux";
-import { addToCart } from "./redux/action";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, cleanCart } from "./redux/action";
 
 const Page5 = ({ men, women, kids, family,showCart }) => {
   const dispatch = useDispatch();
   const handleAddToCart = (item)=>{
     dispatch(addToCart(item))
   }
+  const cartData = useSelector((state) => state.reducer);
+  const handleCleanCart = (item)=>{
+      dispatch(cleanCart(cartData))
+    }
   const [displayMen, setDisplayMen] = useState(true);
   const [displayWomen, setDisplayWomen] = useState(false);
   const [displayKids, setDisplayKids] = useState(false);
@@ -89,7 +93,7 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                 {
               item.product_quantity == 0 ?  <> 
               <div className="relative">
-                <div className="font-black xsm:text-[14px] sm:text-[16px] bg-[---c1] absolute w-full  top-52 text-center">Out Of Stock !! </div>
+                <div className="font-black xsm:text-[14px] sm:text-[16px] bg-[---c1] absolute w-full  sm:top-52 xsm:top-40 text-center">Out Of Stock !! </div>
               </div>
               <div className="opacity-20 cursor-default">
                 <Image
@@ -146,7 +150,7 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                         Buy Now
                         <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                       </button>
-                <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center ">
+                <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center ">
                         Add To Cart
                         <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                       </button>
@@ -207,10 +211,10 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                     </Link>
                 <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                       <div></div>
-                <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                      <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item)} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                         Buy Now
                         <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
-                      </button>
+                      </button></Link>
                 <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                         Add To Cart
                         <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
@@ -292,7 +296,7 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                           Buy Now
                           <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button>
-                  <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center ">
+                  <button  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center ">
                           Add To Cart
                           <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button>
@@ -353,10 +357,10 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                       </Link>
                   <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                         <div></div>
-                  <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                        <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item)} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                           Buy Now
                           <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
-                        </button>
+                        </button></Link>
                   <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                           Add To Cart
                           <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
@@ -438,7 +442,7 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                               Buy Now
                               <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button>
-                      <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center ">
+                      <button  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center ">
                               Add To Cart
                               <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button>
@@ -499,10 +503,10 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                           </Link>
                       <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                             <div></div>
-                      <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                            <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item)} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                               Buy Now
                               <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
-                            </button>
+                            </button></Link>
                       <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                               Add To Cart
                               <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
@@ -584,7 +588,7 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                               Buy Now
                               <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button>
-                      <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center ">
+                      <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center ">
                               Add To Cart
                               <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button>
@@ -645,10 +649,10 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                           </Link>
                       <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                             <div></div>
-                      <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                            <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item)} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                               Buy Now
                               <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
-                            </button>
+                            </button></Link>
                       <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                               Add To Cart
                               <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
 import Popup from "reactjs-popup";
 
@@ -21,6 +21,23 @@ const DeleteProduct =()=>{
         document.body.style.overflow = "auto";
        
     }
+ 
+      const checkUniqueId = async ()=>{
+        let req = await fetch(`/api/checkUniqueIdOfProduct`,{
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json; charset=UTF-8",
+          },
+          body: JSON.stringify(id),
+        }
+          );
+          let res = await req.json();
+          if(res.success == false){
+            openModal("This ID Don't Exists..!!")
+          }else{
+            openModal("Product Is Delete Successfully !!")
+          }
+      }
     const deleteProduct = async () => {
         let product = {
             product_id: parseInt(id),
@@ -33,7 +50,7 @@ const DeleteProduct =()=>{
             body: JSON.stringify(product),
         });
         let res = await post.json();
-        openModal("Product Is Delete Successfully !!")
+        
         setid("")
         
     }
@@ -67,7 +84,7 @@ const DeleteProduct =()=>{
                     </div>
                     
                     <div className="flex justify-center space-x-[1rem] ">
-                        <button onClick={deleteProduct} className="font-black xsm:text-[12px] sm:text-[16px] bg-[---c2] px-[2rem] py-[10px] text-white rounded-[2rem]  hover:bg-[---h2]">
+                        <button onClick={()=>{checkUniqueId(),deleteProduct()}} className="font-black xsm:text-[12px] sm:text-[16px] bg-[---c2] px-[2rem] py-[10px] text-white rounded-[2rem]  hover:bg-[---h2]">
                             Delete
                         </button>
                     </div>

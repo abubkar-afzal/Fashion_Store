@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Slide } from "react-awesome-reveal";
 import Popup from "reactjs-popup";
 import { AiFillFileAdd } from "react-icons/ai";
@@ -42,7 +42,23 @@ if(open || imagetutorial == true){
     document.body.style.overflow = "auto";
    
 }
-  
+useEffect(() => {
+  checkUniqueId();
+}, [id])
+  const checkUniqueId = async ()=>{
+    let req = await fetch(`/api/checkUniqueIdOfProduct`,{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json; charset=UTF-8",
+      },
+      body: JSON.stringify(id),
+    }
+      );
+      let res = await req.json();
+      if(res.success == true){
+        openModal("Please Enter A Unique Id Of Product This Id Is Already Taken..!!")
+      }
+  }
   const [isCategoryOpen, setIsCategoryOpen] = useState(false);
   const itemsOfCategory = ["men", "women", "kids", "family"];
   const handleCategoryOptionClick = (itemOfCategory) => {

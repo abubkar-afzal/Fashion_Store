@@ -4,17 +4,22 @@ import React from "react";
 import { FaShoppingBag } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { IoIosStar } from "react-icons/io";
-import { useDispatch } from "react-redux";
-import { addToCart } from "../redux/action";
+import { useDispatch, useSelector } from "react-redux";
+import { addToCart, cleanCart } from "../redux/action";
+import Link from "next/link";
 
 const ProductDetails = ({details})=>{
     const dispatch = useDispatch();
     const handleAddToCart = (details)=>{
       dispatch(addToCart(details))
     }
+    const cartData = useSelector((state) => state.reducer);
+    const handleCleanCart = (item)=>{
+        dispatch(cleanCart(cartData))
+      }
    return(<>
         <div className="justify-items-center space-y-[1rem] xsm:my-[5rem] sm:mt-[1px] sm:mb-[5rem]">
-        <div className="xsm:text-[25px] sm:text-[35px] font-bold">Product Details</div>
+        <div className="xsm:text-[25px] sm:text-[35px] font-bold">!!~~Product Details~~!!</div>
         
         <div className="xsm:text-[25px] sm:text-[35px] font-black">{details.product_title}</div>
         <div className="justify-items-center space-y-[1rem]  ">
@@ -64,10 +69,10 @@ const ProductDetails = ({details})=>{
         <div className="xsm:text-[17px] sm:text-[22px] font-medium ">Price: ${details.product_price}</div>
        <div className=" flex xsm:space-y-2 xsm:items-center sm:justify-between space-x-[10px] pt-2">
                          <div></div>
-                         <button className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---b4]">
+                         <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(details)} }  className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---b4]">
                            Buy Now
                            <FaShoppingBag className="xsm:text-[15px] sm:text-[18px] mx-1" />
-                         </button>
+                         </button></Link>
                          <button onClick={() => { handleAddToCart(details) }} className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]">
                            Add To Cart
                            <FaCartShopping className="xsm:text-[15px] sm:text-[18px] mx-1" />
