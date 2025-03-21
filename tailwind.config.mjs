@@ -20,7 +20,11 @@ export default {
       'lgh': { 'raw': '(min-height: 1050px)' },
       
     },
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'my_bg_image' : "url('../public/bg.png')",
+      }
+    },
   },
   plugins: [],
 };

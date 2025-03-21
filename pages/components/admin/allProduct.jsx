@@ -4,31 +4,33 @@ import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { Slide } from "react-awesome-reveal";
 
-const AllProduct = () => {
+const AllProduct = ({setLoader}) => {
   const router = useRouter();
     const [allProduct, setAllProduct] = useState([])
   useEffect(() => {
     alldata();
   }, [router.query])
   const alldata = async ()=>{
+    
     let d = await fetch(`/api/getProduct`);
     let res = await d.json();
+    
     setAllProduct(res.data)
     
   }
-  console.log(allProduct)
   return (
     <>
-      <div className="justify-items-center my-[4rem]">
+      <div className="justify-items-center my-[4rem] min-h-screen content-center overflow-y-scroll hideBar">
        
         <Slide direction="left" triggerOnce >
-          <div className="font-black xsm:text-[18px] sm:text-[22px] text-center px-[1rem]">
+          <div className="font-black xsm:text-[18px] sm:text-[22px] text-center px-[1rem] text-white">
             All Products ~~!!
           </div>
-          {
+          
             
+            {
             allProduct.map((item)=>{
-                return <div key={item._id} className="  shadow-lg sm:space-y-[2rem] sm:space-x-[1rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---c1] text-center mb-[3rem]">
+                return <div key={item._id} className="  shadow-lg sm:space-y-[2rem] sm:space-x-[1rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---blur] text-center justify-items-center mb-[3rem]">
                 <div className="xsm:hidden sm:block"></div>
                 <div>
                   <p className="font-black xsm:text-[18px] sm:text-[22px]">ID:</p>

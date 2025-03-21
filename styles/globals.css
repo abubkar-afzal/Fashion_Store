@@ -20,8 +20,14 @@
   ---h9 :rgba(251, 103, 17, 0.662);
   ---c10 :rgb(17, 111, 251);
   ---blur :rgba(224, 224, 224, 0.322);
-  
+  ---t :rgba(95, 93, 93, 0.367);
+  ---wa: rgb(66, 213, 76);
+    ---em: rgb(104, 202, 211);
+    ---gh: rgb(0, 0, 0);
+    ---ig: rgb(233, 41, 134);
+    ---ln: rgb(24, 62, 214);
 }
+
 
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {

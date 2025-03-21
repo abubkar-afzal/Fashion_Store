@@ -77,21 +77,32 @@ let trends;
 
   useEffect(() => {
     if(!localStorage.getItem("Fashion_Store")){
-      handleCleanCart();
+      defaultCleanCart();
     }
 }, [router.query])  
   const dispatch = useDispatch();
   const handleRemoveFromCart = (item)=>{
+    
+    const popSound = new Audio("/remove.mp3");
+    popSound.play();
     dispatch(removeFromCart(item._id))
   }
   const handleCleanCart = (item)=>{
+    
+    const popSound = new Audio("/remove.mp3");
+    popSound.play();
+    dispatch(cleanCart(cartData))
+  }
+  const defaultCleanCart = (item)=>{
+    
+    
     dispatch(cleanCart(cartData))
   }
  
  
   return (
     <>
-    <div className="">
+    <div className=" duration-[1s]">
     <Link href={`/components/admin/admin`}><div className="bg-[---c7] w-[30px] h-[30px] absolute z-20 cursor-not-allowed top-[-10px] rounded-[2rem] xsm:left-[-20px] sm:left-[-15px] "></div>
     </Link><div
       className="xsm:overflow-x-hidden sticky z-10 xsm:mt-3 xsm:flex xsm:text-[18px] sm:text-[20px] xsm:justify-between sm:pr-[1rem]

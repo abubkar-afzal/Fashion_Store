@@ -9,9 +9,12 @@ import { FaCartShopping } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, cleanCart } from "../redux/action";
 
-const Kids = ({ allProducts, showCart }) => {
+const Kids = ({ allProducts, showCart,checkloginornot }) => {
   const dispatch = useDispatch();
   const handleAddToCart = (item) => {
+    
+    const popSound = new Audio("/pop.mp3");
+    popSound.play();
     dispatch(addToCart(item));
   };
   const cartData = useSelector((state) => state.reducer);
@@ -21,7 +24,7 @@ const Kids = ({ allProducts, showCart }) => {
   return (
     <>
       <Fade duration={2000}>
-        <div className="flex flex-wrap space-x-[1rem] space-y-[2rem] mx-[2rem] justify-center mb-[2rem]">
+        <div className="flex flex-wrap space-x-[1rem] space-y-[2rem] mx-[2rem] justify-center mb-[2rem] min-h-screen content-center overflow-y-scroll hideBar">
           <div></div>
           {allProducts.map((item) => {
             return (
@@ -87,11 +90,11 @@ const Kids = ({ allProducts, showCart }) => {
                       </div>
                       <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                         <div></div>
-                        <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center ">
+                        <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center cursor-default">
                           Buy Now
                           <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button>
-                        <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center ">
+                        <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center cursor-default">
                           Add To Cart
                           <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button>
@@ -161,7 +164,7 @@ const Kids = ({ allProducts, showCart }) => {
                       <Link href={`/components/buyNow`}>
                         <button
                           onClick={() => {
-                            handleCleanCart(), handleAddToCart(item);
+                            handleCleanCart(), handleAddToCart(item),checkloginornot()
                           }}
                           className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]"
                         >
@@ -173,6 +176,7 @@ const Kids = ({ allProducts, showCart }) => {
                         onClick={() => {
                           handleAddToCart(item);
                           showCart;
+                          checkloginornot()
                         }}
                         className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]"
                       >

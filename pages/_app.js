@@ -3,7 +3,7 @@ import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import LoadingBar from "react-top-loading-bar";
 
-import { Provider, useDispatch } from "react-redux";
+import { Provider } from "react-redux";
 import { store, persistor } from "./components/redux/store.js";
 import { PersistGate } from "redux-persist/integration/react";
 import { useEffect, useState } from "react";
@@ -11,6 +11,7 @@ import Head from "next/head.js";
 import { useRouter } from "next/router.js";
 import { BarLoader } from "react-spinners";
 import { Fade } from "react-awesome-reveal";
+import Popup from "reactjs-popup";
 const jwt = require("jsonwebtoken");
 export default function App({ Component, pageProps }) {
  
@@ -21,6 +22,24 @@ export default function App({ Component, pageProps }) {
   const [cancel, setCancel] = useState(true);
   const [cart, setCart] = useState(false);
   const [authtoken, setauthtoken] = useState(false);
+  const [loginfirst, setloginfirst] = useState(false);
+  const checkloginornot = ()=>{
+    if(!localStorage.getItem("Fashion_Store")){
+      router.push(`/components/login`)
+      setloginfirst(true)
+      openModal("Please Login / Signup First..!!")
+    }
+  }
+   const [open, setOpen] = useState(false);
+    const [message, setmessage] = useState("");
+    const openModal = (msg) =>{ setOpen(true)
+      setmessage(msg);
+    };
+    const closeModal = () => {setOpen(false)
+      setloginfirst(false)
+    };
+    
+  
   const showCancel = () => {
     setCancel(!cancel);
   };
@@ -56,7 +75,7 @@ export default function App({ Component, pageProps }) {
     setLoader(false);
     setCart(false)
   }, [router.events, router.query])
-  console.log(tokenData)
+
   return (
     <>
       <Head>
@@ -65,6 +84,7 @@ export default function App({ Component, pageProps }) {
           name="description"
           content="This An Fashion Store Where You Can Find Every Type Of Fashion."
         />
+        <link rel="icon" href="/Fashion.png" />
         <meta name="author" content="Abubakar Afzal" />
         <meta name="viewport" content="width=device-width,initial-scale=1.0" />
         <meta property="og:title" content="It's A Fahion Store"></meta>
@@ -89,21 +109,26 @@ export default function App({ Component, pageProps }) {
             <div className="xsm:mt-[1.5rem] sm:mt-[7rem] "></div>
             {loader ? (
         <Fade>
-          <div className=" mx-auto mt-[45vh] mb-[50vh] justify-items-center">
+          <div className=" mx-auto min-h-screen content-center items-center justify-items-center">
           <BarLoader 
           height={4}
           width={100}
           color={"rgb(243, 165, 129)"}
           speedMultiplier={1} />
             <br />
-            <br />
-            <p className="font-bold sm:text-[18px] mm:text-[18px] lm:text-[20px] t:text-[22px] l:text-[27px] ll:text-[32px] k:text-[37px]">
+            <div className="text-[---c3] text-center font-bold sm:text-[18px] mm:text-[18px] lm:text-[20px] t:text-[22px] l:text-[27px] ll:text-[32px] k:text-[37px] ">
               Please Wait !!
-            </p>
+            </div>
           </div>
-        </Fade>) :
-            <Component {...pageProps} showCart={showCart}/>
-            }
+        </Fade>) :<>
+        {loginfirst? <Popup open={open} closeOnDocumentClick onClose={closeModal} contentStyle={{ background: 'rgba(255, 255, 255, 0)', border: 'none', width:500,  }}  >
+                  <div className="items-center text-center rounded-[2rem] bg-[---c1] xsm:mx-[2rem] sm:mx-[1px] ">
+                    <h2 className=" text-black font-black p-4 rounded-[2rem] sm:text-[20px] xsm:text-[16px] m-4 ">{message}</h2>
+                    <button onClick={closeModal} className="bg-[---c7] text-white font-black p-4 rounded-[1.5rem] sm:text-[20px] xsm:text-[14px] m-4">Ok..!!</button>
+                  </div>
+                </Popup>:null}   
+                 <Component {...pageProps} showCart={showCart} checkloginornot={checkloginornot} loginfirst={loginfirst} setLoader={setLoader}/>
+            </>}
             <Footer />
           
         </PersistGate>

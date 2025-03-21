@@ -23,30 +23,15 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/components/admin/aboutProducts": [
+    "/components/forgot": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/components/admin/aboutProducts.js"
+      "static/chunks/pages/components/forgot.js"
     ],
-    "/components/admin/admin": [
+    "/components/login": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/components/admin/admin.js"
-    ],
-    "/components/admin/choice": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/components/admin/choice.js"
-    ],
-    "/components/admin/deleteProduct": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/components/admin/deleteProduct.js"
-    ],
-    "/components/admin/updateProduct": [
-      "static/chunks/webpack.js",
-      "static/chunks/main.js",
-      "static/chunks/pages/components/admin/updateProduct.js"
+      "static/chunks/pages/components/login.js"
     ]
   },
   "ampFirstPages": []

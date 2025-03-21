@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
 import Popup from "reactjs-popup";
 
-const DeleteProduct =()=>{
+const DeleteProduct =({setLoader})=>{
     const [id, setid] = useState("");
     const [open, setOpen] = useState(false);
         const [message, setmessage] = useState("");
@@ -23,6 +23,7 @@ const DeleteProduct =()=>{
     }
  
       const checkUniqueId = async ()=>{
+        
         let req = await fetch(`/api/checkUniqueIdOfProduct`,{
           method: "POST",
           headers: {
@@ -32,6 +33,7 @@ const DeleteProduct =()=>{
         }
           );
           let res = await req.json();
+          
           if(res.success == false){
             openModal("This ID Don't Exists..!!")
           }else{
@@ -39,6 +41,7 @@ const DeleteProduct =()=>{
           }
       }
     const deleteProduct = async () => {
+      setLoader(true)
         let product = {
             product_id: parseInt(id),
         }
@@ -50,12 +53,12 @@ const DeleteProduct =()=>{
             body: JSON.stringify(product),
         });
         let res = await post.json();
-        
+        setLoader(false)
         setid("")
         
     }
     return (<>
-            <div className="justify-items-center my-[4rem]">
+            <div className="justify-items-center my-[4rem] min-h-screen content-center overflow-y-scroll hideBar">
            
                 <Popup open={open} closeOnDocumentClick onClose={closeModal} contentStyle={{ background: 'rgba(255, 255, 255, 0)', border: 'none', width:500,  }}  >
                           <div className="items-center text-center rounded-[2rem] bg-[---c1] xsm:mx-[2rem] sm:mx-[1px] shadow-lg">
@@ -65,11 +68,11 @@ const DeleteProduct =()=>{
                         </Popup>
             <Slide direction="left" triggerOnce className={`${open ? "blurred-background":null}`}>
 
-                <div className="font-black xsm:text-[18px] sm:text-[22px] text-center px-[1rem]">Delete Product Clean Store ~~!!</div>
-                <div className="shadow-lg sm:space-y-[2rem] sm:space-x-[1rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---c1]">
+                <div className="font-black xsm:text-[18px] sm:text-[22px] text-center px-[1rem] text-white">Delete Product Clean Store ~~!!</div>
+                <div className="shadow-lg sm:space-y-[2rem] sm:space-x-[1rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---blur]">
                     <div className="xsm:hidden sm:block"></div>
                     <div>
-                        <p className="font-black xsm:text-[18px] sm:text-[22px]">
+                        <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                             ID:
                         </p>
                         <input

@@ -14,7 +14,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import Popup from 'reactjs-popup';
 import 'reactjs-popup/dist/index.css';
 
-const Login = () => {
+const Login = ({loginfirst, setLoader}) => {
   const router = useRouter();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,6 +27,7 @@ const Login = () => {
   const [dPhoto, setdPhoto] = useState(IMAGE6);
   const [signupdisplay, setsignupdisplay] = useState(false);
   const [album, setalbum] = useState(false);
+  
   let hidePass;
   if (hpassword) {
     hidePass = "password";
@@ -70,7 +71,7 @@ const Login = () => {
   }
   const addUser = async () => {
     if(name.length >= 4 && email.length >=4 && password.length >= 4 && address.length >= 3 && phone.length >= 10 && postCode.length >= 4 && email.includes("@gmail.com")){
-      
+      setLoader(true)
     let user = {
       user_email: email,
     }
@@ -82,14 +83,14 @@ const Login = () => {
       body: JSON.stringify(user),
     });
     let res = await post.json();
-
+    setLoader(false)
     if (res.login === true) {
       openModal("User Already Exists ~~!!");
       setsignupdisplay(true)
      
     } else {
      
-    
+      setLoader(true)
     let user = {
       user_name: name,
       user_email: email,
@@ -107,6 +108,7 @@ const Login = () => {
       body: JSON.stringify(user),
     });
     let res = await post.json();
+    setLoader(false)
     if (res.signup == true) {
       localStorage.setItem("Fashion_Store", res.token);
       setName("")
@@ -132,7 +134,7 @@ const Login = () => {
   }
   const loginUser = async () => {
     if(email.length >=12 && password.length >= 4 && email.includes("@gmail.com")){
-
+      setLoader(true)
     let user = {
       user_email: email,
       user_password: password,
@@ -145,8 +147,8 @@ const Login = () => {
       body: JSON.stringify(user),
     });
     let res = await post.json();
-
-    if (res.login === true) {
+    setLoader(false)
+    if (res.login == true) {
       localStorage.setItem("Fashion_Store", res.token);
       setEmail("")
       setPassword("")
@@ -156,6 +158,7 @@ const Login = () => {
         behavior: 'smooth'
       });
     } else {
+      
       openModal("No User Found ~~!!");
       
     }
@@ -188,34 +191,41 @@ const Login = () => {
     const match = cleaned.match(/^(\d{1,3})(\d{0,3})(\d{0,4})$/);
 
     if (match) {
-      const intlCode = (match[1] ? '+' + match[1] : '');
-      const part1 = (match[2] ? ' ' + match[2] : '');
-      const part2 = (match[3] ? '-' + match[3] : '');
+      const intlCode = (match[1] ?  match[1] : '');
+      const part1 = (match[2] ?  match[2] : '');
+      const part2 = (match[3] ?  match[3] : '');
       return [intlCode, part1, part2].join('');
     }
 
     return value;
   };
+  if(open || loginfirst == true){
+    document.body.style.overflow = "hidden";
+   
+}else{
+    document.body.style.overflow = "auto";
+   
+}
   return (
     <>
-      <div className="my-[4rem] ">
+      <div className="my-[4rem] min-h-screen content-center overflow-y-scroll hideBar ">
 
         <Popup open={open} closeOnDocumentClick onClose={closeModal} contentStyle={{ background: 'rgba(255, 255, 255, 0)', border: 'none', width:500,  }}  >
           <div className="items-center text-center rounded-[2rem] bg-[---c1] xsm:mx-[2rem] sm:mx-[1px] ">
             <h2 className=" text-black font-black p-4 rounded-[2rem] sm:text-[20px] xsm:text-[16px] m-4 ">{message}</h2>
-            <button onClick={closeModal} className="bg-[---c7] text-white font-black p-4 rounded-[2rem] sm:text-[20px] xsm:text-[14px] m-4">Close Modal</button>
+            <button onClick={closeModal} className="bg-[---c7] text-white font-black p-4 rounded-[1.5rem] sm:text-[20px] xsm:text-[14px] m-4">Ok..!!</button>
           </div>
         </Popup>
         {signupdisplay ? <>
           {/* signup */}
 
-          <div className="">
+          <div className={`${open || loginfirst ? "blurred-background":null}`}>
 
             <div className="justify-items-center"><Slide triggerOnce direction="left" duration={2000}>
-              <div className="font-black xsm:text-[18px] sm:text-[22px]">
+              <div className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                 SIGN UP
               </div>
-              <div className="shadow-lg shadow-black p-[2rem] sm:space-y-[2rem] sm:space-x-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---c1]">
+              <div className="shadow-lg shadow-black p-[2rem] sm:space-y-[2rem] sm:space-x-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---blur]">
                 <div className="xsm:hidden sm:block"></div>
                 <div className="justify-items-center">
                   <div
@@ -241,7 +251,7 @@ const Login = () => {
                       <Fade cascade>
                         <div
 
-                          className="bg-[---c3] rounded-[2rem] flex flex-wrap w-[18rem] sm:w-[22rem] sm:mr-[2.7rem] place-content-center justify-self-center m-2 "
+                          className="bg-white rounded-[2rem] flex flex-wrap w-[18rem] sm:w-[22rem] sm:mr-[2.7rem] place-content-center justify-self-center m-2 "
                         >
                           <div
 
@@ -338,7 +348,7 @@ const Login = () => {
                     ) : null}
                   </div>                   </div>
                 <div>
-                  <p className="font-black xsm:text-[18px] sm:text-[22px]">
+                  <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                     Name:
                   </p>
                   <input
@@ -352,7 +362,7 @@ const Login = () => {
                   />
                 </div>
                 <div>
-                  <p className="font-black xsm:text-[18px] sm:text-[22px]">
+                  <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                     Email:
                   </p>
                   <input
@@ -366,7 +376,7 @@ const Login = () => {
                   />
                 </div>
                 <div>
-                  <p className="font-black xsm:text-[18px] sm:text-[22px]">
+                  <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                     Password:
                   </p>
                   <div
@@ -385,17 +395,17 @@ const Login = () => {
                     {hpassword ? (
                       <FaEyeSlash
                         onClick={hideP}
-                        className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer"
+                        className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer text-white"
                       />
                     ) : (
                       <FaEye
                         onClick={hideP}
-                        className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer"
+                        className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer text-white"
                       />
                     )}</div>
                 </div>
                 <div>
-                  <p className="font-black xsm:text-[18px] sm:text-[22px]">
+                  <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                     Phone:
                   </p>
                   <input
@@ -405,13 +415,16 @@ const Login = () => {
         name="phone"
         value={phone}
         onChange={handleChange}
-        placeholder="+123 456-7890"
+        placeholder="1234567890"
                     className="w-auto h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                     
                   />
+                  <p className="xsm:w-[60vw] sm:w-[30vw] ml-2 xsm:text-[13px] sm:text-[15px] text-white">
+                Please Enter Your Phone Number Like 923270972423 Don't Add + And Don't Forgot To Enter Country Code.
+              </p>
                 </div>
                 <div>
-                  <p className="font-black xsm:text-[18px] sm:text-[22px]">
+                  <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                     Address:
                   </p>
                   <input
@@ -423,7 +436,7 @@ const Login = () => {
                     className="w-auto h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                     placeholder="Enter Your Address"
                   /> <div>
-                    <p className="font-black xsm:text-[18px] sm:text-[22px]">
+                    <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                       Post code:
                     </p>
                     <input
@@ -447,15 +460,15 @@ const Login = () => {
                 </div>
               </div> </Slide >
             </div>             </div></> : <>  {/* login */}
-          <div className="">
+          <div className={`${open || loginfirst ? "blurred-background":null}`}>
 
             <div className="justify-items-center">
-              <Slide triggerOnce direction="right" duration={2000}> <div className="font-black xsm:text-[18px] sm:text-[22px]">LOGIN</div>
-                <div className="shadow-lg sm:space-y-[2rem] sm:space-x-[2rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---c1]">
+              <Slide triggerOnce direction="right" duration={2000}> <div className="font-black xsm:text-[18px] sm:text-[22px] text-white">LOGIN</div>
+                <div className="shadow-lg sm:space-y-[2rem] sm:space-x-[2rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---blur]">
                   <div className="xsm:hidden sm:block"></div>
 
                   <div>
-                    <p className="font-black xsm:text-[18px] sm:text-[22px]">
+                    <p className="font-black xsm:text-[18px] sm:text-[22px] text-white ">
                       Email:
                     </p>
                     <input
@@ -469,7 +482,7 @@ const Login = () => {
                     />
                   </div>
                   <div>
-                    <p className="font-black xsm:text-[18px] sm:text-[22px]">
+                    <p className="font-black xsm:text-[18px] sm:text-[22px] text-white ">
                       Password:
                     </p>
                     <div
@@ -488,12 +501,12 @@ const Login = () => {
                       {hpassword ? (
                         <FaEyeSlash
                           onClick={hideP}
-                          className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer"
+                          className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer text-white"
                         />
                       ) : (
                         <FaEye
                           onClick={hideP}
-                          className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer"
+                          className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer text-white"
                         />
                       )}</div>
                   </div>

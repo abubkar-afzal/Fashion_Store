@@ -15,8 +15,7 @@ import { MdEdit } from "react-icons/md";
 import { Fade, Slide } from "react-awesome-reveal";
 import Link from "next/link";
 
-const Account = () => {
-  const [loader, setLoader] = useState(false);
+const Account = ({}) => {
   const [name, setname] = useState("");
   const [bd, setbd] = useState("");
   const [password, setpassword] = useState("");
@@ -42,7 +41,7 @@ const Account = () => {
   const router = useRouter();
   useEffect(() => {
     const fetchuser = async () => {
-      setLoader(true);
+      
       const scrollOptions = {
         left: 0,
         top: 0,
@@ -57,6 +56,8 @@ const Account = () => {
         body: JSON.stringify({ token: localStorage.getItem("Fashion_Store") }),
       });
       let res = await d.json();
+      
+
       if(res.success == true){
 
         setEmail(res.login.user_email);
@@ -67,7 +68,6 @@ const Account = () => {
         setaddress(res.login.user_address);
         setphoto(res.login.user_photo);
         responseofuser = res;
-        setLoader(false);
       }else{
         console.log("error came")
       }
@@ -105,7 +105,7 @@ const Account = () => {
     hidePass = "text";
   }
   const DisableChanges = async () => {
-    setLoader(true);
+    
     const scrollOptions = {
       left: 0,
       top: 0,
@@ -120,6 +120,8 @@ const Account = () => {
       body: JSON.stringify({ token: localStorage.getItem("Fashion_Store") }),
     });
     let res = await d.json();
+    
+
     setid(res.login._id);
     setname(res.login.user_name);
     setbd(res.login.user_bd);
@@ -136,10 +138,9 @@ const Account = () => {
     setdphone(true);
     setdpostcode(true);
     setdbd(true);
-    setLoader(false);
   };
   const logOut = () => {
-    setLoader(true);
+    
     const scrollOptions = {
       left: 0,
       top: 0,
@@ -149,7 +150,7 @@ const Account = () => {
     localStorage.removeItem("Fashion_Store");
     window.location.reload();
     router.push("/");
-    setLoader(false);
+    
   };
   const dName = () => {
     setdname(!dname);
@@ -169,7 +170,7 @@ const Account = () => {
     setdpostcode(!dpostcode);
   };
   const SaveChanges = async (e) => {
-    setLoader(true);
+    
     const scrollOptions = {
       left: 0,
       top: 0,
@@ -184,7 +185,7 @@ const Account = () => {
         phone.length > 10) ||
       photo > 0
     ) {
-      
+      setLoader(true)
       let user = {
         _id: id,
         user_name: name,
@@ -204,7 +205,7 @@ const Account = () => {
         body: JSON.stringify(user),
       });
       let res = await r.json();
-
+      setLoader(false)
       if (res) {
         if (res.success) {
           console.log("Fail 1")
@@ -218,7 +219,7 @@ const Account = () => {
         console.log("Fail 3")
      
     }
-    setLoader(false);
+    
   };
   const hideP = () => {
     sethpassword(!hpassword);
@@ -232,7 +233,7 @@ const Account = () => {
       
           <div
             
-            className=" mt-[1rem] text-center m-2 justify-items-center "
+            className="xsm:mt-[5rem] sm:mt-[1rem] text-center m-2 justify-items-center min-h-screen content-center overflow-y-scroll hideBar bg-[---blur] xsm:w-[90vw] sm:w-[50vw] mx-auto rounded-[1rem]"
           >
             <div
               
@@ -356,7 +357,7 @@ const Account = () => {
               <div  className=" ">
                 <p
                   
-                  className=" sm:text-[15px]   font-bold  bg-transparent "
+                  className=" sm:text-[15px]   font-bold  text-white "
                 >
                   : Name :
                 </p>
@@ -379,7 +380,7 @@ const Account = () => {
                   />
                   <BiSolidEditAlt
                     onClick={dName}
-                    className="m-2 sm:text-[30px]  cursor-pointer"
+                    className="m-2 sm:text-[30px]  cursor-pointer text-white"
                   />
                 </div>
               </div>
@@ -388,7 +389,7 @@ const Account = () => {
               <div >
                 <p
                   
-                  className=" sm:text-[15px]   font-bold  bg-transparent "
+                  className=" sm:text-[15px]   font-bold  text-white "
                 >
                   : Password :
                 </p>
@@ -412,24 +413,24 @@ const Account = () => {
                   {hpassword ? (
                     <FaEyeSlash
                       onClick={hideP}
-                      className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer"
+                      className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer text-white"
                     />
                   ) : (
                     <FaEye
                       onClick={hideP}
-                      className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer"
+                      className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer text-white"
                     />
                   )}
                   <BiSolidEditAlt
                     onClick={dPassword}
-                    className="m-2 sm:text-[30px]  cursor-pointer"
+                    className="m-2 sm:text-[30px]  cursor-pointer text-white"
                   />
                 </div>
               </div>
               <div >
                 <p
                   
-                  className=" sm:text-[15px]   font-bold  bg-transparent "
+                  className=" sm:text-[15px]   font-bold  text-white "
                 >
                   : Phone :
                 </p>
@@ -452,14 +453,14 @@ const Account = () => {
                   />
                   <BiSolidEditAlt
                     onClick={dPhone}
-                    className="m-2 sm:text-[30px]  cursor-pointer"
+                    className="m-2 sm:text-[30px]  cursor-pointer text-white"
                   />
                 </div>
               </div>
               <div >
                 <p
                   
-                  className=" sm:text-[15px]   font-bold  bg-transparent "
+                  className=" sm:text-[15px]   font-bold  text-white "
                 >
                   : Address :
                 </p>
@@ -482,14 +483,14 @@ const Account = () => {
                   />
                   <BiSolidEditAlt
                     onClick={dAddress}
-                    className="m-2 sm:text-[30px]  cursor-pointer"
+                    className="m-2 sm:text-[30px]  cursor-pointer text-white"
                   />
                 </div>
               </div>
               <div >
                 <p
                   
-                  className=" sm:text-[15px]   font-bold  bg-transparent "
+                  className=" sm:text-[15px]   font-bold  text-white "
                 >
                   : Post code :
                 </p>
@@ -512,7 +513,7 @@ const Account = () => {
                   />
                   <BiSolidEditAlt
                     onClick={d_postcode}
-                    className="m-2 sm:text-[30px]  cursor-pointer"
+                    className="m-2 sm:text-[30px]  cursor-pointer text-white"
                   />
                 </div>
               </div>

@@ -9,7 +9,7 @@ import { useRouter } from "next/router";
 import Popup from "reactjs-popup";
 var jwt = require("jsonwebtoken")
 
-const buyNow = () => {
+const buyNow = ({setLoader}) => {
   const cartData = useSelector((state) => state.reducer);
   const previousArrayLengthRef = useRef(cartData.length);
   let router = useRouter();
@@ -87,6 +87,9 @@ const buyNow = () => {
   }
 
   const handleIncreaseQuantity = (item) => {
+    
+    const popSound = new Audio("/pop.mp3");
+    popSound.play();
     const updatedItems = items.map((i) =>
       i._id === item._id ? { ...i, product_quantity: i.product_quantity + 1 } : i
     );
@@ -95,6 +98,9 @@ const buyNow = () => {
   };
 
   const handleDecreaseQuantity = (item) => {
+    
+    const popSound = new Audio("/remove.mp3");
+    popSound.play();
     const updatedItems = items.map((i) =>
       i._id === item._id && i.product_quantity > 1 ? { ...i, product_quantity: i.product_quantity - 1 } : i
     );
@@ -107,11 +113,15 @@ const buyNow = () => {
   };
 
   const handleCleanCart = () => {
+    
+    const popSound = new Audio("/remove.mp3");
+    popSound.play();
     dispatch(cleanCart(cartData));
   };
   const buyNowFun = async () => {
 
     if (cartData.length > 0) {
+      setLoader(true)
       let placedOrder = cartData;
       let removerequest = await fetch(`/api/reduceQuantity`, {
         method: "POST",
@@ -121,6 +131,7 @@ const buyNow = () => {
         body: JSON.stringify(placedOrder),
       });
       let res = await removerequest.json();
+      setLoader(false)
       if (res) {
         if (res.token) {
           localStorage.setItem("Fashion_Store_Orders", res.token);
@@ -134,10 +145,11 @@ const buyNow = () => {
       }
 
     }else{
-      openModal("Please Add Some Items In Cart First")
+      openModal("Please Add Any Item First..!!")
     }
   }
 const placedordeindatabase = async () => {
+  setLoader(true)
   let buy = cartData.map((item) => ({
         
     order_id: item._id,
@@ -172,6 +184,7 @@ const placedordeindatabase = async () => {
       body: JSON.stringify(placedOrder),
     });
     let res = await addData.json();
+    setLoader(false)
     if (res) {
       if (res.orderAdded) {
         openModal("Order Placed Successfully");
@@ -186,10 +199,17 @@ const placedordeindatabase = async () => {
       setmessage(msg);
     };
     const closeModal = () => setOpen(false);
+    if(open  == true){
+      document.body.style.overflow = "hidden";
+     
+  }else{
+      document.body.style.overflow = "auto";
+     
+  }
   return (
     <Fade duration={2000}>
 
-      <div className="xsm:mt-[5rem] mb-[2rem]">
+      <div className={`${open  ? "blurred-background":null} xsm:mt-[5rem] mb-[2rem] min-h-screen content-center overflow-y-scroll hideBar bg-[---blur] m-[1rem] rounded-[1rem] py-[1rem]`}>
          <div className={``}> <Popup open={open} closeOnDocumentClick onClose={closeModal} contentStyle={{ background: 'rgba(255, 255, 255, 0)', border: 'none', width:500,  }}  >
                   <div className="items-center text-center rounded-[2rem] bg-[---c1] xsm:mx-[2rem] sm:mx-[1px] ">
                     <h2 className=" text-black font-black p-4 rounded-[2rem] sm:text-[20px] xsm:text-[16px] m-4 ">{message}</h2>
@@ -198,14 +218,14 @@ const placedordeindatabase = async () => {
                 </Popup></div>  
         <>
         <div className="justify-items-center text-center">
-          <h1 className="xsm:text-[20px] sm:text-[24px] font-black">!!~~Buy Now~~!!</h1>
+          <h1 className="xsm:text-[20px] sm:text-[24px] font-black text-white">!!~~Buy Now~~!!</h1>
 
           <div>
-            <div className="xsm:text-[14px] sm:text-[18px] font-semibold mt-[2rem]" >Please Check Your Details Of Order Placed !!</div>
+            <div className="xsm:text-[14px] sm:text-[18px] font-semibold mt-[2rem] text-white" >Please Check Your Details Of Order Placed !!</div>
             <div className="grid  sm:grid-cols-2 mx-[2rem] xsm:my-[1rem] sm:my-[2rem] sm:w-[75vw]  gap-x-[1rem] gap-y-[1rem] ">
               
-              <div className="flex items-center sm:row-start-1 sm:col-start-1 sm:row-end-1 sm:col-end-1 xsm:row-start-1 xsm:col-start-1 xsm:row-end-1 xsm:col-end-1">
-                  <p className="font-semibold xsm:text-[16px] sm:text-[20px]">
+              <div className="flex items-center sm:row-start-1 sm:col-start-1 sm:row-end-1 sm:col-end-1 xsm:row-start-1 xsm:col-start-1 xsm:row-end-1 xsm:col-end-1 ">
+                  <p className="font-semibold xsm:text-[16px] sm:text-[20px] text-white">
                     Name:
                   </p>
                   <input
@@ -219,7 +239,7 @@ const placedordeindatabase = async () => {
                   />
                 </div>
                 <div className="flex items-center sm:row-start-1 sm:col-start-2 sm:row-end-1 sm:col-end-2 xsm:row-start-2 xsm:col-start-1 xsm:row-end-2 xsm:col-end-1">
-                  <p className="font-semibold xsm:text-[16px] sm:text-[20px]">
+                  <p className="font-semibold xsm:text-[16px] sm:text-[20px] text-white">
                     Email:
                   </p>
                   <input
@@ -234,7 +254,7 @@ const placedordeindatabase = async () => {
                   />
                 </div>
                 <div className="flex items-center sm:row-start-2 sm:col-start-1 sm:row-end-2 sm:col-end-1 xsm:row-start-3 xsm:col-start-1 xsm:row-end-3 xsm:col-end-1">
-                  <p className="font-semibold xsm:text-[16px] sm:text-[20px]">
+                  <p className="font-semibold xsm:text-[16px] sm:text-[20px] text-white">
                     Phone:
                   </p>
                   <input
@@ -248,7 +268,7 @@ const placedordeindatabase = async () => {
                   />
                 </div>
                 <div className="flex items-center sm:row-start-3 sm:col-start-1 sm:row-end-3 sm:col-end-3 xsm:row-start-4 xsm:col-start-1 xsm:row-end-4 xsm:col-end-1">
-                  <p className="font-semibold xsm:text-[16px] sm:text-[20px]">
+                  <p className="font-semibold xsm:text-[16px] sm:text-[20px] text-white">
                     Address:
                   </p>
                   <input
@@ -261,7 +281,7 @@ const placedordeindatabase = async () => {
                     placeholder="Enter Your Address"
                   />
                 </div><div className="flex items-center sm:row-start-2 sm:col-start-2 sm:row-end-2 sm:col-end-2 xsm:row-start-5 xsm:col-start-1 xsm:row-end-5 xsm:col-end-1">
-                  <p className="font-semibold xsm:text-[16px] sm:text-[20px]">
+                  <p className="font-semibold xsm:text-[16px] sm:text-[20px] text-white">
                     PostCode:
                   </p>
                   <input
@@ -277,20 +297,22 @@ const placedordeindatabase = async () => {
                 </div>
           </div>
 
-          <p className="xsm:text-[14px] sm:text-[18px] font-semibold">Please Check That What You Need To Buy. Beacause Buy Now Is Not A Cup Of Tea !!</p>
+          <p className="xsm:text-[14px] sm:text-[18px] font-semibold text-white">Please Check That What You Need To Buy. Beacause Buy Now Is Not A Cup Of Tea !!</p>
         </div>
-        <div className="xsm:mt-[1rem] sm:mt-[2rem] ml-[1rem]">
+        <div className="xsm:mt-[1rem] sm:mt-[2rem] ml-[1rem] text-white">
           <div className="flex justify-center xsm:ml-[1rem] sm:ml-[4rem]">
             <div className="xsm:w-[90%] sm:w-[80%]">
-              <div className="flex justify-between">
+            <div className="flex justify-between">
                 <div className="xsm:w-[30%] sm:w-[30%]">
-                  <p className="xsm:text-[14px] sm:text-[18px] font-black">Product</p>
+                  <div className="xsm:text-[14px] sm:text-[18px] font-black">Product</div>
+                  <div className="xsm:text-[10px] sm:text-[14px] font-thin text-[---c7] ">(There Default Came <br /> Name Of Items)</div>
                 </div>
                 <div className="xsm:w-[30%] sm:w-[30%]">
-                  <p className="xsm:text-[14px] sm:text-[18px] font-black">Price</p>
+                  <div className="xsm:text-[14px] sm:text-[18px] font-black">Price</div>
+                  <div className="xsm:text-[10px] sm:text-[14px] font-thin text-[---c8] ">(There Default Came <br /> Price Of One Items)</div>
                 </div>
                 <div className="xsm:w-[30%] sm:w-[30%]">
-                  <div className="xsm:text-[14px] sm:text-[18px] font-black">Quantity <div className="xsm:text-[10px] sm:text-[14px] font-thin text-[---c9] ">(There Default Came <br /> Total Avaliable Qunatity)</div></div>
+                  <div className="xsm:text-[14px] sm:text-[18px] font-black">Quantity <div className="xsm:text-[10px] sm:text-[14px] font-thin text-[---c9] ">(There Default Came <br /> Total Avaliable Qunatity Of Items)</div></div>
                 </div>
                 
               </div>
@@ -327,7 +349,7 @@ const placedordeindatabase = async () => {
                 ))
               ) : (
                 <Fade duration={2000}>
-                  <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center p-2 mt-[20vh] ">
+                  <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center p-2 mt-[20vh] bg-[---blur] rounded-[2rem]">
                     <div className="font-semibold w-1/2 text-wrap"> Please Add Any Item In Cart First ~~!!</div>
                   </div>
                 </Fade>
@@ -339,9 +361,9 @@ const placedordeindatabase = async () => {
             <div className="flex space-x-[2rem]">
               
                 <button onClick={()=>{buyNowFun()}} className="flex xsm:text-[10px] sm:text-[14px]  items-center font-black bg-[---c8] px-[1rem] py-[10px]  rounded-[2rem]">
-                  Check out <BsCartCheckFill className="mx-1" />
+                  Buy Now <BsCartCheckFill className="mx-1" />
                 </button> <button onClick={handleCleanCart} className="flex xsm:text-[10px] sm:text-[14px]  items-center font-black bg-[---c9] px-[1rem] py-[10px] rounded-[2rem]">
-                Clear Cart <BsCartDashFill className="mx-1" />
+                Clear <BsCartDashFill className="mx-1" />
               </button></div>
           </div>
           </div></>

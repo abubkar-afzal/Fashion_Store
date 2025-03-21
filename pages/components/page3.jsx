@@ -6,9 +6,12 @@ import Link from "next/link";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, cleanCart } from "./redux/action";
 
-const Page3 = ({ bestFashion,showCart }) => {
+const Page3 = ({ bestFashion,showCart,checkloginornot }) => {
   const dispatch = useDispatch();
   const handleAddToCart = (item)=>{
+    
+    const popSound = new Audio("/pop.mp3");
+    popSound.play();
     dispatch(addToCart(item))
   }
   const cartData = useSelector((state) => state.reducer);
@@ -17,7 +20,7 @@ const Page3 = ({ bestFashion,showCart }) => {
     }
   return (
     <>
-      <div className="h-[70vh] overflow-y-scroll hideBar my-[2rem]">
+      <div className={`${bestFashion.length ==0 ? "hidden" : "block"} h-[70vh] overflow-y-scroll hideBar mt-[2rem] bg-white shadow-xl`}>
         {bestFashion.map((item) => {
           return (
             <div
@@ -36,11 +39,11 @@ const Page3 = ({ bestFashion,showCart }) => {
                 <div className="xsm:hidden sm:flex xsm:space-y-2 xsm:items-center  space-x-[1rem] pt-2 mx-[1rem]">
                   <div></div>
                   <Link href={`/components/buyNow`} >
-                  <button onClick={() => { handleCleanCart(),handleAddToCart(item)} } className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---b4]">
+                  <button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} } className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---b4]">
                     Buy Now
                     <FaShoppingBag className="xsm:text-[15px] sm:text-[18px] mx-1" />
                   </button></Link>
-                  <button onClick={()=>{handleAddToCart(item)}} className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]">
+                  <button onClick={()=>{handleAddToCart(item),checkloginornot()}} className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]">
                     Add To Cart
                     <FaCartShopping className="xsm:text-[15px] sm:text-[18px] mx-1" />
                   </button>
@@ -57,11 +60,11 @@ const Page3 = ({ bestFashion,showCart }) => {
                 />
                 <div className="sm:hidden flex xsm:space-y-2 xsm:items-center sm:justify-between space-x-[2px] pt-2">
                   <div></div>
-                  <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item)} } className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---b4]">
+                  <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} } className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---b4]">
                     Buy Now
                     <FaShoppingBag className="xsm:text-[15px] sm:text-[18px] mx-1" />
                   </button></Link>
-                  <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]">
+                  <button onClick={() => { handleAddToCart(item),checkloginornot() }} className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]">
                     Add To Cart
                     <FaCartShopping className="xsm:text-[15px] sm:text-[18px] mx-1" />
                   </button>

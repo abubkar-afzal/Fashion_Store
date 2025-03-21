@@ -4,8 +4,9 @@ import Link from "next/link";
 import React from "react";
 import { FaSquareMinus } from "react-icons/fa6";
 
-const OrderDetails = ({ details }) => {
+const OrderDetails = ({ details,setLoader }) => {
   const deleteOrder = async () => {
+    setLoader(true)
     let d = await fetch(`/api/deleteOrder`, {
       method: "POST",
       headers: {
@@ -14,6 +15,7 @@ const OrderDetails = ({ details }) => {
       body: JSON.stringify(details._id),
     });
     let res = await d.json();
+    setLoader(false)
     if (res.success == true) {
       console.log("deleted");
     } else {
@@ -22,8 +24,8 @@ const OrderDetails = ({ details }) => {
   }
   return (
     <>
-      <div className="justify-items-center space-y-[1rem] xsm:my-[5rem] sm:mt-[1px] sm:mb-[5rem]">
-        <div className="xsm:text-[25px] sm:text-[35px] font-black">
+      <div className="justify-items-center space-y-[1rem] xsm:my-[5rem] sm:mt-[1px] sm:mb-[5rem] min-h-screen content-center overflow-y-scroll hideBar text-white bg-[---blur] m-[2rem] py-[1rem] rounded-[2rem]">
+        <div className="xsm:text-[25px] sm:text-[35px] font-black ">
           !!~~Order Details~~!!
         </div>
 

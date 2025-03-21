@@ -2,10 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/components/admin/aboutProducts": "pages/components/admin/aboutProducts.js",
-  "/components/admin/choice": "pages/components/admin/choice.js",
-  "/components/admin/updateProduct": "pages/components/admin/updateProduct.js",
-  "/api/getFooter": "pages/api/getFooter.js",
-  "/components/admin/admin": "pages/components/admin/admin.js",
-  "/components/admin/deleteProduct": "pages/components/admin/deleteProduct.js"
+  "/": "pages/index.js",
+  "/components/login": "pages/components/login.js",
+  "/components/forgot": "pages/components/forgot.js"
 }

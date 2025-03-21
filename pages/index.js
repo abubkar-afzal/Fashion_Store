@@ -1,12 +1,42 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Page1 from "./components/page1";
 import { Fade } from "react-awesome-reveal";
 import { MongoClient } from "mongodb";
+import Popup from "reactjs-popup";
 
-export default function Home({ allNewCollection, bestFashion, bestSeller, men, women, kids, family,DealOfDay,Intro,allFeedbacks }) {
+export default function Home({ allNewCollection, bestFashion, bestSeller, men, women, kids, family,DealOfDay,Intro,allFeedbacks,checkloginornot,setLoader }) {
+  const [open, setOpen] = useState(false);
+  const [message, setmessage] = useState("");
+
+    useEffect(() => {
+      if(!localStorage.getItem("Fashion_Store")){
+          setOpen(true)
+        }
+    }, [])
+    
+    const closeModal = () => {setOpen(false) 
+     
+    };
+  if(open  == true){
+    document.body.style.overflow = "hidden";
+   
+}else{
+    document.body.style.overflow = "auto";
+   
+}
   return (
     <>
-      <Fade duration={2000}>
+    <Popup open={open} closeOnDocumentClick onClose={closeModal} contentStyle={{ background: 'rgba(255, 255, 255, 0)', border: 'none', width:500,  }}  >
+              <div className="items-center text-center rounded-[2rem] bg-[---c1] xsm:mx-[2rem] sm:mx-[1px] shadow-lg">
+              <video className="w-full rounded-[2rem]" autoPlay controls src="/buy.mp4" type="video/mp4">
+
+Your browser does not support the video tag
+</video>
+                <h2 className=" text-black font-black p-4 rounded-[2rem] sm:text-[20px] xsm:text-[16px] m-4 ">This is Tutorial That How to Buy First Time ..!!</h2>
+                <button onClick={closeModal} className="bg-[---c7] text-white font-black p-4 rounded-[1.5rem] sm:text-[20px] xsm:text-[14px] m-4">Ok..!!</button>
+              </div>
+            </Popup>
+      <Fade duration={2000} className={`${open  ? "blurred-background":null}`}>
         <Page1
           allNewCollection={allNewCollection}
           bestFashion={bestFashion}
@@ -18,6 +48,8 @@ export default function Home({ allNewCollection, bestFashion, bestSeller, men, w
           DealOfDay={DealOfDay}
           Intro={Intro}
           allFeedbacks={allFeedbacks}
+          checkloginornot={checkloginornot}
+          setLoader={setLoader}
         />
       </Fade>
     </>

@@ -2,11 +2,12 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
-const Orders = () => {
+const Orders = ({setLoader}) => {
   const router = useRouter();
   const [allorders, setOrders] = useState([]);
   useEffect(() => {
     const fetchorders = async () => {
+     
       const scrollOptions = {
         left: 0,
         top: 0,
@@ -23,22 +24,23 @@ const Orders = () => {
         }),
       });
       let res = await d.json();
+      
       if (res.success == true) {
         setOrders(res.FromUserEmail);
-        console.log(res.FromUserEmail);
-      } else {
-        console.log("error came");
-      }
+        
+
+      } 
     };
     if (localStorage.getItem("Fashion_Store")) {
       fetchorders();
+      
     } else {
       router.push("/");
     }
   }, [router.query]);
   return (
     <>
-      <div className="xsm:mt-[4rem] sm:mt-[1px]">
+      <div className="xsm:mt-[4rem] sm:mt-[1px] min-h-screen  overflow-y-scroll hideBar text-white bg-[---blur] m-[1rem] rounded-[1rem]">
         <div className="xsm:mt-[1rem] sm:mt-[2rem] ">
           <div className="flex justify-center ">
             <div className="xsm:w-[90%] sm:w-[80%]">
@@ -59,13 +61,14 @@ const Orders = () => {
               </div>
               {allorders.length > 0 ? (
                 allorders.map((atom) => {
+                  console.log(allorders)
                   return (
-                    <div key={atom._id}>
+                    <div key={atom._id} className="">
                       {atom.orders.items.map((item) => {
                         return (
                           <>
-                            <div key={item._id}>
-                              <div className="flex justify-between xsm:mt-[1rem] sm:mt-[2rem] cursor-pointer shadow-lg px-[1rem] rounded-[1rem]">
+                            <div key={atom._id}>
+                              <div className="flex justify-between xsm:mt-[1rem] sm:mt-[2rem] cursor-pointer shadow-lg px-[1rem] rounded-[1rem] hover:bg-white hover:text-black duration-[1s]">
                                 <div className="xsm:w-[30%] sm:w-[30%] overflow-scroll hideBar">
                                   <p className="xsm:text-[14px] sm:text-[18px] font-semibold">
                                     {item._id}
@@ -105,16 +108,23 @@ const Orders = () => {
                 })
               ) : (
                 <>
-                  <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center p-2 mt-[20vh] ">
+                  <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center p-2 mt-[20vh] bg-[---blur] rounded-[2rem] shadow-lg">
                     <div className="font-semibold w-1/2 text-wrap">
                       
-                      Please Add Any Item In CheckOut First ~~!!
+                      Please Buy Any Thing First ~~!!
                     </div>
                   </div>
                 </>
               )}
             </div>
+            
           </div>
+          <div className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center p-2 mt-[20vh] bg-[---blur] rounded-[2rem] shadow-lg">
+                    <div className="font-semibold w-1/2 text-wrap">
+                      
+                     The Product You Checkout Don't Reached To You Because It's A Personal Project Not For Production.
+                    </div>
+                  </div>
         </div>
       </div>
     </>

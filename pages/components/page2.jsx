@@ -7,9 +7,12 @@ import { FaCartShopping } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, cleanCart } from "./redux/action";
 
-const Page2 = ({ allNewCollection,showCart }) => {
+const Page2 = ({ allNewCollection,showCart,checkloginornot }) => {
   const dispatch = useDispatch();
   const handleAddToCart = (item)=>{
+    
+    const popSound = new Audio("/pop.mp3");
+    popSound.play();
     dispatch(addToCart(item))
   }
   const cartData = useSelector((state) => state.reducer);
@@ -18,18 +21,18 @@ const Page2 = ({ allNewCollection,showCart }) => {
     }
   return (
     <>
-      <div className=" bg-white overflow-y-hidden m-4 text-center justify-items-center ">
-        <h1 className="text-[3rem] font-bold text-center m-2">
+      <div className={`${allNewCollection.length ==0 ? "hidden": "block"}  overflow-y-hidden m-4 text-center justify-items-center hideBar`}>
+        <div className="text-white w-full text-[3rem] font-bold text-center m-2 bg-[---c4]" >
           New Collection
-        </h1>
-        <div className="h-[70vh] overflow-y-scroll hideBar">
+        </div>
+        <div className="h-[70vh] overflow-x-scroll hideBar">
           <div className=" m-0 sm:flex  sm:flex-wrap space-y-[3rem] sm:space-x-[3rem] sm:place-content-center justify-between mx-auto w-auto ">
             <div></div>
             {allNewCollection.map((item) => {
               return (
                 <div
                   key={item._id}
-                  className=" xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] sm:w-[15rem] xsm:m-2 "
+                  className=" xsm:hover:cursor-pointer xsm:border-[2px] xsm:w-[9rem] sm:w-[15rem] xsm:m-2 bg-white hideBar"
                 >
                   {
                     item.product_quantity == 0 ?  <> 
@@ -100,11 +103,11 @@ const Page2 = ({ allNewCollection,showCart }) => {
            
                  <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between bg-white pb-2 space-x-[1rem] pt-2">
                        <div></div>
-                       <button  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                       <button  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center cursor-default">
                          Buy Now
                          <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                        </button>
-                       <button  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                       <button  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center cursor-default">
                          Add To Cart
                          <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                        </button>
@@ -174,11 +177,11 @@ const Page2 = ({ allNewCollection,showCart }) => {
                 </Link>
                   <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between bg-white pb-2 space-x-[1rem] pt-2">
                         <div></div>
-                        <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item)} } className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                        <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} } className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                           Buy Now
                           <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button></Link>
-                        <button onClick={() => { handleAddToCart(item)} } className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                        <button onClick={() => { handleAddToCart(item), checkloginornot()} } className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                           Add To Cart
                           <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button>

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Slide } from "react-awesome-reveal";
 import Popup from "reactjs-popup";
 import { RxUpdate } from "react-icons/rx";
-const UpdateProduct =()=>{
+const UpdateProduct =({setLoader})=>{
     const [id, setid] = useState("");
     const [title, settitle] = useState("");
     const [desc, setdesc] = useState("");
@@ -134,6 +134,13 @@ const UpdateProduct =()=>{
     }
     } 
     const updateProduct = async () => {
+      if(id <=0 && title.length < 4 && image.length < 4 && desc.length < 4 && category.length < 2 && price <=0 && color.length < 2 && size.length <= 0 && qty <=0 && trend.length < 2 && rating <=0  && displayPlace.length < 2 && displayTitle.length < 4 && displayDesc.length < 4 && image.includes("http") || image.includes("https")){
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+        setLoader(true);
+        setLoader(true)
         let product = {
             product_id: id,
             product_title: title,
@@ -158,6 +165,7 @@ const UpdateProduct =()=>{
             body: JSON.stringify(product),
         });
         let res = await post.json();
+        setLoader(false)
         if(res.data){
             
               openModal("Product Update Successfully !!");
@@ -175,14 +183,21 @@ const UpdateProduct =()=>{
             setdisplayPlace("")
             setdisplayTitle("")
             setdisplayDesc("")
+       }}else{
+        openModal("Please Enter Correct Things..!!")
        }
          }
 return (<>
-            <div className="justify-items-center my-[4rem]">
+            <div className="justify-items-center my-[4rem] min-h-screen content-center overflow-y-scroll hideBar">
                 {
                     imagetutorial ? <Popup open={imagetutorial} closeOnDocumentClick onClose={closeImageTutorial} contentStyle={{ background: 'rgba(255, 255, 255, 0)', border: 'none', width:500,  }}  >
                     <div className="items-center text-center rounded-[2rem] bg-[---c1] xsm:mx-[2rem] sm:mx-[1px] shadow-lg">
-                      <h2 className=" text-black font-black p-4 rounded-[2rem] sm:text-[14px] xsm:text-[12px] m-4 ">This is not sponsered !! </h2>
+                    <video className="w-full rounded-[2rem]" autoPlay controls src="/image.mp4" type="video/mp4">
+
+Your browser does not support the video tag
+</video>
+                <h2 className=" text-black font-black p-4 rounded-[2rem] sm:text-[20px] xsm:text-[16px] m-4 ">This is Tutorial That How to Make URL Of Image ..!!</h2>
+              <h2 className="  font-black p-4 rounded-[2rem] sm:text-[14px] xsm:text-[12px] m-4 ">This is not sponsered !! </h2>
                       <button onClick={closeImageTutorial} className="bg-[---c7] text-white font-black p-4 rounded-[2rem] sm:text-[20px] xsm:text-[14px] m-4">Close Tutorial</button>
                     </div>
                   </Popup>: null
@@ -190,18 +205,18 @@ return (<>
 
 <Popup open={open} closeOnDocumentClick onClose={closeModal} contentStyle={{ background: 'rgba(255, 255, 255, 0)', border: 'none', width:500,  }}  >
           <div className="items-center text-center rounded-[2rem] bg-[---c1] xsm:mx-[2rem] sm:mx-[1px] shadow-lg">
-            <h2 className=" text-black font-black p-4 rounded-[2rem] sm:text-[14px] xsm:text-[12px] m-4 ">{message}</h2>
-            <button onClick={closeModal} className="bg-[---c7] text-white font-black p-4 rounded-[2rem] sm:text-[20px] xsm:text-[14px] m-4">Close Tutorial</button>
+            <h2 className=" text-white font-black p-4 rounded-[2rem] sm:text-[14px] xsm:text-[12px] m-4 ">{message}</h2>
+            <button onClick={closeModal} className="bg-[---c7] text-white font-black p-4 rounded-[1.5rem] sm:text-[20px] xsm:text-[14px] m-4">Ok..!!</button>
           </div>
         </Popup>
         <Slide direction="left" triggerOnce className={`${open || imagetutorial ? "blurred-background":null}`}>
-          <div className="font-black xsm:text-[18px] sm:text-[22px] text-center px-[1rem]">
+          <div className="font-black xsm:text-[18px] sm:text-[22px] text-white text-center px-[1rem] ">
             Update Product For Better Production ~~!!
           </div>
-          <div className="  shadow-lg sm:space-y-[2rem] sm:space-x-[1rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---c1]">
+          <div className="  shadow-lg sm:space-y-[2rem] sm:space-x-[1rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---blur]">
             <div className="xsm:hidden sm:block"></div>
             <div>
-              <p className="font-black xsm:text-[18px] sm:text-[22px]">ID:</p>
+              <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">ID:</p>
               <input
                 onChange={(e) => {
                   setid(e.target.value);
@@ -211,12 +226,12 @@ return (<>
                 className="w-full h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                 placeholder="Enter Your Id"
               />
-              <p className=" ml-2 xsm:text-[13px] sm:text-[15px]">
+              <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
                 Please there Give A Old ID Of Product Which You Need To Update !!
               </p>
             </div>
             <div>
-              <p className="font-black xsm:text-[18px] sm:text-[22px]">
+              <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                 Title:
               </p>
               <input
@@ -228,12 +243,12 @@ return (<>
                 className="w-full h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                 placeholder="Enter Your Title"
               />
-              <p className=" ml-2 xsm:text-[13px] sm:text-[15px]">
+              <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
                 The Main Title Of Product !!
               </p>
             </div>
             <div>
-              <p className="font-black xsm:text-[18px] sm:text-[22px]">
+              <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                 Image Url:
               </p>
               <input
@@ -245,10 +260,10 @@ return (<>
                 className="w-full h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                 placeholder="Enter Your Image Url"
               />
-              <p className=" ml-2 xsm:text-[13px] sm:text-[15px]">
+              <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
                 Please there only give URL!!
               </p>
-              <div className="flex ml-2 xsm:text-[13px] sm:text-[15px] font-semibold mt-2 space-x-2">
+              <div className="flex ml-2 xsm:text-[13px] sm:text-[15px] text-white font-semibold mt-2 space-x-2">
                 <p className="text-[---c7]">To Generate URL =&gt;</p>
 
                 <Link href={`https://imgur.com/upload`} target="_blank">
@@ -263,7 +278,7 @@ return (<>
               
             </div>
             <div>
-              <p className="font-black xsm:text-[18px] sm:text-[22px]">
+              <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                 Description:
               </p>
               <input
@@ -275,12 +290,12 @@ return (<>
                 className="w-full h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                 placeholder="Enter Your Desc"
               />
-              <p className=" ml-2 xsm:text-[13px] sm:text-[15px]">
+              <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
                 The Description Of Product !!
               </p>
             </div>
             <div className="">
-              <p className="font-black xsm:text-[18px] sm:text-[22px]">
+              <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                 Category:
               </p>
               <div className="relative">
@@ -296,7 +311,7 @@ return (<>
                 />
                 <button
                   onClick={() => {setIsCategoryOpen(!isCategoryOpen),setIstrendOpen(false),setIsplaceOpen(false),setIsratingOpen(false)}}
-                  className="absolute top-0 py-2 text-black rounded-md"
+                  className="absolute top-0 py-2 text-white rounded-md"
                 >
                   ▼
                 </button>
@@ -314,12 +329,12 @@ return (<>
                   </ul>
                 )}
               </div>
-              <p className=" ml-2 xsm:text-[13px] sm:text-[15px]">
+              <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
                 Select Category It Will Display On This Category Page !!
               </p>
             </div>
             <div>
-              <p className="font-black xsm:text-[18px] sm:text-[22px]">
+              <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                 Price:
               </p>
               <input
@@ -331,12 +346,12 @@ return (<>
                 className="w-full h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                 placeholder="Enter Your Price"
               />
-              <p className=" ml-2 xsm:text-[13px] sm:text-[15px]">
+              <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
                 Update A Good Price Of Product !!
               </p>
             </div>
             <div>
-              <p className="font-black xsm:text-[18px] sm:text-[22px]">
+              <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                 Color:
               </p>
               <input
@@ -348,12 +363,12 @@ return (<>
                 className="w-full h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                 placeholder="Enter Your Color"
               />
-              <p className=" ml-2 xsm:text-[13px] sm:text-[15px]">
+              <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
                 Give One Color Which Color Is Display In Image!!
               </p>
             </div>
             <div>
-              <p className="font-black xsm:text-[18px] sm:text-[22px]">Size:</p>
+              <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">Size:</p>
               <input
                 onChange={(e) => {
                   setsize(e.target.value);
@@ -363,12 +378,12 @@ return (<>
                 className="w-full h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                 placeholder="Enter Your Size"
               />
-              <p className=" ml-2 xsm:text-[13px] sm:text-[15px]">
+              <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
                 Give Only One Size According To Image !!
               </p>
             </div>
             <div>
-              <p className="font-black xsm:text-[18px] sm:text-[22px]">
+              <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                 Quantity:
               </p>
               <input
@@ -380,12 +395,12 @@ return (<>
                 className="w-full h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                 placeholder="Enter Your Quantity"
               />
-              <p className=" ml-2 xsm:text-[13px] sm:text-[15px]">
+              <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
                 Enter Total Qunatity Of Exact Size And Color Avaliable !!
               </p>
             </div>
             <div>
-              <p className="font-black xsm:text-[18px] sm:text-[22px]">
+              <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                 Trend:
               </p>
               <div className="relative">
@@ -401,7 +416,7 @@ return (<>
                 />
                 <button
                   onClick={() => {setIstrendOpen(!istrendOpen),setIsplaceOpen(false),setIsratingOpen(false),setIsCategoryOpen(false)}}
-                  className="absolute top-0 py-2 text-black rounded-md"
+                  className="absolute top-0 py-2 text-white rounded-md"
                 >
                   ▼
                 </button>
@@ -419,13 +434,13 @@ return (<>
                   </ul>
                 )}
               </div>
-              <p className=" ml-2 xsm:text-[13px] sm:text-[15px]">
+              <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
                 If Trend Yes Then It Will Display In Trend Page OtherWise Not In
                 Trend Page!!
               </p>
             </div>
             <div className="">
-              <p className="font-black xsm:text-[18px] sm:text-[22px]">
+              <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                 Rating:
               </p><div className="relative">
                 <input
@@ -440,7 +455,7 @@ return (<>
                 />
                 <button
                   onClick={() => {setIsratingOpen(!isratingOpen),setIsplaceOpen(false),setIsCategoryOpen(false),setIstrendOpen(false) }}
-                  className="absolute top-0 py-2 text-black rounded-md"
+                  className="absolute top-0 py-2 text-white rounded-md"
                 >
                   ▼
                 </button>
@@ -458,12 +473,12 @@ return (<>
                   </ul>
                 )}
               </div>
-              <p className=" ml-2 xsm:text-[13px] sm:text-[15px]">
+              <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
                 Only Give Default Rating In 1 To 5 !!
               </p>
             </div>
             <div>
-              <p className="font-black xsm:text-[18px] sm:text-[22px]">
+              <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                 Display Page Place:
               </p>
               <div className="relative">
@@ -480,7 +495,7 @@ return (<>
                 <button
     
     onClick={() => {setIsplaceOpen(!isplaceOpen),setIsratingOpen(false),setIsCategoryOpen(false),setIstrendOpen(false) }}
-                  className="absolute top-0 py-2 text-black rounded-md"
+                  className="absolute top-0 py-2 text-white rounded-md"
                 >
                   ▼
                 </button>
@@ -498,12 +513,12 @@ return (<>
                   </ul>
                 )}
               </div>
-              <p className=" ml-2 xsm:text-[13px] sm:text-[15px]">
+              <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
                 Select The Place There You Need To Display It On Store !!
               </p>
             </div>
             <div>
-              <p className="font-black xsm:text-[18px] sm:text-[22px]">
+              <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                 Display Page Title:
               </p>
               <input
@@ -515,13 +530,13 @@ return (<>
                 className="w-full h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                 placeholder="Enter Your Display Page Title"
               />
-              <p className=" ml-2 xsm:text-[13px] sm:text-[15px]">
+              <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
                 Select The Title Which Is Display On Page According To It's
                 Place!!
               </p>
             </div>
             <div>
-              <p className="font-black xsm:text-[18px] sm:text-[22px]">
+              <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                 Display Page Description:
               </p>
               <input
@@ -533,7 +548,7 @@ return (<>
                 className="w-full h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                 placeholder="Enter Your Display Page Description"
               />
-              <p className=" ml-2 xsm:text-[13px] sm:text-[15px]">
+              <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
                 Select The Description Which Is Display On Page According To
                 It's Place!!
               </p>

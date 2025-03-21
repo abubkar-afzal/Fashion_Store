@@ -45,12 +45,12 @@ const Admin = () => {
   };
   return (<>
 
-    <div className="justify-items-center my-[4rem]">
-      <Slide direction="right" > <div className="font-black xsm:text-[18px] sm:text-[22px]">Welcome Admin ~~!! </div>
-        <div className="shadow-lg sm:space-y-[2rem] sm:space-x-[2rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---c1]">
+    <div className="justify-items-center my-[4rem] min-h-screen content-center overflow-y-scroll hideBar">
+      <Slide direction="right" > <div className="text-white font-black xsm:text-[18px] sm:text-[22px]">Welcome Admin ~~!! </div>
+        <div className="shadow-lg sm:space-y-[2rem] sm:space-x-[2rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---blur]">
           <div className="xsm:hidden sm:block"></div>
           <div>
-            <p className="font-black xsm:text-[18px] sm:text-[22px]">
+            <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
               Password:
             </p>
             <div
@@ -69,12 +69,12 @@ const Admin = () => {
               {hpassword ? (
                 <FaEyeSlash
                   onClick={hideP}
-                  className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer"
+                  className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer text-white"
                 />
               ) : (
                 <FaEye
                   onClick={hideP}
-                  className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer"
+                  className=" m-2 sm:text-[20px] mm:text-[26px] lm:text-[30px] t:text-[26px] l:text-[30px] ll:text-[37px] k:text-[45px] cursor-pointer text-white"
                 />
               )}</div>
           </div>

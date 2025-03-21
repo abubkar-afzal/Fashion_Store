@@ -9,9 +9,12 @@ import { FaCartShopping } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, cleanCart } from "./redux/action";
 
-const Page5 = ({ men, women, kids, family,showCart }) => {
+const Page5 = ({ men, women, kids, family,showCart,checkloginornot }) => {
   const dispatch = useDispatch();
   const handleAddToCart = (item)=>{
+    
+    const popSound = new Audio("/pop.mp3");
+    popSound.play();
     dispatch(addToCart(item))
   }
   const cartData = useSelector((state) => state.reducer);
@@ -48,11 +51,11 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
   };
   return (
     <>
-      <div className=" overflow-hidden xsm:text-center xsm:bg-white mx-[1rem] my-[2rem] ">
-        <h1 className="xsm:text-[2rem] xsm:font-bold sm:text-[3rem] ">
+      <div className={`${men.length ==0 && women.length ==0 && kids.length ==0 && family.length ==0 ? "hidden":"block"} overflow-hidden xsm:text-center  shadow-xl`}>
+        <div className="xsm:text-[2rem] xsm:font-bold sm:text-[3rem] bg-white">
           Our Product
-        </h1>
-        <div className="xsm:flex xsm:font-bold xsm:my-4 justify-between shadow-lg pb-[1rem] sm:text-[1.5rem] px-[2rem]">
+        </div>
+        <div className="xsm:flex xsm:font-bold  justify-between shadow-lg pb-[1rem] sm:text-[1.5rem] px-[2rem] bg-white">
           <p
             className={`cursor-pointer  ${displayMen ? "underline-with-margin  " : "underline-hover"
               }`}
@@ -82,7 +85,7 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
             Family
           </p>
         </div>
-        <div className="xsm:grid xsm:grid-cols-2  xsm:overflow-scroll xsm:h-[800px] sm:grid sm:grid-cols-auto sm:overflow-scroll  gap-[1rem] hideBar sm:h-[25rem] justify-items-center ">
+        <div className="xsm:grid xsm:grid-cols-2  xsm:overflow-scroll xsm:h-[800px] sm:grid sm:grid-cols-auto sm:overflow-scroll  gap-[1rem] hideBar sm:h-[25rem] justify-items-center bg-[---blur]">
           {displayMen
             ? (men.length !== 0 ? <> {men.map((item) => {
               return (
@@ -146,11 +149,11 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                     </div>
                 <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                       <div></div>
-                <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center ">
+                <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center cursor-default">
                         Buy Now
-                        <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
+                        <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1 " />
                       </button>
-                <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center ">
+                <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center cursor-default">
                         Add To Cart
                         <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                       </button>
@@ -211,11 +214,11 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                     </Link>
                 <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                       <div></div>
-                      <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item)} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                      <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                         Buy Now
                         <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                       </button></Link>
-                <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                <button onClick={() => { handleAddToCart(item),checkloginornot() }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                         Add To Cart
                         <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                       </button>
@@ -224,7 +227,7 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
               </div>
               </>
               );
-            })} <Link href={`/components/other/men`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c4]  sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link> </> : (
+            })} <Link href={`/components/other/men`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c2]  mb-[1rem] sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---h2]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link> </> : (
 
               <div className="bg-[---c1] p-4 col-start-1 col-end-3 h-[10vh] mt-[20vh] ">NO Product Add Product</div>
 
@@ -292,11 +295,11 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                       </div>
                   <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                         <div></div>
-                  <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center ">
+                  <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center cursor-default">
                           Buy Now
                           <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button>
-                  <button  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center ">
+                  <button  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center cursor-default">
                           Add To Cart
                           <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button>
@@ -357,11 +360,11 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                       </Link>
                   <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                         <div></div>
-                        <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item)} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                        <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                           Buy Now
                           <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button></Link>
-                  <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                  <button onClick={() => { handleAddToCart(item),checkloginornot() }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                           Add To Cart
                           <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button>
@@ -370,7 +373,7 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                 </div>
                 </>
                 );
-              })} <Link href={`/components/other/women`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c4]  sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button> </Link> </> :
+              })} <Link href={`/components/other/women`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c2]  mb-[1rem] sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---h2]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button> </Link> </> :
               (
                   <div className="bg-[---c1] p-4 col-start-1 col-end-3 h-[10vh] mt-[20vh] ">NO Product Add Product</div>
                 )
@@ -438,11 +441,11 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                           </div>
                       <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                             <div></div>
-                      <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center ">
+                      <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center cursor-default">
                               Buy Now
                               <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button>
-                      <button  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center ">
+                      <button  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center cursor-default">
                               Add To Cart
                               <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button>
@@ -503,11 +506,11 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                           </Link>
                       <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                             <div></div>
-                            <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item)} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                            <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                               Buy Now
                               <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button></Link>
-                      <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                      <button onClick={() => { handleAddToCart(item),checkloginornot() }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                               Add To Cart
                               <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button>
@@ -516,7 +519,7 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                     </div>
                     </>
                   );
-                })}  <Link href={`/components/other/kids`} className="col-start-1 col-end-3 "><button className={` font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c4]  sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link></> :
+                })}  <Link href={`/components/other/kids`} className="col-start-1 col-end-3 "><button className={` font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c2]  mb-[1rem] sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---h2]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link></> :
                   (
                     <div className="bg-[---c1] p-4 col-start-1 col-end-3 h-[10vh] mt-[20vh] ">NO Product Add Product</div>
 
@@ -584,11 +587,11 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                           </div>
                       <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                             <div></div>
-                      <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center ">
+                      <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center cursor-default">
                               Buy Now
                               <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button>
-                      <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center ">
+                      <button className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center cursor-default">
                               Add To Cart
                               <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button>
@@ -649,11 +652,11 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                           </Link>
                       <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                             <div></div>
-                            <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item)} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                            <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                               Buy Now
                               <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button></Link>
-                      <button onClick={() => { handleAddToCart(item) }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
+                      <button onClick={() => { handleAddToCart(item),checkloginornot() }} className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---c1]">
                               Add To Cart
                               <FaCartShopping className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button>
@@ -662,7 +665,7 @@ const Page5 = ({ men, women, kids, family,showCart }) => {
                     </div>
                     </>
                     );
-                  })} <Link href={`/components/other/family`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c4]  sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---b4]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link></> :
+                  })} <Link href={`/components/other/family`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c2]  mb-[1rem] sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---h2]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link></> :
                     (
                       <div className="bg-[---c1] p-4 col-start-1 col-end-3 h-[10vh] mt-[20vh] ">NO Product Add Product</div>
                     )

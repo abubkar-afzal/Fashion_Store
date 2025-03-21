@@ -42,9 +42,9 @@ const Feedback = () => {
         }}}
       
     return (<>
-        <div className="justify-items-center xsm:mt-[4rem] sm:mt-[1px]">
-          <div className="xsm:text-[14px] sm:text-[18px] font-semibold mt-[2rem]" >Please Give Your FeedBack !!</div>
-          <div className="grid  sm:grid-cols-2 mx-[2rem] xsm:my-[1rem] sm:my-[2rem] sm:w-[75vw]  gap-x-[1rem] gap-y-[1rem] ">
+        <div className="justify-items-center xsm:mt-[4rem] sm:mt-[1px] min-h-screen content-center overflow-y-scroll hideBar ">
+          <div className="xsm:text-[24px] sm:text-[28px] font-semibold mt-[2rem] text-white" >Please Give Your FeedBack !!</div>
+          <div className="grid  sm:grid-cols-2 mx-[2rem] xsm:my-[1rem] sm:my-[2rem] sm:w-[75vw]  gap-x-[1rem] gap-y-[1rem] bg-[---c1] p-[1rem] rounded-[1rem]">
             
             <div className="flex items-center sm:row-start-1 sm:col-start-1 sm:row-end-1 sm:col-end-1 xsm:row-start-1 xsm:col-start-1 xsm:row-end-1 xsm:col-end-1">
                 <p className="font-semibold xsm:text-[16px] sm:text-[20px]">
