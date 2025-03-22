@@ -1,4 +1,3 @@
-import ProductSchema from "@/model/ProductSchema";
 import { MongoClient } from "mongodb";
 
     

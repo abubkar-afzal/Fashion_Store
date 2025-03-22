@@ -1,6 +1,5 @@
 import feedbackSchema from "@/model/FeedbackSchema";
 import { MongoClient } from "mongodb";
-const jwt = require("jsonwebtoken");
 
 
 export default async function handler(req, res) {

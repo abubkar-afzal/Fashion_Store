@@ -27,3 +27,7 @@ export const reducer = (state = initialState, action) => {
             return state;
     }
 }
+const Reducer = ()=>{
+    return(null)
+}
+export default Reducer

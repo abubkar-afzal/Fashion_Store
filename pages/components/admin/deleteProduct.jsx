@@ -1,4 +1,3 @@
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Fade, Slide } from "react-awesome-reveal";
 import Popup from "reactjs-popup";

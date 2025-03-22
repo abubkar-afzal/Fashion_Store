@@ -18,3 +18,7 @@ const store = configureStore({
 const persistor = persistStore(store);
 
 export { store, persistor };
+const Store = ()=>{
+    return(null)
+}
+export default Store

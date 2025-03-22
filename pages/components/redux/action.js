@@ -34,3 +34,7 @@ export function cleanCart(item){
         data:item
     }
 }
+const Action = ()=>{
+    return(null)
+}
+export default Action

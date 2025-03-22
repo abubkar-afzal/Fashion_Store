@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Slide } from "react-awesome-reveal";

@@ -1,6 +1,5 @@
 import orderSchema from "@/model/OrderSchema";
 import { MongoClient } from "mongodb";
-const jwt = require("jsonwebtoken");
 
 
 export default async function handler(req, res) {
