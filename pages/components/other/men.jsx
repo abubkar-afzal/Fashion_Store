@@ -103,7 +103,7 @@ const Men = ({ allProducts, showCart, checkloginornot }) => {
                   </>
                 ) : (
                   <>
-                    <Link href={`${item._id}`}>
+                    <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/${item._id}`}>
                       <Image
                         src={item.product_img}
                         width={1200}
@@ -155,7 +155,7 @@ const Men = ({ allProducts, showCart, checkloginornot }) => {
                     </Link>
                     <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white sm:justify-between space-x-[1rem] p-2">
                       <div></div>
-                      <Link href={`/components/buyNow`}>
+                      <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/buyNow`}>
                         <button
                           onClick={() => {
                             handleCleanCart(),

@@ -27,7 +27,7 @@ const Page6 = ({DealOfDay,showCart})=>{
                     <h1 className="xsm:text-[4rem] xsm:font-bold xsm:m-3 xsm:text-[---c4]">{item.product_display_page_title}</h1>
                     <p className="xsm:text-[1rem] xsm:font-bold xsm:m-3 xsm:text-[---c4]">{item.product_display_page_desc}</p>
                     <div className="flex">
-                    <Link href={`/components/other/${item.product_id}`}><button className=" h-[3rem] mb-8 xsm:rounded-md xsm:text-[1rem] xsm:font-bold xsm:m-3 xsm:text-white xsm:bg-[---c4] font-black sm:px-4 xsm:px-3 flex  items-center hover:bg-[---b4]">Shope Now </button></Link>
+                    <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/${item.product_id}`}><button className=" h-[3rem] mb-8 xsm:rounded-md xsm:text-[1rem] xsm:font-bold xsm:m-3 xsm:text-white xsm:bg-[---c4] font-black sm:px-4 xsm:px-3 flex  items-center hover:bg-[---b4]">Shope Now </button></Link>
                     <button onClick={() => { handleAddToCart(item),checkloginornot() }}  className=" h-[3rem] mb-8 xsm:rounded-md xsm:text-[1rem] xsm:font-bold xsm:m-3 xsm:text-white xsm:bg-[---c4] font-black sm:px-4 xsm:px-3 flex  items-center hover:bg-[---b4]">Add To Cart </button></div>
                     </div>
                     <Image src={item.product_img} width={1200} height={1200} alt="" className="xsm:px-4  xsm:w-[400px] xsm:h-[400px] sm:w-[500px] sm:h-[500px] sm:py-[2rem] place-self-end" />

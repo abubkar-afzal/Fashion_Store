@@ -75,7 +75,7 @@ const Login = ({loginfirst, setLoader}) => {
     let user = {
       user_email: email,
     }
-    let post = await fetch(`/api/loginUser`, {
+    let post = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/loginUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
@@ -100,7 +100,7 @@ const Login = ({loginfirst, setLoader}) => {
       user_post_code: postCode,
       user_photo: Photo
     }
-    let post = await fetch(`/api/addUser`, {
+    let post = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
@@ -117,7 +117,7 @@ const Login = ({loginfirst, setLoader}) => {
       setPhone("")
       setAddress("")
       setPostCode("")
-      router.push(`/`)
+      router.push(`${process.env.NEXT_PUBLIC_HOST}/`)
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -139,7 +139,7 @@ const Login = ({loginfirst, setLoader}) => {
       user_email: email,
       user_password: password,
     }
-    let post = await fetch(`/api/loginUser`, {
+    let post = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/loginUser`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
@@ -152,7 +152,7 @@ const Login = ({loginfirst, setLoader}) => {
       localStorage.setItem("Fashion_Store", res.token);
       setEmail("")
       setPassword("")
-      router.push(`/`)
+      router.push(`${process.env.NEXT_PUBLIC_HOST}/`)
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -511,7 +511,7 @@ const Login = ({loginfirst, setLoader}) => {
                       )}</div>
                   </div>
                   <div className="w-full">
-                    <Link href={`/components/forgot`}> <p className="text-[---c10] hover:underline font-thin xsm:text-[13px] sm:text-[16px]  text-end  cursor-pointer xsm:mx-4 sm:mx-[2rem]">forgot password ?</p></Link>
+                    <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/forgot`}> <p className="text-[---c10] hover:underline font-thin xsm:text-[13px] sm:text-[16px]  text-end  cursor-pointer xsm:mx-4 sm:mx-[2rem]">forgot password ?</p></Link>
                   </div>
                   <div className="flex justify-between space-x-[1rem] ">
                     <button onClick={loginUser} className="font-black xsm:text-[12px] sm:text-[16px] bg-[---c2] px-[2rem] py-[10px] text-white rounded-[2rem] hover:bg-[---h2]">

@@ -71,7 +71,7 @@ const UpdateProduct =({setLoader})=>{
         findeOneProduct();
     },[id])
     const checkId = async ()=>{
-      let req = await fetch(`/api/checkUniqueIdOfProduct`,{
+      let req = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/checkUniqueIdOfProduct`,{
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=UTF-8",
@@ -88,7 +88,7 @@ const UpdateProduct =({setLoader})=>{
          let productOne = {
             product_id: parseInt(id)
         }
-        let post = await fetch(`/api/getOneProduct`, {
+        let post = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getOneProduct`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=UTF-8",
@@ -157,7 +157,7 @@ const UpdateProduct =({setLoader})=>{
             product_display_page_title: displayTitle,
             product_display_page_desc: displayDesc
         }
-        let post = await fetch(`/api/updateProduct`, {
+        let post = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateProduct`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=UTF-8",

@@ -48,7 +48,7 @@ useEffect(() => {
 }, [id])
   const checkUniqueId = async ()=>{
     
-    let req = await fetch(`/api/checkUniqueIdOfProduct`,{
+    let req = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/checkUniqueIdOfProduct`,{
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
@@ -112,7 +112,7 @@ useEffect(() => {
       product_display_page_title: displayTitle,
       product_display_page_desc: displayDesc,
     };
-    let post = await fetch(`/api/addProduct`, {
+    let post = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addProduct`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=UTF-8",

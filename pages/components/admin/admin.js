@@ -3,6 +3,7 @@ import { useRouter } from "next/router";
 import React, { useState } from "react";
 import { Slide } from "react-awesome-reveal";
 import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import Popup from "reactjs-popup";
 
 const Admin = () => {
   const router = useRouter();
@@ -22,7 +23,7 @@ const Admin = () => {
     let p = {
       password : password
     }
-    let res = await fetch(`/api/loginAdmin`, {
+    let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/loginAdmin`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json; charset=UTF-8',
@@ -32,21 +33,41 @@ const Admin = () => {
     let response = await res.json();
     if(response){
       if(response.success == true){
-      router.push(`/components/admin/choice`)    
+      router.push(`${process.env.NEXT_PUBLIC_HOST}/components/admin/choice`)    
      
       }
       else{
-       console.log("error1")
+        openModal("Please Enter Corrrect Password ..!!")
       }
     }else{
-      console.log("error2")
+      openModal("Please Enter Corrrect Password ..!!")
+
      
     }
   };
+    const [open, setOpen] = useState(false);
+    const [message, setmessage] = useState("");
+    const openModal = (msg) =>{ setOpen(true)
+      setmessage(msg);
+    };
+    const closeModal = () => setOpen(false);
+  if(open  == true){
+    document.body.style.overflow = "hidden";
+   
+}else{
+    document.body.style.overflow = "auto";
+   
+}
   return (<>
 
     <div className="justify-items-center my-[4rem] min-h-screen content-center overflow-y-scroll hideBar">
-      <Slide direction="right" > <div className="text-white font-black xsm:text-[18px] sm:text-[22px]">Welcome Admin ~~!! </div>
+      <Popup open={open} closeOnDocumentClick onClose={closeModal} contentStyle={{ background: 'rgba(255, 255, 255, 0)', border: 'none', width:500,  }}  >
+                <div className="items-center text-center rounded-[2rem] bg-[---c1] xsm:mx-[2rem] sm:mx-[1px] ">
+                  <h2 className=" text-black font-black p-4 rounded-[2rem] sm:text-[20px] xsm:text-[16px] m-4 ">{message}</h2>
+                  <button onClick={closeModal} className="bg-[---c7] text-white font-black p-4 rounded-[1.5rem] sm:text-[20px] xsm:text-[14px] m-4">Ok..!!</button>
+                </div>
+              </Popup>
+      <Slide direction="right" className={`${open  ? "blurred-background":null}`}> <div className="text-white font-black xsm:text-[18px] sm:text-[22px]">Welcome Admin ~~!! </div>
         <div className="shadow-lg sm:space-y-[2rem] sm:space-x-[2rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---blur]">
           <div className="xsm:hidden sm:block"></div>
           <div>
@@ -79,7 +100,7 @@ const Admin = () => {
               )}</div>
           </div>
           <div className="w-full">
-            <Link href={`/components/admin/forgot`}> <p className="text-[---c10] hover:underline font-thin xsm:text-[13px] sm:text-[16px]  text-end  cursor-pointer xsm:mx-4 sm:mx-[2rem]">forgot password ?</p></Link>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/admin/forgot`}> <p className="text-[---c10] hover:underline font-thin xsm:text-[13px] sm:text-[16px]  text-end  cursor-pointer xsm:mx-4 sm:mx-[2rem]">forgot password ?</p></Link>
           </div>
           <div className="flex justify-center space-x-[1rem] ">
            <button onClick={AdminLogin} className="font-black xsm:text-[12px] sm:text-[16px] bg-[---c2] px-[2rem] py-[10px] text-white rounded-[2rem]  hover:bg-[---h2]">

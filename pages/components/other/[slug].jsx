@@ -72,7 +72,7 @@ const ProductDetails = ({details,checkloginornot})=>{
         <div className="xsm:text-[17px] sm:text-[22px] font-medium ">Price: ${details.product_price}</div>
        <div className=" flex xsm:space-y-2 xsm:items-center sm:justify-between space-x-[10px] pt-2">
                          <div></div>
-                         <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(details),checkloginornot()} }  className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---b4]">
+                         <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(details),checkloginornot()} }  className="font-black xsm:text-[15px] sm:text-[18px] bg-black p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---b4]">
                            Buy Now
                            <FaShoppingBag className="xsm:text-[15px] sm:text-[18px] mx-1" />
                          </button></Link>

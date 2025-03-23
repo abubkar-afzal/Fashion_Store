@@ -12,7 +12,7 @@ const AllProduct = ({setLoader}) => {
   }, [router.query])
   const alldata = async ()=>{
     
-    let d = await fetch(`/api/getProduct`);
+    let d = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getProduct`);
     let res = await d.json();
     
     setAllProduct(res.data)

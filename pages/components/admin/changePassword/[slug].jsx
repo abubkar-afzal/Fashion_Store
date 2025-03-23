@@ -46,7 +46,7 @@ const Forgot=({setLoader})=>{
             newPassword: password,
           };
           let res = await fetch(
-            `/api/changeAdminPassword`,
+            `${process.env.NEXT_PUBLIC_HOST}/api/changeAdminPassword`,
             {
               method: "POST",
               headers: {
@@ -59,7 +59,7 @@ const Forgot=({setLoader})=>{
           setLoader(false)
           if (response.success == true) {
            
-            router.push(`/components/admin/admin`);
+            router.push(`${process.env.NEXT_PUBLIC_HOST}/components/admin/admin`);
           } 
         } 
       } 

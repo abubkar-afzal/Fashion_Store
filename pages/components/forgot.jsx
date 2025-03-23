@@ -7,7 +7,7 @@ const Forgot = ()=>{
       const getPassword = async (e) => {
         e.preventDefault();
         if(email.includes("@gmail.com")){
-        let d = await fetch(`/api/forgot`, {
+        let d = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/forgot`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

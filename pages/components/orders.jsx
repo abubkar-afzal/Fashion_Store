@@ -14,7 +14,7 @@ const Orders = ({setLoader}) => {
         behavior: "smooth",
       };
       window.scrollTo(scrollOptions);
-      let d = await fetch(`/api/getOrdersforUser`, {
+      let d = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getOrdersforUser`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -35,7 +35,7 @@ const Orders = ({setLoader}) => {
       fetchorders();
       
     } else {
-      router.push("/");
+      router.push(`${process.env.NEXT_PUBLIC_HOST}/`);
     }
   }, [router.query]);
   return (

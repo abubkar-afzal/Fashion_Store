@@ -16,7 +16,7 @@ const Feedback = () => {
           user_email: email,
          user_feedback: feedback
         }
-        let post = await fetch(`/api/addFeedback`, {
+        let post = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addFeedback`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json; charset=UTF-8",
@@ -29,7 +29,7 @@ const Feedback = () => {
           setName("")
           setEmail("")
          setFeedback("")
-          router.push(`/`)
+          router.push(`${process.env.NEXT_PUBLIC_HOST}/`)
           window.scrollTo({
             top: 0,
             behavior: 'smooth'

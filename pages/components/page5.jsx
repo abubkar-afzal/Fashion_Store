@@ -162,7 +162,7 @@ const Page5 = ({ men, women, kids, family,showCart,checkloginornot }) => {
                 
                 </>:
                 <>
-                <Link href={`/components/other/${item._id}`}>
+                <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/${item._id}`}>
                 <Image
                     src={item.product_img}
                     width={1200}
@@ -214,7 +214,7 @@ const Page5 = ({ men, women, kids, family,showCart,checkloginornot }) => {
                     </Link>
                 <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                       <div></div>
-                      <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                      <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                         Buy Now
                         <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                       </button></Link>
@@ -227,7 +227,7 @@ const Page5 = ({ men, women, kids, family,showCart,checkloginornot }) => {
               </div>
               </>
               );
-            })} <Link href={`/components/other/men`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c2]  mb-[1rem] sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---h2]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link> </> : (
+            })} <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/men`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c2]  mb-[1rem] sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---h2]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link> </> : (
 
               <div className="bg-[---c1] p-4 col-start-1 col-end-3 h-[10vh] mt-[20vh] ">NO Product Add Product</div>
 
@@ -308,7 +308,7 @@ const Page5 = ({ men, women, kids, family,showCart,checkloginornot }) => {
                   
                   </>:
                   <>
-                  <Link href={`/components/other/${item._id}`}>
+                  <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/${item._id}`}>
                   <Image
                       src={item.product_img}
                       width={1200}
@@ -360,7 +360,7 @@ const Page5 = ({ men, women, kids, family,showCart,checkloginornot }) => {
                       </Link>
                   <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                         <div></div>
-                        <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                        <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                           Buy Now
                           <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button></Link>
@@ -373,7 +373,7 @@ const Page5 = ({ men, women, kids, family,showCart,checkloginornot }) => {
                 </div>
                 </>
                 );
-              })} <Link href={`/components/other/women`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c2]  mb-[1rem] sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---h2]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button> </Link> </> :
+              })} <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/women`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c2]  mb-[1rem] sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---h2]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button> </Link> </> :
               (
                   <div className="bg-[---c1] p-4 col-start-1 col-end-3 h-[10vh] mt-[20vh] ">NO Product Add Product</div>
                 )
@@ -454,7 +454,7 @@ const Page5 = ({ men, women, kids, family,showCart,checkloginornot }) => {
                       
                       </>:
                       <>
-                      <Link href={`/components/other/${item._id}`}>
+                      <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/${item._id}`}>
                       <Image
                           src={item.product_img}
                           width={1200}
@@ -506,7 +506,7 @@ const Page5 = ({ men, women, kids, family,showCart,checkloginornot }) => {
                           </Link>
                       <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                             <div></div>
-                            <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                            <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                               Buy Now
                               <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button></Link>
@@ -519,7 +519,7 @@ const Page5 = ({ men, women, kids, family,showCart,checkloginornot }) => {
                     </div>
                     </>
                   );
-                })}  <Link href={`/components/other/kids`} className="col-start-1 col-end-3 "><button className={` font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c2]  mb-[1rem] sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---h2]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link></> :
+                })}  <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/kids`} className="col-start-1 col-end-3 "><button className={` font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c2]  mb-[1rem] sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---h2]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link></> :
                   (
                     <div className="bg-[---c1] p-4 col-start-1 col-end-3 h-[10vh] mt-[20vh] ">NO Product Add Product</div>
 
@@ -600,7 +600,7 @@ const Page5 = ({ men, women, kids, family,showCart,checkloginornot }) => {
                       
                       </>:
                       <>
-                      <Link href={`/components/other/${item._id}`}>
+                      <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/${item._id}`}>
                       <Image
                           src={item.product_img}
                           width={1200}
@@ -652,7 +652,7 @@ const Page5 = ({ men, women, kids, family,showCart,checkloginornot }) => {
                           </Link>
                       <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center bg-white pb-2 sm:justify-between space-x-[1rem] pt-2">
                             <div></div>
-                            <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                            <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} }  className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                               Buy Now
                               <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                             </button></Link>
@@ -665,7 +665,7 @@ const Page5 = ({ men, women, kids, family,showCart,checkloginornot }) => {
                     </div>
                     </>
                     );
-                  })} <Link href={`/components/other/family`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c2]  mb-[1rem] sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---h2]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link></> :
+                  })} <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/family`} className="col-start-1 col-end-3 "><button className={` col-start-1 col-end-3 font-black xsm:text-[18px] h-[3rem] w-auto sm:text-[22px] bg-[---c2]  mb-[1rem] sm:px-4 xsm:px-3 text-white rounded-[2rem] flex items-center hover:bg-[---h2]`}>See More <GiClothes className="xsm:text-[18px] sm:text-[22px] mx-1" /></button></Link></> :
                     (
                       <div className="bg-[---c1] p-4 col-start-1 col-end-3 h-[10vh] mt-[20vh] ">NO Product Add Product</div>
                     )

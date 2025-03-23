@@ -9,7 +9,7 @@ const AllOrders = ({setLoader})=>{
 
   const deleteOrder = async (id) => {
     setLoader(true)
-    let d = await fetch(`/api/deleteOrder`, {
+    let d = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/deleteOrder`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -19,7 +19,7 @@ const AllOrders = ({setLoader})=>{
     let res = await d.json();
     setLoader(false)
     if (res.success == true) {
-      router.push("/components/admin/allOrders");
+      router.push(`${process.env.NEXT_PUBLIC_HOST}/components/admin/allOrders`);
       console.log("deleted");
     } else {
       console.log("error came");
@@ -40,7 +40,7 @@ const AllOrders = ({setLoader})=>{
           behavior: "smooth",
         };
         window.scrollTo(scrollOptions);
-        let d = await fetch(`/api/getOrdersForAdmin`)
+        let d = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getOrdersForAdmin`)
         let res = await d.json();
         
         if (res.success == true) {
@@ -63,7 +63,7 @@ const AllOrders = ({setLoader})=>{
                                         <div key={item._id}>
                                            
                                           <div >
-                                          <Link href={`/components/admin/${atom._id}`} className="flex justify-between xsm:mt-[1rem] sm:mt-[2rem] cursor-pointer shadow-lg px-[1rem] rounded-[1rem] w-[90vw]  bg-[---blur] text-white hover:bg-white hover:text-black duration-[1s]"> <div className="xsm:w-[30%] overflow-scroll hideBar">
+                                          <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/admin/${atom._id}`} className="flex justify-between xsm:mt-[1rem] sm:mt-[2rem] cursor-pointer shadow-lg px-[1rem] rounded-[1rem] w-[90vw]  bg-[---blur] text-white hover:bg-white hover:text-black duration-[1s]"> <div className="xsm:w-[30%] overflow-scroll hideBar">
                                               <p className="xsm:text-[16px] sm:text-[20px] py-2 font-semibold">
                                                 {item._id}
                                               </p>

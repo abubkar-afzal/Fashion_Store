@@ -114,7 +114,7 @@ const Page2 = ({ allNewCollection,showCart,checkloginornot }) => {
                      </div></div>
                      </>:
                      <> 
-                     <Link href={`/components/other/${item._id}`}>
+                     <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/${item._id}`}>
                     <div className="m-4">
                       <div className="font-black xsm:text-[14px] sm:text-[16px]">
                         {item.product_display_page_title}
@@ -177,7 +177,7 @@ const Page2 = ({ allNewCollection,showCart,checkloginornot }) => {
                 </Link>
                   <div className="flex xsm:flex-col xsm:space-y-2 xsm:items-center sm:justify-between bg-white pb-2 space-x-[1rem] pt-2">
                         <div></div>
-                        <Link href={`/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} } className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
+                        <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/buyNow`}><button onClick={() => { handleCleanCart(),handleAddToCart(item),checkloginornot()} } className="font-black xsm:text-[10px] sm:text-[12px] bg-[---c2] p-2 sm:px-4 xsm:px-3 text-white rounded-[2rem] flex  items-center hover:bg-[---c1]">
                           Buy Now
                           <FaShoppingBag className="xsm:text-[10px] sm:text-[12px] mx-1" />
                         </button></Link>

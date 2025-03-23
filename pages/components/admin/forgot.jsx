@@ -13,7 +13,7 @@ const Forgot=({setLoader})=>{
       let s = {
         secret : secret
       }
-      let res = await fetch(`/api/CheckSecret`, {
+      let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/CheckSecret`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
@@ -24,7 +24,7 @@ const Forgot=({setLoader})=>{
       setLoader(false)
       if(response){
         if(response.success == true){
-        router.push(`/components/admin/changePassword/${secret}`);    
+        router.push(`${process.env.NEXT_PUBLIC_HOST}/components/admin/changePassword/${secret}`);    
        
         }
         else{

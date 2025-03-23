@@ -48,7 +48,7 @@ const Account = ({}) => {
         behavior: 'smooth'
     }
     window.scrollTo(scrollOptions);
-      let d = await fetch(`/api/getAccount`, {
+      let d = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getAccount`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -75,7 +75,7 @@ const Account = ({}) => {
     if (localStorage.getItem("Fashion_Store")) {
       fetchuser();
     } else {
-      router.push("/");
+      router.push(`${process.env.NEXT_PUBLIC_HOST}/`);
     }
   }, []);
   useEffect(() => {
@@ -112,7 +112,7 @@ const Account = ({}) => {
       behavior: 'smooth'
   }
   window.scrollTo(scrollOptions);
-    let d = await fetch(`/api/getAccount`, {
+    let d = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getAccount`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -149,7 +149,7 @@ const Account = ({}) => {
   window.scrollTo(scrollOptions);
     localStorage.removeItem("Fashion_Store");
     window.location.reload();
-    router.push("/");
+    router.push(`${process.env.NEXT_PUBLIC_HOST}/`);
     
   };
   const dName = () => {
@@ -197,7 +197,7 @@ const Account = ({}) => {
         user_email: email,
         user_photo: photo,
       };
-      let r = await fetch(`/api/updateUser`, {
+      let r = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/updateUser`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -519,7 +519,7 @@ const Account = ({}) => {
               </div>
             </div>
             <div >
-              <Link href={`/components/orders`}><button
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/orders`}><button
                 
                 className="bg-[---c8] hover:bg-[---h8] xsm:text-[10px] sm:text-[14px] p-4 m-2 w-auto px-[1rem] rounded-[2rem] font-bold shadow-lg text-white"
               >

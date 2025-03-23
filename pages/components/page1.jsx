@@ -50,7 +50,7 @@ const Page1 = ({
                 there you can find all the men, women, child collection as you
                 need.
               </h3>
-              <Link href={`/components/other/trends`}>
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/trends`}>
                 <button className="xsm:bg-black xsm:hover:bg-white xsm:hover:text-black  xsm:text-white duration-[2s] xsm:w-[10rem] xsm:h-12 xsm:rounded-lg xsm:my-2">
                   SHOPE NOW
                 </button>

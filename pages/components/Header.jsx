@@ -103,7 +103,7 @@ let trends;
   return (
     <>
     <div className=" duration-[1s]">
-    <Link href={`/components/admin/admin`}><div className="bg-[---c7] w-[30px] h-[30px] absolute z-20 cursor-not-allowed top-[-10px] rounded-[2rem] xsm:left-[-20px] sm:left-[-15px] "></div>
+    <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/admin/admin`}><div className="bg-[---c7] w-[30px] h-[30px] absolute z-20 cursor-not-allowed top-[-10px] rounded-[2rem] xsm:left-[-20px] sm:left-[-15px] "></div>
     </Link><div
       className="xsm:overflow-x-hidden sticky z-10 xsm:mt-3 xsm:flex xsm:text-[18px] sm:text-[20px] xsm:justify-between sm:pr-[1rem]
          sm:place-items-baseline sm:items-center sm:mt-[2rem] sm:mx-[1rem]"
@@ -112,29 +112,29 @@ let trends;
         {
           //sm
         }
-        <Link href={`/`}>
+        <Link href={`${process.env.NEXT_PUBLIC_HOST}/`}>
           <div className="ml-3 xsm:text-[24px] sm:text-[26px] cursor-pointer font-bold ">
             FASHION
           </div>
         </Link>
         <div className="xsm:hidden  sm:flex xsm:text-[18px] sm:text-[20px] sm:space-x-4  sm:relative  font-semibold">
-          <Link href={`/components/other/men`}>
+          <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/men`}>
             <div className={`sm:text-[18px]  ${men ? "underline-with-margin" :"underline-hover"}`}>MEN</div>
           </Link>
 
-          <Link href={`/components/other/women`}>
+          <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/women`}>
             <div className={`sm:text-[18px]  ${women ? "underline-with-margin" :"underline-hover"}`}>WOMEN</div>
           </Link>
 
-          <Link href={`/components/other/kids`}>
+          <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/kids`}>
             <div className={`sm:text-[18px]  ${kids ? "underline-with-margin" :"underline-hover"}`}>KIDS</div>
           </Link>
 
-          <Link href={`/components/other/family`}>
+          <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/family`}>
             <div className={`sm:text-[18px]  ${family ? "underline-with-margin" :"underline-hover"}`}>FAMILY</div>
           </Link>
 
-          <Link href={`/components/other/trends`}>
+          <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/trends`}>
             <div className={`sm:text-[18px]  ${trends ? "underline-with-margin" :"underline-hover"}`}>TRENDS</div>
           </Link>
         </div>
@@ -144,11 +144,11 @@ let trends;
           </div>
           <div className="">
             {
-              authtoken ? <Link href={`/components/account`}>
+              authtoken ? <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/account`}>
               <button className="xsm:hidden sm:block sm:border-[2px] sm:border-black sm:w-[7rem]  sm:hover:bg-[---c2] hover:border-none hover:text-white h-[2rem] rounded-[10px]">
                 ACCOUNT
               </button>
-            </Link>:<Link href={`/components/login`}>
+            </Link>:<Link href={`${process.env.NEXT_PUBLIC_HOST}/components/login`}>
               <button className="xsm:hidden sm:block sm:border-[2px] sm:border-black sm:w-[5rem]  sm:hover:bg-[---c2] hover:border-none hover:text-white h-[2rem] rounded-[10px]">
                 LOGIN
               </button>
@@ -173,7 +173,7 @@ let trends;
             update  ? (cartData && cartData.map((item) => {
               
               return (<Fade duration={2000}><div key={item._id} className="flex xsm:text-[18px] sm:text-[20px] space-x-[10px] items-center mb-[2rem] place-content-center bg-[---c2] p-2">
-                 <Link href={`/components/other/${item._id}`}><div className=" font-semibold">{item.product_title}</div></Link>
+                 <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/${item._id}`}><div className=" font-semibold">{item.product_title}</div></Link>
                 <button onClick={()=>handleRemoveFromCart(item)} className="flex xsm:text-[14px] sm:text-[12px]  items-center font-black bg-[---c7] px-[1rem] py-[10px]  rounded-[2rem]">
                   Remove <FaSquareMinus className="mx-2" />
                 </button>
@@ -187,7 +187,7 @@ let trends;
             <button onClick={handleCleanCart} className="flex xsm:text-[14px] sm:text-[12px]  items-center font-black bg-[---c9] px-[1rem] py-[10px] rounded-[2rem]">
               Clear Cart <BsCartDashFill className="mx-1" />
             </button>
-            <Link href={`/components/checkout`}>
+            <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/checkout`}>
             <button className="flex xsm:text-[14px] sm:text-[12px]  items-center font-black bg-[---c8] px-[1rem] py-[10px]  rounded-[2rem]">
               Check out <BsCartCheckFill className="mx-1" />
             </button></Link>
@@ -216,35 +216,35 @@ let trends;
                   : "xsm:right-[0.2rem] xsm:duration-[2s] xsm:font-bold xsm:fixed mt-2 xsm:ml-[-4.5rem] xsm:text-right xsm:bg-[---c2] xsm:py-[1.5rem] xsm:text-[18px]"
               }
             >
-              <Link href={`/components/other/men`}>
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/men`}>
                 <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">MEN</li>
               </Link>
-              <Link href={`/components/other/women`}>
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/women`}>
                 <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">
                   WOMEN
                 </li>
               </Link>
-              <Link href={`/components/other/kids`}>
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/kids`}>
                 <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">
                   KIDS
                 </li>
               </Link>
-              <Link href={`/components/other/family`}>
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/family`}>
                 <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">
                   FAMILY
                 </li>
               </Link>
-              <Link href={`/components/other/trends`}>
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/trends`}>
                 <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">
                   TRENDS
                 </li>
               </Link>
               {
-                authtoken ? <Link href={`/components/account`}>
+                authtoken ? <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/account`}>
                 <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">
                   <button className="">ACCOUNT</button>
                 </li>
-              </Link>:<Link href={`/components/login`}>
+              </Link>:<Link href={`${process.env.NEXT_PUBLIC_HOST}/components/login`}>
                 <li className="xsm:hover:bg-[---c3] xsm:cursor-pointer xsm:px-[1.5rem]">
                   <button className="">LOGIN</button>
                 </li>

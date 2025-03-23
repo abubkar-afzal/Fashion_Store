@@ -72,7 +72,7 @@ const Footer = () => {
     fetchPictures();
   }, []);
   const fetchPictures = async () => {
-    const req = await fetch("/api/getFooter");
+    const req = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getFooter`);
     const res = await req.json();
     setPictures(res.data);
   };
@@ -248,7 +248,7 @@ const Footer = () => {
             >
               <p ></p>
               
-              <Link href={`/`}>
+              <Link href={`${process.env.NEXT_PUBLIC_HOST}/`}>
                 <p  className="text-white xsm:text-[10px] sm:text-[12px] hover:text-[---blur] mb-[2rem]">
                   &copy;2025 Fashion
                 </p>

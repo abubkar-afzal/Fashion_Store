@@ -7,7 +7,7 @@ import { FaSquareMinus } from "react-icons/fa6";
 const OrderDetails = ({ details,setLoader }) => {
   const deleteOrder = async () => {
     setLoader(true)
-    let d = await fetch(`/api/deleteOrder`, {
+    let d = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/deleteOrder`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -17,14 +17,34 @@ const OrderDetails = ({ details,setLoader }) => {
     let res = await d.json();
     setLoader(false)
     if (res.success == true) {
-      console.log("deleted");
+      openModal("Order Placed ..!!")
     } else {
-      console.log("error came");
+      openModal("Order Not Placed ..!!")
+
     }
+  }
+   const [open, setOpen] = useState(false);
+      const [message, setmessage] = useState("");
+      const openModal = (msg) =>{ setOpen(true)
+        setmessage(msg);
+      };
+      const closeModal = () => setOpen(false);
+    if(open  == true){
+      document.body.style.overflow = "hidden";
+     
+  }else{
+      document.body.style.overflow = "auto";
+     
   }
   return (
     <>
-      <div className="justify-items-center space-y-[1rem] xsm:my-[5rem] sm:mt-[1px] sm:mb-[5rem] min-h-screen content-center overflow-y-scroll hideBar text-white bg-[---blur] m-[2rem] py-[1rem] rounded-[2rem]">
+    <Popup open={open} closeOnDocumentClick onClose={closeModal} contentStyle={{ background: 'rgba(255, 255, 255, 0)', border: 'none', width:500,  }}  >
+                    <div className="items-center text-center rounded-[2rem] bg-[---c1] xsm:mx-[2rem] sm:mx-[1px] ">
+                      <h2 className=" text-black font-black p-4 rounded-[2rem] sm:text-[20px] xsm:text-[16px] m-4 ">{message}</h2>
+                      <button onClick={closeModal} className="bg-[---c7] text-white font-black p-4 rounded-[1.5rem] sm:text-[20px] xsm:text-[14px] m-4">Ok..!!</button>
+                    </div>
+                  </Popup>
+      <div  className={`${open  ? "blurred-background":null} justify-items-center space-y-[1rem] xsm:my-[5rem] sm:mt-[1px] sm:mb-[5rem] min-h-screen content-center overflow-y-scroll hideBar text-white bg-[---blur] m-[2rem] py-[1rem] rounded-[2rem] `}>
         <div className="xsm:text-[25px] sm:text-[35px] font-black ">
           !!~~Order Details~~!!
         </div>
@@ -102,7 +122,7 @@ const OrderDetails = ({ details,setLoader }) => {
           );
         })}
         <div className=" place-items-end">
-          <Link href={`/components/admin/allOrders`}><button onClick={deleteOrder} className="flex xsm:text-[18px] sm:text-[22px]  items-center font-black bg-[---c8] hover:bg-[---h8] px-[1rem] py-[10px] text-white  rounded-[2rem]">
+          <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/admin/allOrders`}><button onClick={deleteOrder} className="flex xsm:text-[18px] sm:text-[22px]  items-center font-black bg-[---c8] hover:bg-[---h8] px-[1rem] py-[10px] text-white  rounded-[2rem]">
             Placed
             <FaSquareMinus className="mx-2" />
           </button></Link>

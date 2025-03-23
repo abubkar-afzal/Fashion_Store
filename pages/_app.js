@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }) {
   const [loginfirst, setloginfirst] = useState(false);
   const checkloginornot = ()=>{
     if(!localStorage.getItem("Fashion_Store")){
-      router.push(`/components/login`)
+      router.push(`${process.env.NEXT_PUBLIC_HOST}/components/login`)
       setloginfirst(true)
       openModal("Please Login / Signup First..!!")
     }

@@ -34,7 +34,7 @@ const buyNow = ({setLoader}) => {
           behavior: 'smooth'
       }
       window.scrollTo(scrollOptions);
-        let d = await fetch(`/api/getAccount`, {
+        let d = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getAccount`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -57,7 +57,7 @@ const buyNow = ({setLoader}) => {
       if (localStorage.getItem("Fashion_Store")) {
         fetchuser();
       } else {
-        router.push("/");
+        router.push(`${process.env.NEXT_PUBLIC_HOST}/`);
       }
       SubTotalFunction()
     }, [router.query]);
@@ -123,7 +123,7 @@ const buyNow = ({setLoader}) => {
     if (cartData.length > 0) {
       setLoader(true)
       let placedOrder = cartData;
-      let removerequest = await fetch(`/api/reduceQuantity`, {
+      let removerequest = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/reduceQuantity`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json; charset=UTF-8",
@@ -137,7 +137,7 @@ const buyNow = ({setLoader}) => {
           localStorage.setItem("Fashion_Store_Orders", res.token);
           placedordeindatabase()
           handleCleanCart()
-          router.push(`/components/orders`)
+          router.push(`${process.env.NEXT_PUBLIC_HOST}/components/orders`)
           
         } else {
           openModal("The Quantity Of Your Items Are Not Avaliable In Our Stock ~~!!");
@@ -176,7 +176,7 @@ const placedordeindatabase = async () => {
       user_post_code: postCode,
     };
     console.log(placedOrder)
-    let addData = await fetch(`/api/addOrder`, {
+    let addData = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/addOrder`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json; charset=UTF-8",
@@ -323,10 +323,10 @@ const placedordeindatabase = async () => {
                     {
                       item.product_quantity == 0 ? dispatch(removeFromCart(item._id)) :
                         <div className="flex justify-between xsm:mt-[1rem] sm:mt-[2rem] ">
-                          <Link href={`/components/other/${item._id}`} className="xsm:w-[30%] sm:w-[30%]"><div >
+                          <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/${item._id}`} className="xsm:w-[30%] sm:w-[30%]"><div >
                             <p className="xsm:text-[14px] sm:text-[18px] font-semibold">{item.product_title}</p>
                           </div></Link>
-                          <Link href={`/components/other/${item._id}`} className="xsm:w-[30%] sm:w-[30%]"><div >
+                          <Link href={`${process.env.NEXT_PUBLIC_HOST}/components/other/${item._id}`} className="xsm:w-[30%] sm:w-[30%]"><div >
                             <p className="xsm:text-[14px] sm:text-[18px] font-semibold">${item.product_price} </p>
                           </div></Link>
 

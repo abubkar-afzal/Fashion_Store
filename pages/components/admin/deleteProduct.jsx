@@ -23,7 +23,7 @@ const DeleteProduct =({setLoader})=>{
  
       const checkUniqueId = async ()=>{
         
-        let req = await fetch(`/api/checkUniqueIdOfProduct`,{
+        let req = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/checkUniqueIdOfProduct`,{
           method: "POST",
           headers: {
             "Content-Type": "application/json; charset=UTF-8",
@@ -44,7 +44,7 @@ const DeleteProduct =({setLoader})=>{
         let product = {
             product_id: parseInt(id),
         }
-        let post = await fetch(`/api/deleteProduct`, {
+        let post = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/deleteProduct`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json; charset=UTF-8",
