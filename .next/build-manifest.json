@@ -28,15 +28,25 @@
       "static/chunks/main.js",
       "static/chunks/pages/_error.js"
     ],
-    "/components/other/men": [
+    "/components/admin/aboutProducts": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/components/other/men.js"
+      "static/chunks/pages/components/admin/aboutProducts.js"
     ],
-    "/components/other/women": [
+    "/components/admin/addProduct": [
       "static/chunks/webpack.js",
       "static/chunks/main.js",
-      "static/chunks/pages/components/other/women.js"
+      "static/chunks/pages/components/admin/addProduct.js"
+    ],
+    "/components/admin/admin": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/components/admin/admin.js"
+    ],
+    "/components/admin/choice": [
+      "static/chunks/webpack.js",
+      "static/chunks/main.js",
+      "static/chunks/pages/components/admin/choice.js"
     ]
   },
   "ampFirstPages": []

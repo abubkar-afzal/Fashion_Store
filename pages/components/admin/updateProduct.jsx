@@ -192,10 +192,11 @@ return (<>
                 {
                     imagetutorial ? <Popup open={imagetutorial} closeOnDocumentClick onClose={closeImageTutorial} contentStyle={{ background: 'rgba(255, 255, 255, 0)', border: 'none', width:500,  }}  >
                     <div className="items-center text-center rounded-[2rem] bg-[---c1] xsm:mx-[2rem] sm:mx-[1px] shadow-lg">
-                    <video className="w-full rounded-[2rem]" autoPlay controls src="/image.mp4" type="video/mp4">
-
-Your browser does not support the video tag
-</video>
+                    <iframe className="w-full sm:h-[40vh] xsm:h-[25vh]"
+src="https://www.youtube.com/embed/vGzEGgsYnkc?autoplay=1&mute=1" frameborder="0" 
+allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+allowfullscreen>
+</iframe>
                 <h2 className=" text-black font-black p-4 rounded-[2rem] sm:text-[20px] xsm:text-[16px] m-4 ">This is Tutorial That How to Make URL Of Image ..!!</h2>
               <h2 className="  font-black p-4 rounded-[2rem] sm:text-[14px] xsm:text-[12px] m-4 ">This is not sponsered !! </h2>
                       <button onClick={closeImageTutorial} className="bg-[---c7] text-white font-black p-4 rounded-[2rem] sm:text-[20px] xsm:text-[14px] m-4">Close Tutorial</button>
