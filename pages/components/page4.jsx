@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { IoIosStar } from "react-icons/io";
 import Image from "next/image";
 import Link from "next/link";
@@ -6,6 +6,10 @@ import { FaShoppingBag } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, cleanCart } from "./redux/action";
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
+import '@splidejs/react-splide/css';
+
 const Page4 = ({ bestSeller,showCart,checkloginornot }) => {
   const dispatch = useDispatch();
   const handleAddToCart = (item)=>{
@@ -18,6 +22,12 @@ const Page4 = ({ bestSeller,showCart,checkloginornot }) => {
   const handleCleanCart = (item)=>{
       dispatch(cleanCart(cartData))
     }
+    const [splideKey, setSplideKey] = useState(0);
+
+  useEffect(() => {
+    setSplideKey(prev => prev + 1); // force remount to trigger autoScroll
+  }, [bestSeller.length]);
+
   return (
     <>
       <div className={`${bestSeller.length==0 ? "hidden":"block"} overflow-hidden xsm:text-left xsm:bg-[---c4] xsm:p-5 xsm:pt-[2rem] shadow-xl`}>
@@ -33,12 +43,29 @@ const Page4 = ({ bestSeller,showCart,checkloginornot }) => {
               one need in any season.
             </p>
           </div>
-          <div className="scroll-container hideBar">
-            <div className="xsm:hover:cursor-pointer xsm:duration-[4s] xsm:flex xsm:space-x-8 xsm:relative xsm:w-[1280px]  xsm:mt-8  sm:mt-0 overflow-x-scroll scroll-content hideBar">
+          <div className="space-x-[2rem] hideBar ">
+            <div >
+            <Splide
+                  key={splideKey}
+
+      options={{
+        type: 'loop',
+        drag: false,
+        arrows:false,
+        pagination:false,
+        gap:'xsm:10rem',
+        autoScroll: {
+          speed: 1,
+          
+        },
+      }}
+      extensions={{ AutoScroll }}
+    >
               {bestSeller.map((item) => {
                 return (
+                  <SplideSlide  key={item._id} className="xsm:mx-[1rem]">
                   <div
-                    key={item._id}
+                   
                     className="  xsm:border-[2px] xsm:w-[9rem] sm:w-[15rem] xsm:m-2 scroll-item"
                   >
                     {
@@ -181,12 +208,12 @@ const Page4 = ({ bestSeller,showCart,checkloginornot }) => {
                         </div>
                       </>
                     }
-                  </div>
+                  </div></SplideSlide>
                 );
               })}
               {bestSeller.length == 0 ? (
                 <div className="bg-[---c1] p-4 ">NO Product Add Product</div>
-              ) : null}
+              ) : null}</Splide>
             </div>
            
           </div>

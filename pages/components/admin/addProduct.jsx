@@ -181,7 +181,7 @@ allowfullscreen>
                 placeholder="Enter Your Id"
               />
               <p className=" ml-2 xsm:text-[13px] sm:text-[15px] text-white">
-                Please there Give A Unique ID !!
+                Please there Give A Unique ID Of Three Or More Then Three Digits!!
               </p>
             </div>
             <div>

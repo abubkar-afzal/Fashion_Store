@@ -2,11 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/": "pages/index.js",
-  "/components/admin/admin": "pages/components/admin/admin.js",
-  "/api/loginAdmin": "pages/api/loginAdmin.js",
   "/components/admin/choice": "pages/components/admin/choice.js",
   "/components/admin/aboutProducts": "pages/components/admin/aboutProducts.js",
-  "/components/admin/addProduct": "pages/components/admin/addProduct.js",
-  "/api/checkUniqueIdOfProduct": "pages/api/checkUniqueIdOfProduct.js"
+  "/components/admin/addProduct": "pages/components/admin/addProduct.js"
 }

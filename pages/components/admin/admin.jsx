@@ -8,7 +8,7 @@ import Popup from "reactjs-popup";
 const Admin = () => {
   const router = useRouter();
   const [password, setPassword] = useState("");
-  const [hpassword, sethpassword] = useState("");
+  const [hpassword, sethpassword] = useState(true);
   const hideP = () => {
     sethpassword(!hpassword);
   }; 
@@ -67,7 +67,7 @@ const Admin = () => {
                   <button onClick={closeModal} className="bg-[---c7] text-white font-black p-4 rounded-[1.5rem] sm:text-[20px] xsm:text-[14px] m-4">Ok..!!</button>
                 </div>
               </Popup>
-      <Slide direction="right" className={`${open  ? "blurred-background":null}`}> <div className="text-white font-black xsm:text-[18px] sm:text-[22px]">Welcome Admin ~~!! </div>
+      <Slide direction="right" className={`${open  ? "blurred-background":null}`}> <div><div className="text-white font-black xsm:text-[18px] sm:text-[22px] mx-auto text-center">Welcome Admin ~~!! </div>
         <div className="shadow-lg sm:space-y-[2rem] sm:space-x-[2rem] shadow-black p-[2rem] rounded-[2rem] m-4 space-y-[1rem] bg-[---blur]">
           <div className="xsm:hidden sm:block"></div>
           <div>
@@ -107,7 +107,7 @@ const Admin = () => {
               Login
             </button>
           </div>
-        </div>
+        </div></div>
       </Slide></div></>)
 }
 export default Admin;

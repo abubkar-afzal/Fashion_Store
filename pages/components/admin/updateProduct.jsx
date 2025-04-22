@@ -98,6 +98,7 @@ const UpdateProduct =({setLoader})=>{
         let res = await post.json();
         if(res.data){
         setTimeout(() => {
+          setid(res.data.product_id)
                 settitle(res.data.product_title)
                 setdesc(res.data.product_desc)
                 setprice(res.data.product_price)

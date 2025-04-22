@@ -44,10 +44,10 @@ const Feedback = () => {
     return (<>
         <div className="justify-items-center xsm:mt-[4rem] sm:mt-[1px] min-h-screen content-center overflow-y-scroll hideBar ">
           <div className="xsm:text-[24px] sm:text-[28px] font-semibold mt-[2rem] text-white" >Please Give Your FeedBack !!</div>
-          <div className="grid  sm:grid-cols-2 mx-[2rem] xsm:my-[1rem] sm:my-[2rem] sm:w-[75vw]  gap-x-[1rem] gap-y-[1rem] bg-[---c1] p-[1rem] rounded-[1rem]">
+          <div className="grid  sm:grid-cols-2 mx-[2rem] xsm:my-[1rem] sm:my-[2rem] sm:w-[75vw]  gap-x-[1rem] gap-y-[1rem] bg-[---blur] p-[1rem] rounded-[1rem]">
             
             <div className="flex items-center sm:row-start-1 sm:col-start-1 sm:row-end-1 sm:col-end-1 xsm:row-start-1 xsm:col-start-1 xsm:row-end-1 xsm:col-end-1">
-                <p className="font-semibold xsm:text-[16px] sm:text-[20px]">
+                <p className="font-semibold xsm:text-[16px] sm:text-[20px] text-white ">
                   Name:
                 </p>
                 <input
@@ -56,12 +56,12 @@ const Feedback = () => {
                   }}
                   value={name}
                   type="text"
-                  className="w-full h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
+                  className="w-full h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2 "
                   placeholder="Enter Your Name"
                 />
               </div>
               <div className="flex items-center sm:row-start-1 sm:col-start-2 sm:row-end-1 sm:col-end-2 xsm:row-start-2 xsm:col-start-1 xsm:row-end-2 xsm:col-end-1">
-                <p className="font-semibold xsm:text-[16px] sm:text-[20px]">
+                <p className="font-semibold xsm:text-[16px] sm:text-[20px] text-white">
                   Email:
                 </p>
                 <input
@@ -77,7 +77,7 @@ const Feedback = () => {
               </div>
               
                 <div className="flex items-center sm:row-start-2 sm:col-start-1 sm:row-end-2 sm:col-end-3 xsm:row-start-3 xsm:col-start-1 xsm:row-end-3 xsm:col-end-1">
-                    <p className="font-semibold xsm:text-[16px] sm:text-[20px]">
+                    <p className="font-semibold xsm:text-[16px] sm:text-[20px] text-white">
                     Feedback:
                     </p>
                     <textarea
@@ -85,7 +85,7 @@ const Feedback = () => {
                         setFeedback(e.target.value)
                       }}
                       value={feedback}
-                    className="w-full h-[5rem] border-[1px] border-black rounded-[8px]  p-4 m-2"
+                    className="w-full h-[5rem] border-[1px] border-black rounded-[8px]  p-4 m-2 "
                     placeholder="Enter Your Feedback"
                     />
               </div>
