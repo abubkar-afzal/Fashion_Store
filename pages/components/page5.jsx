@@ -85,7 +85,7 @@ const Page5 = ({ men, women, kids, family,showCart,checkloginornot }) => {
             Family
           </p>
         </div>
-        <div className="xsm:grid xsm:grid-cols-2  xsm:overflow-scroll xsm:h-[800px] sm:grid sm:grid-cols-auto sm:overflow-scroll  gap-[1rem] hideBar sm:h-[25rem] justify-items-center bg-[---blur]">
+        <div className="xsm:grid xsm:grid-cols-2  xsm:overflow-scroll xsm:h-[800px] sm:grid sm:grid-cols-auto sm:overflow-scroll  gap-[1rem] hideBar sm:h-[30rem] justify-items-center bg-[---blur]">
           {displayMen
             ? (men.length !== 0 ? <> {men.map((item) => {
               return (
