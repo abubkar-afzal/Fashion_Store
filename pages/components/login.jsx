@@ -251,7 +251,7 @@ const Login = ({loginfirst, setLoader}) => {
                       <Fade cascade>
                         <div
 
-                          className="bg-white rounded-[2rem] flex flex-wrap w-[18rem] sm:w-[22rem] sm:mr-[2.7rem] place-content-center justify-self-center m-2 "
+                          className="bg-white rounded-[2rem] flex flex-wrap w-[18rem] sm:w-[22rem] sm:mr-[2.7rem] place-content-center items-center justify-self-center m-2 "
                         >
                           <div
 
@@ -404,7 +404,7 @@ const Login = ({loginfirst, setLoader}) => {
                       />
                     )}</div>
                 </div>
-                <div>
+                <div className="">
                   <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">
                     Phone:
                   </p>
@@ -419,9 +419,10 @@ const Login = ({loginfirst, setLoader}) => {
                     className="w-auto h-[2rem] border-[1px] border-black rounded-[8px] p-2 px-4 m-2"
                     
                   />
-                  <p className="xsm:w-[60vw] sm:w-[30vw] ml-2 xsm:text-[13px] sm:text-[15px] text-white">
-                Please Enter Your Phone Number Like 923270972423 Don't Add + And Don't Forgot To Enter Country Code.
-              </p>
+                  <div className="xsm:w-[50vw] sm:w-[15vw] mx-auto xsm:text-[13px] sm:text-[15px] text-white">
+                Please Enter Your Phone Number
+                Like 923270972423 Don't Add + And Don't Forgot To Enter Country Code.
+              </div>
                 </div>
                 <div>
                   <p className="font-black xsm:text-[18px] sm:text-[22px] text-white">

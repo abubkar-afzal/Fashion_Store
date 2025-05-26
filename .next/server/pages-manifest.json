@@ -2,5 +2,12 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
+  "/components/admin/admin": "pages/components/admin/admin.js",
+  "/components/admin/choice": "pages/components/admin/choice.js",
+  "/components/admin/aboutProducts": "pages/components/admin/aboutProducts.js",
+  "/components/admin/forgot": "pages/components/admin/forgot.js",
+  "/components/login": "pages/components/login.js",
+  "/components/forgot": "pages/components/forgot.js",
+  "/api/forgot": "pages/api/forgot.js",
   "/": "pages/index.js"
 }
